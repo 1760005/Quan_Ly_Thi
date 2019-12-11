@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DEFD0026-A524-49C4-B139-8A1AEDB102EF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Quan_Ly_Thi</RootNamespace>
+    <AssemblyName>Quan_Ly_Thi</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BUS\BUS_Admin.cs" />
+    <Compile Include="BUS\Bus_Cau_Hoi.cs" />
+    <Compile Include="BUS\BUS_De_Thi.cs" />
+    <Compile Include="BUS\BUS_Giao_Vien.cs" />
+    <Compile Include="BUS\BUS_Hoc_Sinh.cs" />
+    <Compile Include="BUS\BUS_Tai_Khoan.cs" />
+    <Compile Include="DAO\DAO_Admin.cs" />
+    <Compile Include="DAO\DAO_Cau_Hoi.cs" />
+    <Compile Include="DAO\DAO_De_Thi.cs" />
+    <Compile Include="DAO\DAO_Giao_Vien.cs" />
+    <Compile Include="DAO\DAO_Hoc_Sinh.cs" />
+    <Compile Include="DAO\DAO_Tai_Khoan.cs" />
+    <Compile Include="DAO\QLTTN.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLTTN.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\Adminn.cs" />
+    <Compile Include="DTO\Cau_Hoi.cs" />
+    <Compile Include="DTO\De_thi.cs" />
+    <Compile Include="DTO\Giao_Vienn.cs" />
+    <Compile Include="DTO\Hoc_Sinhh.cs" />
+    <Compile Include="DTO\Lich_Thi.cs" />
+    <Compile Include="DTO\Tai_khoan.cs" />
+    <Compile Include="GUI\Adminn\frmAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Adminn\frmAdmin.Designer.cs">
+      <DependentUpon>frmAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Giao_Vien\frmGiao_Vien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Giao_Vien\frmGiao_Vien.Designer.cs">
+      <DependentUpon>frmGiao_Vien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Giao_Vien\frmThong_Tin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Giao_Vien\frmThong_Tin.Designer.cs">
+      <DependentUpon>frmThong_Tin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\He_Thong\frmDang_Nhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\He_Thong\frmDang_Nhap.Designer.cs">
+      <DependentUpon>frmDang_Nhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\He_Thong\frmDoi_Mat_Khau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\He_Thong\frmDoi_Mat_Khau.Designer.cs">
+      <DependentUpon>frmDoi_Mat_Khau.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Hoc_Sinh\frmHoc_Sinh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Hoc_Sinh\frmHoc_Sinh.Designer.cs">
+      <DependentUpon>frmHoc_Sinh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Hoc_Sinh\frmKetQua.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Hoc_Sinh\frmKetQua.Designer.cs">
+      <DependentUpon>frmKetQua.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Hoc_Sinh\frmThong_Tin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Hoc_Sinh\frmThong_Tin.Designer.cs">
+      <DependentUpon>frmThong_Tin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuanLyThiTracNghiem.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyThiTracNghiem.dbml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="GUI\Adminn\frmAdmin.resx">
+      <DependentUpon>frmAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Giao_Vien\frmGiao_Vien.resx">
+      <DependentUpon>frmGiao_Vien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Giao_Vien\frmThong_Tin.resx">
+      <DependentUpon>frmThong_Tin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\He_Thong\frmDang_Nhap.resx">
+      <DependentUpon>frmDang_Nhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\He_Thong\frmDoi_Mat_Khau.resx">
+      <DependentUpon>frmDoi_Mat_Khau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Hoc_Sinh\frmHoc_Sinh.resx">
+      <DependentUpon>frmHoc_Sinh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Hoc_Sinh\frmKetQua.resx">
+      <DependentUpon>frmKetQua.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Hoc_Sinh\frmThong_Tin.resx">
+      <DependentUpon>frmThong_Tin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="DAO\QLTTN.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>QLTTN.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DAO\QLTTN.dbml.layout">
+      <DependentUpon>QLTTN.dbml</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="QuanLyThiTracNghiem.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>QuanLyThiTracNghiem.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QuanLyThiTracNghiem.dbml.layout">
+      <DependentUpon>QuanLyThiTracNghiem.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

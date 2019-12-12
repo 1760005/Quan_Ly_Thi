@@ -1,0 +1,16 @@
+C:\Users\nthed\Desktop\Quan_Ly_Thi\Quan_Ly_Thi\Quan_Ly_Thi\bin\Debug\Quan_Ly_Thi.exe.config
+C:\Users\nthed\Desktop\Quan_Ly_Thi\Quan_Ly_Thi\Quan_Ly_Thi\bin\Debug\Quan_Ly_Thi.exe
+C:\Users\nthed\Desktop\Quan_Ly_Thi\Quan_Ly_Thi\Quan_Ly_Thi\bin\Debug\Quan_Ly_Thi.pdb
+C:\Users\nthed\Desktop\Quan_Ly_Thi\Quan_Ly_Thi\Quan_Ly_Thi\obj\Debug\Quan_Ly_Thi.csprojAssemblyReference.cache
+C:\Users\nthed\Desktop\Quan_Ly_Thi\Quan_Ly_Thi\Quan_Ly_Thi\obj\Debug\Quan_Ly_Thi.GUI.Adminn.frmAdmin.resources
+C:\Users\nthed\Desktop\Quan_Ly_Thi\Quan_Ly_Thi\Quan_Ly_Thi\obj\Debug\Quan_Ly_Thi.GUI.Giao_Vien.frmGiao_Vien.resources
+C:\Users\nthed\Desktop\Quan_Ly_Thi\Quan_Ly_Thi\Quan_Ly_Thi\obj\Debug\Quan_Ly_Thi.GUI.Giao_Vien.frmThong_Tin.resources
+C:\Users\nthed\Desktop\Quan_Ly_Thi\Quan_Ly_Thi\Quan_Ly_Thi\obj\Debug\Quan_Ly_Thi.GUI.He_Thong.frmDang_Nhap.resources
+C:\Users\nthed\Desktop\Quan_Ly_Thi\Quan_Ly_Thi\Quan_Ly_Thi\obj\Debug\Quan_Ly_Thi.GUI.He_Thong.frmDoi_Mat_Khau.resources
+C:\Users\nthed\Desktop\Quan_Ly_Thi\Quan_Ly_Thi\Quan_Ly_Thi\obj\Debug\Quan_Ly_Thi.GUI.Hoc_Sinh.frmHoc_Sinh.resources
+C:\Users\nthed\Desktop\Quan_Ly_Thi\Quan_Ly_Thi\Quan_Ly_Thi\obj\Debug\Quan_Ly_Thi.GUI.Hoc_Sinh.frmKetQua.resources
+C:\Users\nthed\Desktop\Quan_Ly_Thi\Quan_Ly_Thi\Quan_Ly_Thi\obj\Debug\Quan_Ly_Thi.GUI.Hoc_Sinh.frmThong_Tin.resources
+C:\Users\nthed\Desktop\Quan_Ly_Thi\Quan_Ly_Thi\Quan_Ly_Thi\obj\Debug\Quan_Ly_Thi.Properties.Resources.resources
+C:\Users\nthed\Desktop\Quan_Ly_Thi\Quan_Ly_Thi\Quan_Ly_Thi\obj\Debug\Quan_Ly_Thi.csproj.GenerateResource.cache
+C:\Users\nthed\Desktop\Quan_Ly_Thi\Quan_Ly_Thi\Quan_Ly_Thi\obj\Debug\Quan_Ly_Thi.exe
+C:\Users\nthed\Desktop\Quan_Ly_Thi\Quan_Ly_Thi\Quan_Ly_Thi\obj\Debug\Quan_Ly_Thi.pdb

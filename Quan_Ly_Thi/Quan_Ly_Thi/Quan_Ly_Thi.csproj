@@ -33,7 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
@@ -69,6 +73,7 @@
     <Compile Include="DTO\De_thi.cs" />
     <Compile Include="DTO\Giao_Vienn.cs" />
     <Compile Include="DTO\Hoc_Sinhh.cs" />
+    <Compile Include="DTO\Ket_Qua_Thi.cs" />
     <Compile Include="DTO\Lich_Thi.cs" />
     <Compile Include="DTO\Tai_khoan.cs" />
     <Compile Include="GUI\Adminn\frmAdmin.cs">
@@ -121,11 +126,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QuanLyThiTracNghiem.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QuanLyThiTracNghiem.dbml</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="GUI\Adminn\frmAdmin.resx">
       <DependentUpon>frmAdmin.cs</DependentUpon>
     </EmbeddedResource>
@@ -176,14 +176,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="QuanLyThiTracNghiem.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>QuanLyThiTracNghiem.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="QuanLyThiTracNghiem.dbml.layout">
-      <DependentUpon>QuanLyThiTracNghiem.dbml</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -49,6 +49,12 @@
             this.btnExit_teacher = new System.Windows.Forms.Button();
             this.ControlAdmin = new System.Windows.Forms.TabControl();
             this.TabList_student = new System.Windows.Forms.TabPage();
+            this.Radiobtn_ClassName = new System.Windows.Forms.RadioButton();
+            this.Radiobtn_FullName_student = new System.Windows.Forms.RadioButton();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtCMND_TCC_student = new System.Windows.Forms.TextBox();
+            this.Class_CBB = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnDecentra_student = new System.Windows.Forms.Button();
             this.btnUpdate_student = new System.Windows.Forms.Button();
             this.btnAdd_student = new System.Windows.Forms.Button();
@@ -69,6 +75,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.TabList_teacher = new System.Windows.Forms.TabPage();
+            this.Radiobtn_GradeName = new System.Windows.Forms.RadioButton();
+            this.Radiobtn_FullName_teacher = new System.Windows.Forms.RadioButton();
+            this.Grade_CBB = new System.Windows.Forms.ComboBox();
             this.btnTeacher_Search = new System.Windows.Forms.Button();
             this.maskedTchDOB = new System.Windows.Forms.MaskedTextBox();
             this.btnDecentra_teacher = new System.Windows.Forms.Button();
@@ -87,7 +96,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.txtSearch_teacher = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.lpPage_teacher = new System.Windows.Forms.Label();
+            this.lbPage_teacher = new System.Windows.Forms.Label();
             this.btnPrev_teacher = new System.Windows.Forms.Button();
             this.dt_teacher = new System.Windows.Forms.DataGridView();
             this.label16 = new System.Windows.Forms.Label();
@@ -95,11 +104,6 @@
             this.btnNext_teacher = new System.Windows.Forms.Button();
             this.TabResult = new System.Windows.Forms.TabPage();
             this.dt_Result = new System.Windows.Forms.DataGridView();
-            this.label5 = new System.Windows.Forms.Label();
-            this.Class_CBB = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtCMND_TCC_student = new System.Windows.Forms.TextBox();
-            this.Grade_CBB = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.ControlAdmin.SuspendLayout();
             this.TabList_student.SuspendLayout();
@@ -123,7 +127,7 @@
             // txtSearch_student
             // 
             this.txtSearch_student.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Italic);
-            this.txtSearch_student.Location = new System.Drawing.Point(146, 9);
+            this.txtSearch_student.Location = new System.Drawing.Point(146, 16);
             this.txtSearch_student.Name = "txtSearch_student";
             this.txtSearch_student.Size = new System.Drawing.Size(422, 27);
             this.txtSearch_student.TabIndex = 67;
@@ -165,21 +169,21 @@
             // btnChange_pass
             // 
             this.btnChange_pass.Name = "btnChange_pass";
-            this.btnChange_pass.Size = new System.Drawing.Size(180, 26);
+            this.btnChange_pass.Size = new System.Drawing.Size(174, 26);
             this.btnChange_pass.Text = "Đổi Mật Khẩu";
             // 
             // btnLogout
             // 
             this.btnLogout.Image = ((System.Drawing.Image)(resources.GetObject("btnLogout.Image")));
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(180, 26);
+            this.btnLogout.Size = new System.Drawing.Size(174, 26);
             this.btnLogout.Text = "Đăng Xuất";
             // 
             // btnexit
             // 
             this.btnexit.Image = ((System.Drawing.Image)(resources.GetObject("btnexit.Image")));
             this.btnexit.Name = "btnexit";
-            this.btnexit.Size = new System.Drawing.Size(180, 26);
+            this.btnexit.Size = new System.Drawing.Size(174, 26);
             this.btnexit.Text = "Thoát";
             // 
             // dữLiệuToolStripMenuItem
@@ -205,6 +209,7 @@
             this.btnRestore.Name = "btnRestore";
             this.btnRestore.Size = new System.Drawing.Size(205, 26);
             this.btnRestore.Text = "Hồi Phục";
+            this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
             // 
             // btnImport
             // 
@@ -273,6 +278,8 @@
             // 
             // TabList_student
             // 
+            this.TabList_student.Controls.Add(this.Radiobtn_ClassName);
+            this.TabList_student.Controls.Add(this.Radiobtn_FullName_student);
             this.TabList_student.Controls.Add(this.label7);
             this.TabList_student.Controls.Add(this.txtCMND_TCC_student);
             this.TabList_student.Controls.Add(this.Class_CBB);
@@ -307,6 +314,64 @@
             this.TabList_student.Text = "Danh Sách Học Sinh";
             this.TabList_student.UseVisualStyleBackColor = true;
             // 
+            // Radiobtn_ClassName
+            // 
+            this.Radiobtn_ClassName.AutoSize = true;
+            this.Radiobtn_ClassName.Location = new System.Drawing.Point(625, 34);
+            this.Radiobtn_ClassName.Name = "Radiobtn_ClassName";
+            this.Radiobtn_ClassName.Size = new System.Drawing.Size(49, 20);
+            this.Radiobtn_ClassName.TabIndex = 84;
+            this.Radiobtn_ClassName.TabStop = true;
+            this.Radiobtn_ClassName.Text = "Lớp";
+            this.Radiobtn_ClassName.UseVisualStyleBackColor = true;
+            // 
+            // Radiobtn_FullName_student
+            // 
+            this.Radiobtn_FullName_student.AutoSize = true;
+            this.Radiobtn_FullName_student.Location = new System.Drawing.Point(625, 8);
+            this.Radiobtn_FullName_student.Name = "Radiobtn_FullName_student";
+            this.Radiobtn_FullName_student.Size = new System.Drawing.Size(91, 20);
+            this.Radiobtn_FullName_student.TabIndex = 83;
+            this.Radiobtn_FullName_student.TabStop = true;
+            this.Radiobtn_FullName_student.Text = "Họ Và Tên";
+            this.Radiobtn_FullName_student.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(811, 93);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(69, 23);
+            this.label7.TabIndex = 81;
+            this.label7.Text = "CMND:";
+            // 
+            // txtCMND_TCC_student
+            // 
+            this.txtCMND_TCC_student.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCMND_TCC_student.Location = new System.Drawing.Point(947, 96);
+            this.txtCMND_TCC_student.Name = "txtCMND_TCC_student";
+            this.txtCMND_TCC_student.Size = new System.Drawing.Size(206, 23);
+            this.txtCMND_TCC_student.TabIndex = 82;
+            // 
+            // Class_CBB
+            // 
+            this.Class_CBB.FormattingEnabled = true;
+            this.Class_CBB.Location = new System.Drawing.Point(948, 376);
+            this.Class_CBB.Name = "Class_CBB";
+            this.Class_CBB.Size = new System.Drawing.Size(206, 24);
+            this.Class_CBB.TabIndex = 80;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(812, 374);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(47, 23);
+            this.label5.TabIndex = 79;
+            this.label5.Text = "Lớp:";
+            // 
             // btnDecentra_student
             // 
             this.btnDecentra_student.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDecentra_student.BackgroundImage")));
@@ -328,6 +393,7 @@
             this.btnUpdate_student.Size = new System.Drawing.Size(60, 50);
             this.btnUpdate_student.TabIndex = 75;
             this.btnUpdate_student.UseVisualStyleBackColor = true;
+            this.btnUpdate_student.Click += new System.EventHandler(this.btnUpdate_student_Click);
             // 
             // btnAdd_student
             // 
@@ -356,21 +422,22 @@
             // 
             // btnStudent_Seach
             // 
-            this.btnStudent_Seach.Location = new System.Drawing.Point(589, 11);
+            this.btnStudent_Seach.Location = new System.Drawing.Point(15, 45);
             this.btnStudent_Seach.Name = "btnStudent_Seach";
             this.btnStudent_Seach.Size = new System.Drawing.Size(75, 23);
             this.btnStudent_Seach.TabIndex = 74;
             this.btnStudent_Seach.Text = "Tìm Kiếm";
             this.btnStudent_Seach.UseVisualStyleBackColor = true;
+            this.btnStudent_Seach.Click += new System.EventHandler(this.btnStudent_Seach_Click);
             // 
             // dt_student
             // 
             this.dt_student.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dt_student.Location = new System.Drawing.Point(15, 42);
+            this.dt_student.Location = new System.Drawing.Point(15, 74);
             this.dt_student.Name = "dt_student";
-            this.dt_student.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dt_student.Size = new System.Drawing.Size(744, 420);
+            this.dt_student.Size = new System.Drawing.Size(767, 388);
             this.dt_student.TabIndex = 63;
+            this.dt_student.SelectionChanged += new System.EventHandler(this.dt_student_SelectionChanged);
             // 
             // maskedStdDOB
             // 
@@ -390,6 +457,7 @@
             this.btnNext_student.TabIndex = 55;
             this.btnNext_student.Text = "Trang sau";
             this.btnNext_student.UseVisualStyleBackColor = true;
+            this.btnNext_student.Click += new System.EventHandler(this.btnNext_student_Click);
             // 
             // btnExit_student
             // 
@@ -410,6 +478,7 @@
             this.btnPrev_student.TabIndex = 56;
             this.btnPrev_student.Text = "Trang trước";
             this.btnPrev_student.UseVisualStyleBackColor = true;
+            this.btnPrev_student.Click += new System.EventHandler(this.btnPrev_student_Click);
             // 
             // txtSDT_student
             // 
@@ -495,6 +564,8 @@
             // 
             // TabList_teacher
             // 
+            this.TabList_teacher.Controls.Add(this.Radiobtn_GradeName);
+            this.TabList_teacher.Controls.Add(this.Radiobtn_FullName_teacher);
             this.TabList_teacher.Controls.Add(this.Grade_CBB);
             this.TabList_teacher.Controls.Add(this.btnTeacher_Search);
             this.TabList_teacher.Controls.Add(this.maskedTchDOB);
@@ -515,7 +586,7 @@
             this.TabList_teacher.Controls.Add(this.label13);
             this.TabList_teacher.Controls.Add(this.txtSearch_teacher);
             this.TabList_teacher.Controls.Add(this.label14);
-            this.TabList_teacher.Controls.Add(this.lpPage_teacher);
+            this.TabList_teacher.Controls.Add(this.lbPage_teacher);
             this.TabList_teacher.Controls.Add(this.btnPrev_teacher);
             this.TabList_teacher.Controls.Add(this.dt_teacher);
             this.TabList_teacher.Controls.Add(this.label16);
@@ -529,14 +600,45 @@
             this.TabList_teacher.Text = "Danh Sách Giáo Viên";
             this.TabList_teacher.UseVisualStyleBackColor = true;
             // 
+            // Radiobtn_GradeName
+            // 
+            this.Radiobtn_GradeName.AutoSize = true;
+            this.Radiobtn_GradeName.Location = new System.Drawing.Point(605, 32);
+            this.Radiobtn_GradeName.Name = "Radiobtn_GradeName";
+            this.Radiobtn_GradeName.Size = new System.Drawing.Size(52, 20);
+            this.Radiobtn_GradeName.TabIndex = 86;
+            this.Radiobtn_GradeName.TabStop = true;
+            this.Radiobtn_GradeName.Text = "Khối";
+            this.Radiobtn_GradeName.UseVisualStyleBackColor = true;
+            // 
+            // Radiobtn_FullName_teacher
+            // 
+            this.Radiobtn_FullName_teacher.AutoSize = true;
+            this.Radiobtn_FullName_teacher.Location = new System.Drawing.Point(605, 6);
+            this.Radiobtn_FullName_teacher.Name = "Radiobtn_FullName_teacher";
+            this.Radiobtn_FullName_teacher.Size = new System.Drawing.Size(91, 20);
+            this.Radiobtn_FullName_teacher.TabIndex = 85;
+            this.Radiobtn_FullName_teacher.TabStop = true;
+            this.Radiobtn_FullName_teacher.Text = "Họ Và Tên";
+            this.Radiobtn_FullName_teacher.UseVisualStyleBackColor = true;
+            // 
+            // Grade_CBB
+            // 
+            this.Grade_CBB.FormattingEnabled = true;
+            this.Grade_CBB.Location = new System.Drawing.Point(931, 369);
+            this.Grade_CBB.Name = "Grade_CBB";
+            this.Grade_CBB.Size = new System.Drawing.Size(207, 24);
+            this.Grade_CBB.TabIndex = 65;
+            // 
             // btnTeacher_Search
             // 
-            this.btnTeacher_Search.Location = new System.Drawing.Point(586, 15);
+            this.btnTeacher_Search.Location = new System.Drawing.Point(9, 45);
             this.btnTeacher_Search.Name = "btnTeacher_Search";
             this.btnTeacher_Search.Size = new System.Drawing.Size(75, 23);
             this.btnTeacher_Search.TabIndex = 64;
             this.btnTeacher_Search.Text = "Tìm Kiếm";
             this.btnTeacher_Search.UseVisualStyleBackColor = true;
+            this.btnTeacher_Search.Click += new System.EventHandler(this.btnTeacher_Search_Click);
             // 
             // maskedTchDOB
             // 
@@ -568,6 +670,7 @@
             this.btnUpdate_teacher.Size = new System.Drawing.Size(60, 50);
             this.btnUpdate_teacher.TabIndex = 55;
             this.btnUpdate_teacher.UseVisualStyleBackColor = true;
+            this.btnUpdate_teacher.Click += new System.EventHandler(this.btnUpdate_teacher_Click);
             // 
             // btnAdd_teacher
             // 
@@ -687,7 +790,7 @@
             // txtSearch_teacher
             // 
             this.txtSearch_teacher.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Italic);
-            this.txtSearch_teacher.Location = new System.Drawing.Point(141, 12);
+            this.txtSearch_teacher.Location = new System.Drawing.Point(137, 12);
             this.txtSearch_teacher.Name = "txtSearch_teacher";
             this.txtSearch_teacher.Size = new System.Drawing.Size(422, 27);
             this.txtSearch_teacher.TabIndex = 49;
@@ -702,15 +805,15 @@
             this.label14.TabIndex = 47;
             this.label14.Text = "SĐT:";
             // 
-            // lpPage_teacher
+            // lbPage_teacher
             // 
-            this.lpPage_teacher.AutoSize = true;
-            this.lpPage_teacher.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lpPage_teacher.Location = new System.Drawing.Point(369, 484);
-            this.lpPage_teacher.Name = "lpPage_teacher";
-            this.lpPage_teacher.Size = new System.Drawing.Size(38, 19);
-            this.lpPage_teacher.TabIndex = 60;
-            this.lpPage_teacher.Text = "0/0";
+            this.lbPage_teacher.AutoSize = true;
+            this.lbPage_teacher.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPage_teacher.Location = new System.Drawing.Point(369, 484);
+            this.lbPage_teacher.Name = "lbPage_teacher";
+            this.lbPage_teacher.Size = new System.Drawing.Size(38, 19);
+            this.lbPage_teacher.TabIndex = 60;
+            this.lbPage_teacher.Text = "0/0";
             // 
             // btnPrev_teacher
             // 
@@ -721,13 +824,14 @@
             this.btnPrev_teacher.TabIndex = 59;
             this.btnPrev_teacher.Text = "Trang trước";
             this.btnPrev_teacher.UseVisualStyleBackColor = true;
+            this.btnPrev_teacher.Click += new System.EventHandler(this.btnPrev_teacher_Click);
             // 
             // dt_teacher
             // 
             this.dt_teacher.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dt_teacher.Location = new System.Drawing.Point(4, 41);
+            this.dt_teacher.Location = new System.Drawing.Point(4, 78);
             this.dt_teacher.Name = "dt_teacher";
-            this.dt_teacher.Size = new System.Drawing.Size(729, 432);
+            this.dt_teacher.Size = new System.Drawing.Size(729, 395);
             this.dt_teacher.TabIndex = 45;
             // 
             // label16
@@ -736,9 +840,9 @@
             this.label16.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(5, 12);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(126, 23);
+            this.label16.Size = new System.Drawing.Size(133, 23);
             this.label16.TabIndex = 46;
-            this.label16.Text = "Tìm Giáo Viên";
+            this.label16.Text = "Tìm Giáo Viên:";
             // 
             // label17
             // 
@@ -759,6 +863,7 @@
             this.btnNext_teacher.TabIndex = 58;
             this.btnNext_teacher.Text = "Trang sau";
             this.btnNext_teacher.UseVisualStyleBackColor = true;
+            this.btnNext_teacher.Click += new System.EventHandler(this.btnNext_teacher_Click);
             // 
             // TabResult
             // 
@@ -780,50 +885,6 @@
             this.dt_Result.Size = new System.Drawing.Size(1163, 511);
             this.dt_Result.TabIndex = 0;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(812, 374);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 23);
-            this.label5.TabIndex = 79;
-            this.label5.Text = "Lớp:";
-            // 
-            // Class_CBB
-            // 
-            this.Class_CBB.FormattingEnabled = true;
-            this.Class_CBB.Location = new System.Drawing.Point(948, 376);
-            this.Class_CBB.Name = "Class_CBB";
-            this.Class_CBB.Size = new System.Drawing.Size(206, 24);
-            this.Class_CBB.TabIndex = 80;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(811, 93);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(69, 23);
-            this.label7.TabIndex = 81;
-            this.label7.Text = "CMND:";
-            // 
-            // txtCMND_TCC_student
-            // 
-            this.txtCMND_TCC_student.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCMND_TCC_student.Location = new System.Drawing.Point(947, 96);
-            this.txtCMND_TCC_student.Name = "txtCMND_TCC_student";
-            this.txtCMND_TCC_student.Size = new System.Drawing.Size(206, 23);
-            this.txtCMND_TCC_student.TabIndex = 82;
-            // 
-            // Grade_CBB
-            // 
-            this.Grade_CBB.FormattingEnabled = true;
-            this.Grade_CBB.Location = new System.Drawing.Point(931, 369);
-            this.Grade_CBB.Name = "Grade_CBB";
-            this.Grade_CBB.Size = new System.Drawing.Size(207, 24);
-            this.Grade_CBB.TabIndex = 65;
-            // 
             // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -833,6 +894,7 @@
             this.Controls.Add(this.ControlAdmin);
             this.Name = "frmAdmin";
             this.Text = "Admin";
+            this.Load += new System.EventHandler(this.frmAdmin_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ControlAdmin.ResumeLayout(false);
@@ -909,7 +971,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtSearch_teacher;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label lpPage_teacher;
+        private System.Windows.Forms.Label lbPage_teacher;
         private System.Windows.Forms.Button btnPrev_teacher;
         private System.Windows.Forms.DataGridView dt_teacher;
         private System.Windows.Forms.Label label16;
@@ -922,5 +984,9 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtCMND_TCC_student;
         private System.Windows.Forms.ComboBox Grade_CBB;
+        private System.Windows.Forms.RadioButton Radiobtn_FullName_student;
+        private System.Windows.Forms.RadioButton Radiobtn_ClassName;
+        private System.Windows.Forms.RadioButton Radiobtn_GradeName;
+        private System.Windows.Forms.RadioButton Radiobtn_FullName_teacher;
     }
 }

@@ -63,15 +63,12 @@
     <Compile Include="DAO\DAO_Giao_Vien.cs" />
     <Compile Include="DAO\DAO_Hoc_Sinh.cs" />
     <Compile Include="DAO\DAO_Tai_Khoan.cs" />
-    <Compile Include="DAO\QLTTN.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QLTTN.dbml</DependentUpon>
-    </Compile>
     <Compile Include="DTO\Adminn.cs" />
     <Compile Include="DTO\Cau_Hoi.cs" />
+    <Compile Include="DTO\Classes.cs" />
     <Compile Include="DTO\De_thi.cs" />
     <Compile Include="DTO\Giao_Vienn.cs" />
+    <Compile Include="DTO\Grades.cs" />
     <Compile Include="DTO\Hoc_Sinhh.cs" />
     <Compile Include="DTO\Ket_Qua_Thi.cs" />
     <Compile Include="DTO\Lich_Thi.cs" />
@@ -159,14 +156,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="DAO\QLTTN.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>QLTTN.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DAO\QLTTN.dbml.layout">
-      <DependentUpon>QLTTN.dbml</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

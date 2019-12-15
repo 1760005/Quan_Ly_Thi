@@ -14,4 +14,5 @@ namespace Quan_Ly_Thi.DTO
         public string CMND_TCC { get; set; }
         public DateTime Ngay_Sinh { get; set; }
     }
+
 }

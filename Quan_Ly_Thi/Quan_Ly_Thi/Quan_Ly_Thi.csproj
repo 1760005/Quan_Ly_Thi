@@ -110,6 +110,12 @@
     <Compile Include="GUI\He_Thong\frmDoi_Mat_Khau.Designer.cs">
       <DependentUpon>frmDoi_Mat_Khau.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\He_Thong\frmThong_Tin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\He_Thong\frmThong_Tin.Designer.cs">
+      <DependentUpon>frmThong_Tin.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Hoc_Sinh\frmChon_Bai_Thi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\He_Thong\frmDoi_Mat_Khau.resx">
       <DependentUpon>frmDoi_Mat_Khau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\He_Thong\frmThong_Tin.resx">
+      <DependentUpon>frmThong_Tin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Hoc_Sinh\frmChon_Bai_Thi.resx">
       <DependentUpon>frmChon_Bai_Thi.cs</DependentUpon>

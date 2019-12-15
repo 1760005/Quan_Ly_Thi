@@ -15,12 +15,10 @@ namespace Quan_Ly_Thi.GUI.Hoc_Sinh
 {
     public partial class frmHoc_Sinh : Form
     {
-        public Hoc_Sinhh hs;
+        public static Hoc_Sinhh hs;
         
         public frmHoc_Sinh()
         {
-            hs = new Hoc_Sinhh();
-            hs.Tai_Khoan = "TK000003";
             InitializeComponent();
         }
 
@@ -681,6 +679,12 @@ namespace Quan_Ly_Thi.GUI.Hoc_Sinh
 
             lbTrial_second.Text = b.ToString();
             lbTrial_minute.Text = a.ToString();
+        }
+
+        //Đăng Xuất 
+        private void btnLog_out_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -1,6 +1,7 @@
 
 using Quan_Ly_Thi.GUI.Hoc_Sinh;
 using Quan_Ly_Thi.GUI.Adminn;
+using Quan_Ly_Thi.GUI.He_Thong;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace Quan_Ly_Thi
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmAdmin());
+            Application.Run(new frmDang_Nhap());
         }
     }
 }

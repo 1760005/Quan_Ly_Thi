@@ -36,3 +36,4 @@ C:\Users\T_A\Desktop\Quan_Ly_Thi - Copy\Quan_Ly_Thi\Quan_Ly_Thi\obj\Debug\Quan_L
 C:\Users\T_A\Desktop\Quan_Ly_Thi - Copy\Quan_Ly_Thi\Quan_Ly_Thi\bin\Debug\Quan_Ly_Thi.exe.config
 C:\Users\T_A\Desktop\Quan_Ly_Thi - Copy\Quan_Ly_Thi\Quan_Ly_Thi\bin\Debug\Quan_Ly_Thi.exe
 C:\Users\T_A\Desktop\Quan_Ly_Thi - Copy\Quan_Ly_Thi\Quan_Ly_Thi\bin\Debug\Quan_Ly_Thi.pdb
+C:\Users\T_A\Desktop\Quan_Ly_Thi - Copy\Quan_Ly_Thi\Quan_Ly_Thi\obj\Debug\Quan_Ly_Thi.GUI.He_Thong.frmThong_Tin.resources

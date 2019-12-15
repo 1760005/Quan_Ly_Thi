@@ -1091,7 +1091,7 @@
             // 
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(174, 26);
+            this.btnExit.Size = new System.Drawing.Size(180, 26);
             this.btnExit.Text = "Thoát";
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
@@ -1099,14 +1099,15 @@
             // 
             this.btnLog_out.Image = ((System.Drawing.Image)(resources.GetObject("btnLog_out.Image")));
             this.btnLog_out.Name = "btnLog_out";
-            this.btnLog_out.Size = new System.Drawing.Size(174, 26);
+            this.btnLog_out.Size = new System.Drawing.Size(180, 26);
             this.btnLog_out.Text = "Đăng Xuất";
+            this.btnLog_out.Click += new System.EventHandler(this.btnLog_out_Click);
             // 
             // btnChange_Password
             // 
             this.btnChange_Password.Image = ((System.Drawing.Image)(resources.GetObject("btnChange_Password.Image")));
             this.btnChange_Password.Name = "btnChange_Password";
-            this.btnChange_Password.Size = new System.Drawing.Size(174, 26);
+            this.btnChange_Password.Size = new System.Drawing.Size(180, 26);
             this.btnChange_Password.Text = "Đổi Mật Khẩu";
             // 
             // hệThốngToolStripMenuItem

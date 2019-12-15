@@ -25,7 +25,7 @@ namespace Quan_Ly_Thi.GUI.Adminn
         static List<Classes> listClasses = new List<Classes>();
         static List<Grades> listGrades = new List<Grades>();
 
-        
+        public static Tai_khoan tk;
         private void btnImport_Click(object sender, EventArgs e)
         {
             OpenFileDialog file = new OpenFileDialog();

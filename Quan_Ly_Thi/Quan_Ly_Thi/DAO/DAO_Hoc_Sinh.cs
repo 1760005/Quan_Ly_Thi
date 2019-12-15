@@ -1,4 +1,5 @@
 ﻿using Quan_Ly_Thi.DTO;
+using Quan_Ly_Thi.BUS;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -43,6 +44,60 @@ namespace Quan_Ly_Thi.DAO
                     data.Add(k);
                 }
                 return data;
+            }
+        }
+
+        public static void Sua_Thong_Tin(Hoc_Sinhh hs_new)
+        {
+            using (var QLTTN = new QLTTNDataContext() )
+            {
+                var Querry = from _hs_ in QLTTN.NGUOIDUNGs
+                             where _hs_.TaiKhoan == hs_new.Tai_Khoan
+                             select _hs_;
+                Querry.First().HoTen = hs_new.Ho_Ten;
+                Querry.First().CMND_TCC = hs_new.CMND_TCC;
+                Querry.First().Email = hs_new.Email;
+                Querry.First().NgaySinh = hs_new.Ngay_Sinh;
+                Querry.First().MaLop = BUS_Hoc_Sinh.ID_Lop(hs_new.Lop);
+                QLTTN.SubmitChanges();
+            }
+        }
+
+        public static string ID_Lop(string Ten_Lop)
+        {
+            string ID = null;
+            using (var QLTTN = new QLTTNDataContext())
+            {
+                var Querry = from id in QLTTN.NGUOIDUNGs
+                             join l in QLTTN.LOPHOCs on id.MaLop equals l.MaLop
+                             where l.TenLop == Ten_Lop
+                             select new { id.MaLop };
+                ID = Querry.First().MaLop;
+            }
+            return ID;
+        }
+
+        public static string ID_Khoi(string Ten_Lop)
+        {
+            string ID = null;
+            using (var QLTTN = new QLTTNDataContext())
+            {
+                var Querry = from id in QLTTN.NGUOIDUNGs
+                             join l in QLTTN.LOPHOCs on id.MaLop equals l.MaLop
+                             join k in QLTTN.KHOIs on l.MaKhoi equals k.MaKhoi
+                             where l.TenLop == Ten_Lop
+                             select new { k.MaKhoi };
+                ID = Querry.First().MaKhoi;
+            }
+            return ID;
+        }
+
+        public static void Luu_Ket_Qua(KETQUATHI kqua)
+        {
+            using (var QLTTN = new QLTTNDataContext())
+            {
+                QLTTN.KETQUATHIs.InsertOnSubmit(kqua);
+                QLTTN.SubmitChanges();
             }
         }
     }

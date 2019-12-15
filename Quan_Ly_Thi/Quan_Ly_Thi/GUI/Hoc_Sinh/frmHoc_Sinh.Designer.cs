@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHoc_Sinh));
             this.lb_minute = new System.Windows.Forms.Label();
-            this.rbtn_D = new System.Windows.Forms.RadioButton();
             this.rbtn_C = new System.Windows.Forms.RadioButton();
             this.rbtn_B = new System.Windows.Forms.RadioButton();
             this.rbtn_A = new System.Windows.Forms.RadioButton();
@@ -56,9 +55,9 @@
             this.btnSubmit = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.btnPrev = new System.Windows.Forms.Button();
-            this.btnNext = new System.Windows.Forms.Button();
             this.dpTrial_birth_day = new System.Windows.Forms.DateTimePicker();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rbtn_D = new System.Windows.Forms.RadioButton();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,11 +77,6 @@
             this.controlStudent = new System.Windows.Forms.TabControl();
             this.TabTrial_test = new System.Windows.Forms.TabPage();
             this.pnTrial_test = new System.Windows.Forms.Panel();
-            this.lbTrial_second = new System.Windows.Forms.Label();
-            this.lbTrial_minute = new System.Windows.Forms.Label();
-            this.btnTrial_submit = new System.Windows.Forms.Button();
-            this.btnTrial_exit = new System.Windows.Forms.Button();
-            this.btnTrial_start_pause = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lbTrial_STT_question = new System.Windows.Forms.Label();
             this.btnSuggest = new System.Windows.Forms.Button();
@@ -91,6 +85,11 @@
             this.rbtnTrial_B = new System.Windows.Forms.RadioButton();
             this.rbtnTrial_A = new System.Windows.Forms.RadioButton();
             this.lbTrial_Question = new System.Windows.Forms.Label();
+            this.lbTrial_second = new System.Windows.Forms.Label();
+            this.lbTrial_minute = new System.Windows.Forms.Label();
+            this.btnTrial_submit = new System.Windows.Forms.Button();
+            this.btnTrial_exit = new System.Windows.Forms.Button();
+            this.btnTrial_start_pause = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.btnTrial_Prev = new System.Windows.Forms.Button();
@@ -99,6 +98,7 @@
             this.TabTest = new System.Windows.Forms.TabPage();
             this.pn_Test = new System.Windows.Forms.Panel();
             this.lb_second = new System.Windows.Forms.Label();
+            this.btnNext = new System.Windows.Forms.Button();
             this.btnDocument = new System.Windows.Forms.ToolStripMenuItem();
             this.btnTrial_test = new System.Windows.Forms.ToolStripMenuItem();
             this.ônTậpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -114,7 +114,9 @@
             this.btnChange_Password = new System.Windows.Forms.ToolStripMenuItem();
             this.hệThốngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.Time_Chinh_Thuc = new System.Windows.Forms.Timer(this.components);
+            this.Play_pause = new System.Windows.Forms.ImageList(this.components);
+            this.Thoi_Gian = new System.Windows.Forms.Timer(this.components);
+            this.thoi_gian1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -144,19 +146,6 @@
             this.lb_minute.Size = new System.Drawing.Size(45, 33);
             this.lb_minute.TabIndex = 10;
             this.lb_minute.Text = "00";
-            // 
-            // rbtn_D
-            // 
-            this.rbtn_D.AutoSize = true;
-            this.rbtn_D.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbtn_D.ForeColor = System.Drawing.Color.Black;
-            this.rbtn_D.Location = new System.Drawing.Point(9, 210);
-            this.rbtn_D.Name = "rbtn_D";
-            this.rbtn_D.Size = new System.Drawing.Size(75, 23);
-            this.rbtn_D.TabIndex = 2;
-            this.rbtn_D.TabStop = true;
-            this.rbtn_D.Text = "Câu D";
-            this.rbtn_D.UseVisualStyleBackColor = true;
             // 
             // rbtn_C
             // 
@@ -203,7 +192,7 @@
             this.lb_Question.BackColor = System.Drawing.SystemColors.Highlight;
             this.lb_Question.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_Question.ForeColor = System.Drawing.Color.Brown;
-            this.lb_Question.Location = new System.Drawing.Point(6, 68);
+            this.lb_Question.Location = new System.Drawing.Point(5, 48);
             this.lb_Question.Name = "lb_Question";
             this.lb_Question.Size = new System.Drawing.Size(85, 23);
             this.lb_Question.TabIndex = 1;
@@ -221,6 +210,7 @@
             this.lbSTT_Question.TabIndex = 0;
             this.lbSTT_Question.Text = "Câu: 00/00 ";
             this.lbSTT_Question.UseMnemonic = false;
+            this.lbSTT_Question.TextChanged += new System.EventHandler(this.lbSTT_Question_TextChanged);
             // 
             // label9
             // 
@@ -244,11 +234,12 @@
             this.btnExit_test.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
             this.btnExit_test.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit_test.ForeColor = System.Drawing.Color.Black;
-            this.btnExit_test.Location = new System.Drawing.Point(3, 426);
+            this.btnExit_test.Location = new System.Drawing.Point(3, 422);
             this.btnExit_test.Name = "btnExit_test";
             this.btnExit_test.Size = new System.Drawing.Size(57, 43);
             this.btnExit_test.TabIndex = 6;
             this.btnExit_test.UseVisualStyleBackColor = false;
+            this.btnExit_test.Click += new System.EventHandler(this.btnExit_test_Click);
             // 
             // btnStart_Pause
             // 
@@ -256,11 +247,12 @@
             this.btnStart_Pause.BackColor = System.Drawing.Color.White;
             this.btnStart_Pause.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnStart_Pause.BackgroundImage")));
             this.btnStart_Pause.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnStart_Pause.Location = new System.Drawing.Point(462, 17);
+            this.btnStart_Pause.Location = new System.Drawing.Point(461, 17);
             this.btnStart_Pause.Name = "btnStart_Pause";
             this.btnStart_Pause.Size = new System.Drawing.Size(57, 60);
             this.btnStart_Pause.TabIndex = 5;
             this.btnStart_Pause.UseVisualStyleBackColor = false;
+            this.btnStart_Pause.Click += new System.EventHandler(this.btnStart_Pause_Click);
             // 
             // groupBox1
             // 
@@ -427,16 +419,18 @@
             this.btnSubmit.BackColor = System.Drawing.Color.White;
             this.btnSubmit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSubmit.BackgroundImage")));
             this.btnSubmit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSubmit.Enabled = false;
             this.btnSubmit.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.btnSubmit.FlatAppearance.BorderSize = 2;
             this.btnSubmit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
             this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSubmit.ForeColor = System.Drawing.Color.Black;
-            this.btnSubmit.Location = new System.Drawing.Point(74, 426);
+            this.btnSubmit.Location = new System.Drawing.Point(74, 422);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(55, 43);
             this.btnSubmit.TabIndex = 6;
             this.btnSubmit.UseVisualStyleBackColor = false;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // label4
             // 
@@ -455,6 +449,7 @@
             this.btnPrev.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnPrev.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPrev.BackgroundImage")));
             this.btnPrev.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnPrev.Enabled = false;
             this.btnPrev.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnPrev.FlatAppearance.BorderSize = 2;
             this.btnPrev.Location = new System.Drawing.Point(379, 17);
@@ -462,19 +457,7 @@
             this.btnPrev.Size = new System.Drawing.Size(60, 60);
             this.btnPrev.TabIndex = 1;
             this.btnPrev.UseVisualStyleBackColor = false;
-            // 
-            // btnNext
-            // 
-            this.btnNext.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnNext.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnNext.BackgroundImage")));
-            this.btnNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnNext.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnNext.FlatAppearance.BorderSize = 2;
-            this.btnNext.Location = new System.Drawing.Point(542, 17);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(60, 60);
-            this.btnNext.TabIndex = 1;
-            this.btnNext.UseVisualStyleBackColor = false;
+            this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
             // 
             // dpTrial_birth_day
             // 
@@ -501,10 +484,23 @@
             this.groupBox2.ForeColor = System.Drawing.Color.Yellow;
             this.groupBox2.Location = new System.Drawing.Point(3, 153);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(750, 270);
+            this.groupBox2.Size = new System.Drawing.Size(592, 270);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Nội dung câu hỏi";
+            // 
+            // rbtn_D
+            // 
+            this.rbtn_D.AutoSize = true;
+            this.rbtn_D.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbtn_D.ForeColor = System.Drawing.Color.Black;
+            this.rbtn_D.Location = new System.Drawing.Point(9, 210);
+            this.rbtn_D.Name = "rbtn_D";
+            this.rbtn_D.Size = new System.Drawing.Size(75, 23);
+            this.rbtn_D.TabIndex = 2;
+            this.rbtn_D.TabStop = true;
+            this.rbtn_D.Text = "Câu D";
+            this.rbtn_D.UseVisualStyleBackColor = true;
             // 
             // imageList1
             // 
@@ -563,7 +559,7 @@
             this.dt_result.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dt_result.Location = new System.Drawing.Point(3, 3);
             this.dt_result.Name = "dt_result";
-            this.dt_result.Size = new System.Drawing.Size(758, 466);
+            this.dt_result.Size = new System.Drawing.Size(605, 466);
             this.dt_result.TabIndex = 0;
             // 
             // TabResult
@@ -572,7 +568,7 @@
             this.TabResult.Location = new System.Drawing.Point(4, 25);
             this.TabResult.Name = "TabResult";
             this.TabResult.Padding = new System.Windows.Forms.Padding(3);
-            this.TabResult.Size = new System.Drawing.Size(764, 472);
+            this.TabResult.Size = new System.Drawing.Size(611, 472);
             this.TabResult.TabIndex = 3;
             this.TabResult.Text = "Kết Quả Thi";
             this.TabResult.UseVisualStyleBackColor = true;
@@ -583,7 +579,7 @@
             this.Tab_test_day.Location = new System.Drawing.Point(4, 25);
             this.Tab_test_day.Name = "Tab_test_day";
             this.Tab_test_day.Padding = new System.Windows.Forms.Padding(3);
-            this.Tab_test_day.Size = new System.Drawing.Size(764, 472);
+            this.Tab_test_day.Size = new System.Drawing.Size(611, 472);
             this.Tab_test_day.TabIndex = 2;
             this.Tab_test_day.Text = "Lịch Thi";
             this.Tab_test_day.UseVisualStyleBackColor = true;
@@ -600,7 +596,7 @@
             this.dt_test_day.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dt_test_day.Location = new System.Drawing.Point(3, 0);
             this.dt_test_day.Name = "dt_test_day";
-            this.dt_test_day.Size = new System.Drawing.Size(758, 469);
+            this.dt_test_day.Size = new System.Drawing.Size(605, 469);
             this.dt_test_day.TabIndex = 1;
             // 
             // Column9
@@ -659,7 +655,7 @@
             this.controlStudent.Location = new System.Drawing.Point(0, 29);
             this.controlStudent.Name = "controlStudent";
             this.controlStudent.SelectedIndex = 0;
-            this.controlStudent.Size = new System.Drawing.Size(772, 501);
+            this.controlStudent.Size = new System.Drawing.Size(619, 501);
             this.controlStudent.TabIndex = 3;
             // 
             // TabTrial_test
@@ -668,7 +664,7 @@
             this.TabTrial_test.Location = new System.Drawing.Point(4, 25);
             this.TabTrial_test.Name = "TabTrial_test";
             this.TabTrial_test.Padding = new System.Windows.Forms.Padding(3);
-            this.TabTrial_test.Size = new System.Drawing.Size(764, 472);
+            this.TabTrial_test.Size = new System.Drawing.Size(611, 472);
             this.TabTrial_test.TabIndex = 0;
             this.TabTrial_test.Text = "Thi Thử";
             this.TabTrial_test.UseVisualStyleBackColor = true;
@@ -677,12 +673,12 @@
             // 
             this.pnTrial_test.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnTrial_test.BackgroundImage")));
             this.pnTrial_test.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnTrial_test.Controls.Add(this.groupBox3);
             this.pnTrial_test.Controls.Add(this.lbTrial_second);
             this.pnTrial_test.Controls.Add(this.lbTrial_minute);
             this.pnTrial_test.Controls.Add(this.btnTrial_submit);
             this.pnTrial_test.Controls.Add(this.btnTrial_exit);
             this.pnTrial_test.Controls.Add(this.btnTrial_start_pause);
-            this.pnTrial_test.Controls.Add(this.groupBox3);
             this.pnTrial_test.Controls.Add(this.label5);
             this.pnTrial_test.Controls.Add(this.label8);
             this.pnTrial_test.Controls.Add(this.btnTrial_Prev);
@@ -692,77 +688,8 @@
             this.pnTrial_test.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.pnTrial_test.Location = new System.Drawing.Point(3, 3);
             this.pnTrial_test.Name = "pnTrial_test";
-            this.pnTrial_test.Size = new System.Drawing.Size(758, 466);
+            this.pnTrial_test.Size = new System.Drawing.Size(605, 466);
             this.pnTrial_test.TabIndex = 9;
-            // 
-            // lbTrial_second
-            // 
-            this.lbTrial_second.AutoSize = true;
-            this.lbTrial_second.BackColor = System.Drawing.Color.Lime;
-            this.lbTrial_second.Font = new System.Drawing.Font("Tahoma", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTrial_second.ForeColor = System.Drawing.Color.Black;
-            this.lbTrial_second.Location = new System.Drawing.Point(536, 101);
-            this.lbTrial_second.Name = "lbTrial_second";
-            this.lbTrial_second.Size = new System.Drawing.Size(45, 33);
-            this.lbTrial_second.TabIndex = 8;
-            this.lbTrial_second.Text = "00";
-            // 
-            // lbTrial_minute
-            // 
-            this.lbTrial_minute.AutoSize = true;
-            this.lbTrial_minute.BackColor = System.Drawing.Color.Lime;
-            this.lbTrial_minute.Font = new System.Drawing.Font("Tahoma", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTrial_minute.ForeColor = System.Drawing.Color.Black;
-            this.lbTrial_minute.Location = new System.Drawing.Point(480, 101);
-            this.lbTrial_minute.Name = "lbTrial_minute";
-            this.lbTrial_minute.Size = new System.Drawing.Size(45, 33);
-            this.lbTrial_minute.TabIndex = 7;
-            this.lbTrial_minute.Text = "00";
-            // 
-            // btnTrial_submit
-            // 
-            this.btnTrial_submit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnTrial_submit.BackColor = System.Drawing.Color.White;
-            this.btnTrial_submit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnTrial_submit.BackgroundImage")));
-            this.btnTrial_submit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnTrial_submit.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.btnTrial_submit.FlatAppearance.BorderSize = 2;
-            this.btnTrial_submit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
-            this.btnTrial_submit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTrial_submit.ForeColor = System.Drawing.Color.Black;
-            this.btnTrial_submit.Location = new System.Drawing.Point(66, 420);
-            this.btnTrial_submit.Name = "btnTrial_submit";
-            this.btnTrial_submit.Size = new System.Drawing.Size(55, 44);
-            this.btnTrial_submit.TabIndex = 6;
-            this.btnTrial_submit.UseVisualStyleBackColor = false;
-            // 
-            // btnTrial_exit
-            // 
-            this.btnTrial_exit.BackColor = System.Drawing.Color.White;
-            this.btnTrial_exit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnTrial_exit.BackgroundImage")));
-            this.btnTrial_exit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnTrial_exit.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.btnTrial_exit.FlatAppearance.BorderSize = 2;
-            this.btnTrial_exit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
-            this.btnTrial_exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTrial_exit.ForeColor = System.Drawing.Color.Black;
-            this.btnTrial_exit.Location = new System.Drawing.Point(3, 420);
-            this.btnTrial_exit.Name = "btnTrial_exit";
-            this.btnTrial_exit.Size = new System.Drawing.Size(57, 44);
-            this.btnTrial_exit.TabIndex = 6;
-            this.btnTrial_exit.UseVisualStyleBackColor = false;
-            // 
-            // btnTrial_start_pause
-            // 
-            this.btnTrial_start_pause.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.btnTrial_start_pause.BackColor = System.Drawing.Color.White;
-            this.btnTrial_start_pause.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnTrial_start_pause.BackgroundImage")));
-            this.btnTrial_start_pause.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnTrial_start_pause.Location = new System.Drawing.Point(462, 17);
-            this.btnTrial_start_pause.Name = "btnTrial_start_pause";
-            this.btnTrial_start_pause.Size = new System.Drawing.Size(57, 60);
-            this.btnTrial_start_pause.TabIndex = 5;
-            this.btnTrial_start_pause.UseVisualStyleBackColor = false;
             // 
             // groupBox3
             // 
@@ -778,7 +705,7 @@
             this.groupBox3.ForeColor = System.Drawing.Color.Yellow;
             this.groupBox3.Location = new System.Drawing.Point(3, 153);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(754, 264);
+            this.groupBox3.Size = new System.Drawing.Size(597, 264);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Nội dung câu hỏi";
@@ -791,13 +718,15 @@
             this.lbTrial_STT_question.ForeColor = System.Drawing.Color.Black;
             this.lbTrial_STT_question.Location = new System.Drawing.Point(8, 26);
             this.lbTrial_STT_question.Name = "lbTrial_STT_question";
-            this.lbTrial_STT_question.Size = new System.Drawing.Size(65, 18);
+            this.lbTrial_STT_question.Size = new System.Drawing.Size(81, 18);
             this.lbTrial_STT_question.TabIndex = 4;
-            this.lbTrial_STT_question.Text = "Câu: 00/";
+            this.lbTrial_STT_question.Text = "Câu: 00/00";
             this.lbTrial_STT_question.UseMnemonic = false;
+            this.lbTrial_STT_question.TextChanged += new System.EventHandler(this.lbTrial_STT_question_TextChanged);
             // 
             // btnSuggest
             // 
+            this.btnSuggest.Enabled = false;
             this.btnSuggest.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSuggest.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSuggest.ForeColor = System.Drawing.Color.Black;
@@ -810,6 +739,7 @@
             this.btnSuggest.Text = "Gợi ý";
             this.btnSuggest.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSuggest.UseVisualStyleBackColor = true;
+            this.btnSuggest.Click += new System.EventHandler(this.btnSuggest_Click);
             // 
             // rbtnTrial_D
             // 
@@ -869,11 +799,83 @@
             this.lbTrial_Question.BackColor = System.Drawing.SystemColors.Highlight;
             this.lbTrial_Question.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTrial_Question.ForeColor = System.Drawing.Color.Red;
-            this.lbTrial_Question.Location = new System.Drawing.Point(8, 63);
+            this.lbTrial_Question.Location = new System.Drawing.Point(8, 50);
             this.lbTrial_Question.Name = "lbTrial_Question";
             this.lbTrial_Question.Size = new System.Drawing.Size(89, 25);
             this.lbTrial_Question.TabIndex = 1;
             this.lbTrial_Question.Text = "Câu Hỏi";
+            // 
+            // lbTrial_second
+            // 
+            this.lbTrial_second.AutoSize = true;
+            this.lbTrial_second.BackColor = System.Drawing.Color.Lime;
+            this.lbTrial_second.Font = new System.Drawing.Font("Tahoma", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTrial_second.ForeColor = System.Drawing.Color.Black;
+            this.lbTrial_second.Location = new System.Drawing.Point(536, 101);
+            this.lbTrial_second.Name = "lbTrial_second";
+            this.lbTrial_second.Size = new System.Drawing.Size(45, 33);
+            this.lbTrial_second.TabIndex = 8;
+            this.lbTrial_second.Text = "00";
+            // 
+            // lbTrial_minute
+            // 
+            this.lbTrial_minute.AutoSize = true;
+            this.lbTrial_minute.BackColor = System.Drawing.Color.Lime;
+            this.lbTrial_minute.Font = new System.Drawing.Font("Tahoma", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTrial_minute.ForeColor = System.Drawing.Color.Black;
+            this.lbTrial_minute.Location = new System.Drawing.Point(480, 101);
+            this.lbTrial_minute.Name = "lbTrial_minute";
+            this.lbTrial_minute.Size = new System.Drawing.Size(45, 33);
+            this.lbTrial_minute.TabIndex = 7;
+            this.lbTrial_minute.Text = "00";
+            // 
+            // btnTrial_submit
+            // 
+            this.btnTrial_submit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnTrial_submit.BackColor = System.Drawing.Color.White;
+            this.btnTrial_submit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnTrial_submit.BackgroundImage")));
+            this.btnTrial_submit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnTrial_submit.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.btnTrial_submit.FlatAppearance.BorderSize = 2;
+            this.btnTrial_submit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
+            this.btnTrial_submit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTrial_submit.ForeColor = System.Drawing.Color.Black;
+            this.btnTrial_submit.Location = new System.Drawing.Point(66, 420);
+            this.btnTrial_submit.Name = "btnTrial_submit";
+            this.btnTrial_submit.Size = new System.Drawing.Size(55, 44);
+            this.btnTrial_submit.TabIndex = 6;
+            this.btnTrial_submit.UseVisualStyleBackColor = false;
+            this.btnTrial_submit.Click += new System.EventHandler(this.btnTrial_submit_Click);
+            // 
+            // btnTrial_exit
+            // 
+            this.btnTrial_exit.BackColor = System.Drawing.Color.White;
+            this.btnTrial_exit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnTrial_exit.BackgroundImage")));
+            this.btnTrial_exit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnTrial_exit.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.btnTrial_exit.FlatAppearance.BorderSize = 2;
+            this.btnTrial_exit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
+            this.btnTrial_exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTrial_exit.ForeColor = System.Drawing.Color.Black;
+            this.btnTrial_exit.Location = new System.Drawing.Point(3, 420);
+            this.btnTrial_exit.Name = "btnTrial_exit";
+            this.btnTrial_exit.Size = new System.Drawing.Size(57, 44);
+            this.btnTrial_exit.TabIndex = 6;
+            this.btnTrial_exit.UseVisualStyleBackColor = false;
+            this.btnTrial_exit.Click += new System.EventHandler(this.btnTrial_exit_Click);
+            // 
+            // btnTrial_start_pause
+            // 
+            this.btnTrial_start_pause.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.btnTrial_start_pause.BackColor = System.Drawing.Color.White;
+            this.btnTrial_start_pause.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnTrial_start_pause.BackgroundImage")));
+            this.btnTrial_start_pause.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnTrial_start_pause.Location = new System.Drawing.Point(462, 17);
+            this.btnTrial_start_pause.Name = "btnTrial_start_pause";
+            this.btnTrial_start_pause.Size = new System.Drawing.Size(57, 60);
+            this.btnTrial_start_pause.TabIndex = 5;
+            this.btnTrial_start_pause.UseVisualStyleBackColor = false;
+            this.btnTrial_start_pause.Click += new System.EventHandler(this.btnTrial_start_pause_Click);
             // 
             // label5
             // 
@@ -904,6 +906,7 @@
             this.btnTrial_Prev.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnTrial_Prev.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnTrial_Prev.BackgroundImage")));
             this.btnTrial_Prev.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnTrial_Prev.Enabled = false;
             this.btnTrial_Prev.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnTrial_Prev.FlatAppearance.BorderSize = 2;
             this.btnTrial_Prev.Location = new System.Drawing.Point(379, 17);
@@ -911,6 +914,7 @@
             this.btnTrial_Prev.Size = new System.Drawing.Size(60, 60);
             this.btnTrial_Prev.TabIndex = 1;
             this.btnTrial_Prev.UseVisualStyleBackColor = false;
+            this.btnTrial_Prev.Click += new System.EventHandler(this.btnTrial_Prev_Click);
             // 
             // btnTrial_Next
             // 
@@ -924,6 +928,7 @@
             this.btnTrial_Next.Size = new System.Drawing.Size(60, 60);
             this.btnTrial_Next.TabIndex = 1;
             this.btnTrial_Next.UseVisualStyleBackColor = false;
+            this.btnTrial_Next.Click += new System.EventHandler(this.btnTrial_Next_Click);
             // 
             // groupBox4
             // 
@@ -950,7 +955,7 @@
             this.TabTest.Location = new System.Drawing.Point(4, 25);
             this.TabTest.Name = "TabTest";
             this.TabTest.Padding = new System.Windows.Forms.Padding(3);
-            this.TabTest.Size = new System.Drawing.Size(764, 472);
+            this.TabTest.Size = new System.Drawing.Size(611, 472);
             this.TabTest.TabIndex = 1;
             this.TabTest.Text = "Thi Chính Thức";
             this.TabTest.UseVisualStyleBackColor = true;
@@ -974,7 +979,7 @@
             this.pn_Test.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.pn_Test.Location = new System.Drawing.Point(3, 3);
             this.pn_Test.Name = "pn_Test";
-            this.pn_Test.Size = new System.Drawing.Size(758, 466);
+            this.pn_Test.Size = new System.Drawing.Size(605, 466);
             this.pn_Test.TabIndex = 4;
             // 
             // lb_second
@@ -989,6 +994,20 @@
             this.lb_second.TabIndex = 11;
             this.lb_second.Text = "00";
             // 
+            // btnNext
+            // 
+            this.btnNext.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnNext.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnNext.BackgroundImage")));
+            this.btnNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnNext.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnNext.FlatAppearance.BorderSize = 2;
+            this.btnNext.Location = new System.Drawing.Point(535, 17);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(60, 60);
+            this.btnNext.TabIndex = 1;
+            this.btnNext.UseVisualStyleBackColor = false;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
             // btnDocument
             // 
             this.btnDocument.Image = ((System.Drawing.Image)(resources.GetObject("btnDocument.Image")));
@@ -1002,6 +1021,7 @@
             this.btnTrial_test.Name = "btnTrial_test";
             this.btnTrial_test.Size = new System.Drawing.Size(131, 26);
             this.btnTrial_test.Text = "Thi Thử";
+            this.btnTrial_test.Click += new System.EventHandler(this.btnTrial_test_Click);
             // 
             // ônTậpToolStripMenuItem
             // 
@@ -1018,6 +1038,7 @@
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(159, 26);
             this.btnStart.Text = "Bắt Đầu Thi";
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // btn_Reporting
             // 
@@ -1109,19 +1130,35 @@
             this.btn_Reporting});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(772, 29);
+            this.menuStrip1.Size = new System.Drawing.Size(619, 29);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // Play_pause
+            // 
+            this.Play_pause.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("Play_pause.ImageStream")));
+            this.Play_pause.TransparentColor = System.Drawing.Color.Transparent;
+            this.Play_pause.Images.SetKeyName(0, "pause.png");
+            this.Play_pause.Images.SetKeyName(1, "Start.png");
+            // 
+            // Thoi_Gian
+            // 
+            this.Thoi_Gian.Tick += new System.EventHandler(this.Thoi_Gian_Tick);
+            // 
+            // thoi_gian1
+            // 
+            this.thoi_gian1.Tick += new System.EventHandler(this.thoi_gian1_Tick);
             // 
             // frmHoc_Sinh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(772, 530);
+            this.ClientSize = new System.Drawing.Size(619, 530);
             this.Controls.Add(this.controlStudent);
             this.Controls.Add(this.menuStrip1);
             this.MaximumSize = new System.Drawing.Size(788, 569);
             this.Name = "frmHoc_Sinh";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Học Sinh";
             this.Load += new System.EventHandler(this.frmHoc_Sinh_Load);
             this.groupBox1.ResumeLayout(false);
@@ -1155,7 +1192,6 @@
         #endregion
 
         private System.Windows.Forms.Label lb_minute;
-        private System.Windows.Forms.RadioButton rbtn_D;
         private System.Windows.Forms.RadioButton rbtn_C;
         private System.Windows.Forms.RadioButton rbtn_B;
         private System.Windows.Forms.RadioButton rbtn_A;
@@ -1180,7 +1216,6 @@
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnPrev;
-        private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.DateTimePicker dpTrial_birth_day;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ImageList imageList1;
@@ -1232,12 +1267,16 @@
         private System.Windows.Forms.ToolStripMenuItem btnChange_Password;
         private System.Windows.Forms.ToolStripMenuItem hệThốngToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.Timer Time_Chinh_Thuc;
         private System.Windows.Forms.DataGridView dt_test_day;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.RadioButton rbtn_D;
+        private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.ImageList Play_pause;
+        private System.Windows.Forms.Timer Thoi_Gian;
+        private System.Windows.Forms.Timer thoi_gian1;
     }
 }

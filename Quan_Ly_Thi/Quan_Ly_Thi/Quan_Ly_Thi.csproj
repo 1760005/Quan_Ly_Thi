@@ -59,12 +59,16 @@
     <Compile Include="DAO\DAO_Giao_Vien.cs" />
     <Compile Include="DAO\DAO_Hoc_Sinh.cs" />
     <Compile Include="DAO\DAO_Tai_Khoan.cs" />
+    <Compile Include="DAO\QLTTN.cs">
+      <DependentUpon>QLTTN.dbml</DependentUpon>
+    </Compile>
     <Compile Include="DAO\QLTTN.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>QLTTN.dbml</DependentUpon>
     </Compile>
     <Compile Include="DTO\Adminn.cs" />
+    <Compile Include="DTO\CauTraLoi.cs" />
     <Compile Include="DTO\Cau_Hoi.cs" />
     <Compile Include="DTO\De_thi.cs" />
     <Compile Include="DTO\Giao_Vienn.cs" />
@@ -101,6 +105,18 @@
     <Compile Include="GUI\He_Thong\frmDoi_Mat_Khau.Designer.cs">
       <DependentUpon>frmDoi_Mat_Khau.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Hoc_Sinh\frmChon_Bai_Thi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Hoc_Sinh\frmChon_Bai_Thi.Designer.cs">
+      <DependentUpon>frmChon_Bai_Thi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Hoc_Sinh\frmDap_An.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Hoc_Sinh\frmDap_An.Designer.cs">
+      <DependentUpon>frmDap_An.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Hoc_Sinh\frmHoc_Sinh.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,11 +137,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QuanLyThiTracNghiem.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QuanLyThiTracNghiem.dbml</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="GUI\Adminn\frmAdmin.resx">
       <DependentUpon>frmAdmin.cs</DependentUpon>
     </EmbeddedResource>
@@ -140,6 +151,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\He_Thong\frmDoi_Mat_Khau.resx">
       <DependentUpon>frmDoi_Mat_Khau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Hoc_Sinh\frmChon_Bai_Thi.resx">
+      <DependentUpon>frmChon_Bai_Thi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Hoc_Sinh\frmDap_An.resx">
+      <DependentUpon>frmDap_An.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Hoc_Sinh\frmHoc_Sinh.resx">
       <DependentUpon>frmHoc_Sinh.cs</DependentUpon>
@@ -176,14 +193,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="QuanLyThiTracNghiem.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>QuanLyThiTracNghiem.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="QuanLyThiTracNghiem.dbml.layout">
-      <DependentUpon>QuanLyThiTracNghiem.dbml</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

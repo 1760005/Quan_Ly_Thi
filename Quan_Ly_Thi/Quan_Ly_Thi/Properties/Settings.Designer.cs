@@ -44,5 +44,38 @@ namespace Quan_Ly_Thi.Properties {
                 return ((string)(this["QuanLyThiTracNghiemDBConnectionString1"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-PD2UJ9U;Initial Catalog=QuanLyThiTracNghiemDB;Persist Securit" +
+            "y Info=True;User ID=sa;Password=Thedao032")]
+        public string QuanLyThiTracNghiemDBConnectionString3 {
+            get {
+                return ((string)(this["QuanLyThiTracNghiemDBConnectionString3"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-PD2UJ9U;Initial Catalog=QuanLyThiTracNghiemDB;Persist Securit" +
+            "y Info=True;User ID=sa;Password=Thedao032")]
+        public string QuanLyThiTracNghiemDBConnectionString2 {
+            get {
+                return ((string)(this["QuanLyThiTracNghiemDBConnectionString2"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-4RNGLB2\\SQLEXPRESS;Initial Catalog=QuanLyThiTracNghiemDB;Pers" +
+            "ist Security Info=True;User ID=sa;Password=tuananh1")]
+        public string QuanLyThiTracNghiemDBConnectionString4 {
+            get {
+                return ((string)(this["QuanLyThiTracNghiemDBConnectionString4"]));
+            }
+        }
     }
 }

@@ -33,7 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
@@ -59,9 +63,6 @@
     <Compile Include="DAO\DAO_Giao_Vien.cs" />
     <Compile Include="DAO\DAO_Hoc_Sinh.cs" />
     <Compile Include="DAO\DAO_Tai_Khoan.cs" />
-    <Compile Include="DAO\QLTTN.cs">
-      <DependentUpon>QLTTN.dbml</DependentUpon>
-    </Compile>
     <Compile Include="DAO\QLTTN.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -70,9 +71,13 @@
     <Compile Include="DTO\Adminn.cs" />
     <Compile Include="DTO\CauTraLoi.cs" />
     <Compile Include="DTO\Cau_Hoi.cs" />
+    <Compile Include="DTO\Classes.cs" />
+    <Compile Include="DTO\DataParameter.cs" />
     <Compile Include="DTO\De_thi.cs" />
     <Compile Include="DTO\Giao_Vienn.cs" />
+    <Compile Include="DTO\Grades.cs" />
     <Compile Include="DTO\Hoc_Sinhh.cs" />
+    <Compile Include="DTO\Ket_Qua_Thi.cs" />
     <Compile Include="DTO\Lich_Thi.cs" />
     <Compile Include="DTO\Tai_khoan.cs" />
     <Compile Include="GUI\Adminn\frmAdmin.cs">

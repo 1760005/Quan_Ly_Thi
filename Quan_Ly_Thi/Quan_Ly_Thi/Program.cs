@@ -18,7 +18,7 @@ namespace Quan_Ly_Thi
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmHoc_Sinh());
+            Application.Run(new frmAdmin());
         }
     }
 }

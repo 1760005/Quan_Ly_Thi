@@ -12,6 +12,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
+using Microsoft.Office.Interop.Excel;
 
 namespace Quan_Ly_Thi.GUI.Adminn
 {
@@ -22,6 +24,8 @@ namespace Quan_Ly_Thi.GUI.Adminn
         static string Teacher_User_Account = null;
         static List<Classes> listClasses = new List<Classes>();
         static List<Grades> listGrades = new List<Grades>();
+
+        
         private void btnImport_Click(object sender, EventArgs e)
         {
             OpenFileDialog file = new OpenFileDialog();
@@ -44,6 +48,7 @@ namespace Quan_Ly_Thi.GUI.Adminn
         {
             ControlAdmin.TabPages.Clear();
             ControlAdmin.TabPages.Add(TabList_student);
+            
             BUS_Admin.GetListOfStudent(dt_student, conStrSettings, lbPage_student);
         }
 
@@ -51,11 +56,14 @@ namespace Quan_Ly_Thi.GUI.Adminn
         {
             ControlAdmin.TabPages.Clear();
             ControlAdmin.TabPages.Add(TabList_teacher);
+            
             BUS_Admin.GetListOfTeacher(dt_teacher, conStrSettings, lbPage_teacher);
         }
 
         private void btnResult_Click(object sender, EventArgs e)
         {
+            ControlAdmin.TabPages.Clear();
+            ControlAdmin.TabPages.Add(TabResult);
             dt_Result.DataSource = BUS_Admin.GetExaminationResult();
         }
 
@@ -261,6 +269,49 @@ namespace Quan_Ly_Thi.GUI.Adminn
             BUS_Admin.PrevPage_teacher(dt_teacher, conStrSettings, lbPage_teacher, txtSearch_teacher.Text, Radiobtn_FullName_teacher, Radiobtn_GradeName);
         }
 
-        
+        private void dt_teacher_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dt_teacher.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dt_teacher.SelectedRows[0];
+                Teacher_User_Account = row.Cells[0].Value.ToString();
+                txtUserName_teacher.Text = row.Cells[0].Value.ToString();
+                txtCMND_TCC_teacher.Text = row.Cells[6].Value.ToString();
+                txtFull_name_teacher.Text = row.Cells[5].Value.ToString();
+                txtMail_teacher.Text = row.Cells[9].Value.ToString();
+                txtSDT_teacher.Text = row.Cells[8].Value.ToString();
+                maskedTchDOB.Text = row.Cells[7].Value.ToString();
+                Grade_CBB.Text = row.Cells[10].Value.ToString();
+            }
+        }
+
+        static DataParameter _inputParameter = new DataParameter();
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            if (ControlAdmin.TabPages[ControlAdmin.SelectedIndex] == TabList_student || ControlAdmin.TabPages[ControlAdmin.SelectedIndex] == TabList_teacher)
+            {
+                BUS_Admin.btnExport_Click(_inputParameter, bgWorker_Export, dt_student, dt_teacher, ControlAdmin, TabList_student, TabList_teacher, pgBar);
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private void bgWorker_Export_DoWork(object sender, DoWorkEventArgs e)
+        {
+            BUS_Admin.bgWorker_Export_DoWork(sender, e, bgWorker_Export);
+        }
+
+        private void bgWorker_Export_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            BUS_Admin.bgWorker_Export_ProgressChanged(sender, e, pgBar, lbStatus);
+        }
+
+        private void bgWorker_Export_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            BUS_Admin.bgWorker_Export_RunWorkerCompleted(sender, e, lbStatus);
+        }
     }
 }

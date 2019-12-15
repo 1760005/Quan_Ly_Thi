@@ -1,12 +1,15 @@
-﻿using Quan_Ly_Thi.DAO;
+﻿using Microsoft.Office.Interop.Excel;
+using Quan_Ly_Thi.DAO;
 using Quan_Ly_Thi.DTO;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.Common;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -18,12 +21,12 @@ namespace Quan_Ly_Thi.BUS
         static int Page = 0;
         static int Count = 0;
 
-        public static void GetListOfTeacher(DataGridView gridView, ConnectionStringSettings conStrSettings, Label lbPage_teacher)
+        public static void GetListOfTeacher(DataGridView gridView, ConnectionStringSettings conStrSettings, System.Windows.Forms.Label lbPage_teacher)
         {
             DAO_Admin.GetListOfTeacher(gridView, conStrSettings, lbPage_teacher, ref n, ref Page, ref Count, ref NOP);
         }
 
-        public static void GetListOfStudent(DataGridView gridView, ConnectionStringSettings conStrSettings, Label lbPage_student)
+        public static void GetListOfStudent(DataGridView gridView, ConnectionStringSettings conStrSettings, System.Windows.Forms.Label lbPage_student)
         {
             DAO_Admin.GetListOfStudent(gridView, conStrSettings, lbPage_student, ref n, ref Page, ref Count, ref NOP);
         }
@@ -164,27 +167,27 @@ namespace Quan_Ly_Thi.BUS
             return DAO_Admin.LoadGrades();
         }
 
-        public static DataTable SearchingForStudentWithName(string Information, ConnectionStringSettings conStrSettings, Label lbPage_student)
+        public static System.Data.DataTable SearchingForStudentWithName(string Information, ConnectionStringSettings conStrSettings, System.Windows.Forms.Label lbPage_student)
         {
             return DAO_Admin.SearchingForStudentWithName(Information, conStrSettings, lbPage_student, ref n, ref Page, ref Count, ref NOP);
         }
 
-        public static DataTable SearchingForStudentWithClass(string Information, ConnectionStringSettings conStrSettings, Label lbPage_student)
+        public static System.Data.DataTable SearchingForStudentWithClass(string Information, ConnectionStringSettings conStrSettings, System.Windows.Forms.Label lbPage_student)
         {
             return DAO_Admin.SearchingForStudentWithClass(Information, conStrSettings, lbPage_student, ref n, ref Page, ref Count, ref NOP);
         }
 
-        public static DataTable SearchingForTeacherWithName(string Information, ConnectionStringSettings conStrSettings, Label lbPage_teacher)
+        public static System.Data.DataTable SearchingForTeacherWithName(string Information, ConnectionStringSettings conStrSettings, System.Windows.Forms.Label lbPage_teacher)
         {
             return DAO_Admin.SearchingForTeacherWithName(Information, conStrSettings, lbPage_teacher, ref n, ref Page, ref Count, ref NOP);
         }
 
-        public static DataTable SearchingForTeacherWithGrade(string Information, ConnectionStringSettings conStrSettings, Label lbPage_teacher)
+        public static System.Data.DataTable SearchingForTeacherWithGrade(string Information, ConnectionStringSettings conStrSettings, System.Windows.Forms.Label lbPage_teacher)
         {
             return DAO_Admin.SearchingForTeacherWithGrade(Information, conStrSettings, lbPage_teacher, ref n, ref Page, ref Count, ref NOP);
         }
 
-        public static void PrevPage_student(DataGridView gridView,ConnectionStringSettings conStrSettings, Label lbPage_student, string Information, RadioButton radioButton_StdName, RadioButton radioButton_StdClass)
+        public static void PrevPage_student(DataGridView gridView,ConnectionStringSettings conStrSettings, System.Windows.Forms.Label lbPage_student, string Information, RadioButton radioButton_StdName, RadioButton radioButton_StdClass)
         {
             if (Page > 1)
             {
@@ -193,7 +196,7 @@ namespace Quan_Ly_Thi.BUS
             
         }
 
-        public static void NextPage_student(DataGridView gridView, ConnectionStringSettings conStrSettings, Label lbPage_student, string Information, RadioButton radioButton_StdName, RadioButton radioButton_StdClass)
+        public static void NextPage_student(DataGridView gridView, ConnectionStringSettings conStrSettings, System.Windows.Forms.Label lbPage_student, string Information, RadioButton radioButton_StdName, RadioButton radioButton_StdClass)
         {
             if (Page < NOP)
             {
@@ -208,7 +211,7 @@ namespace Quan_Ly_Thi.BUS
             }
         }
 
-        public static void PrevPage_teacher(DataGridView gridView, ConnectionStringSettings conStrSettings, Label lbPage_teacher, string Information, RadioButton radioButton_TchName, RadioButton radioButton_TchGrade)
+        public static void PrevPage_teacher(DataGridView gridView, ConnectionStringSettings conStrSettings, System.Windows.Forms.Label lbPage_teacher, string Information, RadioButton radioButton_TchName, RadioButton radioButton_TchGrade)
         {
             if (Page > 1)
             {
@@ -217,7 +220,7 @@ namespace Quan_Ly_Thi.BUS
 
         }
 
-        public static void NextPage_teacher(DataGridView gridView, ConnectionStringSettings conStrSettings, Label lbPage_teacher, string Information, RadioButton radioButton_TchName, RadioButton radioButton_TchGrade)
+        public static void NextPage_teacher(DataGridView gridView, ConnectionStringSettings conStrSettings, System.Windows.Forms.Label lbPage_teacher, string Information, RadioButton radioButton_TchName, RadioButton radioButton_TchGrade)
         {
             if (Page <= NOP)
             {
@@ -230,6 +233,116 @@ namespace Quan_Ly_Thi.BUS
                     DAO_Admin.NextPage_teacher(gridView, conStrSettings, lbPage_teacher, ref n, ref Page, ref Count, ref NOP, Information, radioButton_TchName, radioButton_TchGrade);
                 }
             }
+        }
+
+        public static void btnExport_Click(DataParameter _inputParameter, BackgroundWorker bgWorker_Export, DataGridView dt_student, DataGridView dt_teacher, TabControl ControlAdmin, TabPage TabList_student, TabPage TabList_teacher, ProgressBar pgBar)
+        {
+            if (bgWorker_Export.IsBusy)
+            {
+                return;
+            }
+            using (SaveFileDialog s_File = new SaveFileDialog() { Filter = "Excel Workbook|*.xls" })
+            {
+                if (s_File.ShowDialog() == DialogResult.OK)
+                {
+                    _inputParameter.FileName = s_File.FileName;
+                    List<NGUOIDUNG> listUser = new List<NGUOIDUNG>();
+                    for (int i = 0; i < dt_student.Rows.Count - 1; i++)
+                    {
+                        DataGridViewRow row = new DataGridViewRow();
+                        if (ControlAdmin.TabPages[ControlAdmin.SelectedIndex] == TabList_student)
+                        {
+                            row = dt_student.Rows[i];
+                        }
+                        if (ControlAdmin.TabPages[ControlAdmin.SelectedIndex] == TabList_teacher)
+                        {
+                            row = dt_teacher.Rows[i];
+                        }
+                        NGUOIDUNG user = new NGUOIDUNG()
+                        {
+                            TaiKhoan = row.Cells[0].Value.ToString(),
+                            MatKhau = row.Cells[1].Value.ToString(),
+                            MaPhanQuyen = row.Cells[2].Value.ToString(),
+                            MaKhoi = row.Cells[3].Value.ToString(),
+                            MaLop = row.Cells[4].Value.ToString(),
+                            HoTen = row.Cells[5].Value.ToString(),
+                            CMND_TCC = row.Cells[6].Value.ToString(),
+                            NgaySinh = DateTime.Parse(row.Cells[7].Value.ToString()),
+                            SoDienThoai = row.Cells[8].Value.ToString(),
+                            Email = row.Cells[9].Value.ToString()
+                        };
+                        listUser.Add(user);
+                    }
+
+                    _inputParameter.listUser = listUser;
+
+                    pgBar.Minimum = 0;
+                    pgBar.Value = 0;
+                    bgWorker_Export.RunWorkerAsync(_inputParameter);
+                }
+            }
+        }
+
+        public static void bgWorker_Export_DoWork(object sender, DoWorkEventArgs e, BackgroundWorker bgWorker_Export)
+        {
+            List<NGUOIDUNG> listUser = ((DataParameter)e.Argument).listUser;
+            string FileName = ((DataParameter)e.Argument).FileName;
+
+            Microsoft.Office.Interop.Excel.Application Excel = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel.Workbook xlWorkBook = Excel.Workbooks.Add(XlSheetType.xlWorksheet);
+            Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet = (Worksheet)Excel.ActiveSheet;
+            Excel.Visible = false;
+            int Index = 1;
+            int Process = listUser.Count;
+
+            xlWorkSheet.Cells[1, 1] = "TaiKhoan";
+            xlWorkSheet.Cells[1, 2] = "MaPhanQuyen";
+            xlWorkSheet.Cells[1, 3] = "MaKhoi";
+            xlWorkSheet.Cells[1, 4] = "MaLop";
+            xlWorkSheet.Cells[1, 5] = "HoTen";
+            xlWorkSheet.Cells[1, 6] = "CMND_TCC";
+            xlWorkSheet.Cells[1, 7] = "NgaySinh";
+            xlWorkSheet.Cells[1, 8] = "SoDienThoai";
+            xlWorkSheet.Cells[1, 9] = "Email";
+
+
+
+            foreach (NGUOIDUNG nd in listUser)
+            {
+                if (!bgWorker_Export.CancellationPending)
+                {
+                    bgWorker_Export.ReportProgress(Index++ * 100 / Process);
+                    xlWorkSheet.Cells[Index, 1] = nd.TaiKhoan;
+                    xlWorkSheet.Cells[Index, 2] = nd.MaPhanQuyen;
+                    xlWorkSheet.Cells[Index, 3] = nd.MaKhoi;
+                    xlWorkSheet.Cells[Index, 4] = nd.MaLop;
+                    xlWorkSheet.Cells[Index, 5] = nd.HoTen;
+                    xlWorkSheet.Cells[Index, 6] = nd.CMND_TCC;
+                    xlWorkSheet.Cells[Index, 7] = nd.NgaySinh.ToString();
+                    xlWorkSheet.Cells[Index, 8] = nd.SoDienThoai;
+                    xlWorkSheet.Cells[Index, 9] = nd.Email;
+                }
+            }
+
+            xlWorkSheet.SaveAs(FileName, XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing, true, false, XlSaveAsAccessMode.xlNoChange, XlSaveConflictResolution.xlLocalSessionChanges, Type.Missing, Type.Missing);
+            xlWorkBook.Close();
+            Excel.Quit();
+        }
+
+        public static void bgWorker_Export_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e, System.Windows.Forms.Label lbStatus)
+        {
+            if (e.Error == null)
+            {
+                Thread.Sleep(100);
+                lbStatus.Text = "Your Data Has Been Sucessfully Exported!";
+            }
+        }
+
+        public static void bgWorker_Export_ProgressChanged(object sender, ProgressChangedEventArgs e, ProgressBar pgBar, System.Windows.Forms.Label lbStatus)
+        {
+            pgBar.Value = e.ProgressPercentage;
+            lbStatus.Text = string.Format("Process...{0}%", e.ProgressPercentage);
+            pgBar.Update();
         }
     }
 }

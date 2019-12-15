@@ -66,6 +66,7 @@
     <Compile Include="DTO\Adminn.cs" />
     <Compile Include="DTO\Cau_Hoi.cs" />
     <Compile Include="DTO\Classes.cs" />
+    <Compile Include="DTO\DataParameter.cs" />
     <Compile Include="DTO\De_thi.cs" />
     <Compile Include="DTO\Giao_Vienn.cs" />
     <Compile Include="DTO\Grades.cs" />

@@ -104,6 +104,9 @@
             this.btnNext_teacher = new System.Windows.Forms.Button();
             this.TabResult = new System.Windows.Forms.TabPage();
             this.dt_Result = new System.Windows.Forms.DataGridView();
+            this.bgWorker_Export = new System.ComponentModel.BackgroundWorker();
+            this.pgBar = new System.Windows.Forms.ProgressBar();
+            this.lbStatus = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.ControlAdmin.SuspendLayout();
             this.TabList_student.SuspendLayout();
@@ -169,21 +172,21 @@
             // btnChange_pass
             // 
             this.btnChange_pass.Name = "btnChange_pass";
-            this.btnChange_pass.Size = new System.Drawing.Size(174, 26);
+            this.btnChange_pass.Size = new System.Drawing.Size(180, 26);
             this.btnChange_pass.Text = "Đổi Mật Khẩu";
             // 
             // btnLogout
             // 
             this.btnLogout.Image = ((System.Drawing.Image)(resources.GetObject("btnLogout.Image")));
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(174, 26);
+            this.btnLogout.Size = new System.Drawing.Size(180, 26);
             this.btnLogout.Text = "Đăng Xuất";
             // 
             // btnexit
             // 
             this.btnexit.Image = ((System.Drawing.Image)(resources.GetObject("btnexit.Image")));
             this.btnexit.Name = "btnexit";
-            this.btnexit.Size = new System.Drawing.Size(174, 26);
+            this.btnexit.Size = new System.Drawing.Size(180, 26);
             this.btnexit.Text = "Thoát";
             // 
             // dữLiệuToolStripMenuItem
@@ -223,6 +226,7 @@
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(205, 26);
             this.btnExport.Text = "Export Danh Sách";
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // quảnLýDanhSáchToolStripMenuItem
             // 
@@ -278,6 +282,8 @@
             // 
             // TabList_student
             // 
+            this.TabList_student.Controls.Add(this.lbStatus);
+            this.TabList_student.Controls.Add(this.pgBar);
             this.TabList_student.Controls.Add(this.Radiobtn_ClassName);
             this.TabList_student.Controls.Add(this.Radiobtn_FullName_student);
             this.TabList_student.Controls.Add(this.label7);
@@ -451,9 +457,9 @@
             // btnNext_student
             // 
             this.btnNext_student.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNext_student.Location = new System.Drawing.Point(417, 473);
+            this.btnNext_student.Location = new System.Drawing.Point(245, 473);
             this.btnNext_student.Name = "btnNext_student";
-            this.btnNext_student.Size = new System.Drawing.Size(115, 34);
+            this.btnNext_student.Size = new System.Drawing.Size(93, 34);
             this.btnNext_student.TabIndex = 55;
             this.btnNext_student.Text = "Trang sau";
             this.btnNext_student.UseVisualStyleBackColor = true;
@@ -472,9 +478,9 @@
             // btnPrev_student
             // 
             this.btnPrev_student.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrev_student.Location = new System.Drawing.Point(188, 471);
+            this.btnPrev_student.Location = new System.Drawing.Point(81, 472);
             this.btnPrev_student.Name = "btnPrev_student";
-            this.btnPrev_student.Size = new System.Drawing.Size(112, 36);
+            this.btnPrev_student.Size = new System.Drawing.Size(93, 36);
             this.btnPrev_student.TabIndex = 56;
             this.btnPrev_student.Text = "Trang trước";
             this.btnPrev_student.UseVisualStyleBackColor = true;
@@ -492,7 +498,7 @@
             // 
             this.lbPage_student.AutoSize = true;
             this.lbPage_student.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPage_student.Location = new System.Drawing.Point(341, 480);
+            this.lbPage_student.Location = new System.Drawing.Point(192, 478);
             this.lbPage_student.Name = "lbPage_student";
             this.lbPage_student.Size = new System.Drawing.Size(38, 19);
             this.lbPage_student.TabIndex = 57;
@@ -833,6 +839,7 @@
             this.dt_teacher.Name = "dt_teacher";
             this.dt_teacher.Size = new System.Drawing.Size(729, 395);
             this.dt_teacher.TabIndex = 45;
+            this.dt_teacher.SelectionChanged += new System.EventHandler(this.dt_teacher_SelectionChanged);
             // 
             // label16
             // 
@@ -884,6 +891,30 @@
             this.dt_Result.Name = "dt_Result";
             this.dt_Result.Size = new System.Drawing.Size(1163, 511);
             this.dt_Result.TabIndex = 0;
+            // 
+            // bgWorker_Export
+            // 
+            this.bgWorker_Export.WorkerReportsProgress = true;
+            this.bgWorker_Export.WorkerSupportsCancellation = true;
+            this.bgWorker_Export.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorker_Export_DoWork);
+            this.bgWorker_Export.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgWorker_Export_ProgressChanged);
+            this.bgWorker_Export.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorker_Export_RunWorkerCompleted);
+            // 
+            // pgBar
+            // 
+            this.pgBar.Location = new System.Drawing.Point(393, 478);
+            this.pgBar.Name = "pgBar";
+            this.pgBar.Size = new System.Drawing.Size(114, 23);
+            this.pgBar.TabIndex = 85;
+            // 
+            // lbStatus
+            // 
+            this.lbStatus.AutoSize = true;
+            this.lbStatus.Location = new System.Drawing.Point(523, 482);
+            this.lbStatus.Name = "lbStatus";
+            this.lbStatus.Size = new System.Drawing.Size(86, 16);
+            this.lbStatus.TabIndex = 86;
+            this.lbStatus.Text = "Process...0%";
             // 
             // frmAdmin
             // 
@@ -988,5 +1019,8 @@
         private System.Windows.Forms.RadioButton Radiobtn_ClassName;
         private System.Windows.Forms.RadioButton Radiobtn_GradeName;
         private System.Windows.Forms.RadioButton Radiobtn_FullName_teacher;
+        private System.ComponentModel.BackgroundWorker bgWorker_Export;
+        private System.Windows.Forms.Label lbStatus;
+        private System.Windows.Forms.ProgressBar pgBar;
     }
 }

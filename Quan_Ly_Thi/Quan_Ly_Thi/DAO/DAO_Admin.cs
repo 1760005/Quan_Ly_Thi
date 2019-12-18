@@ -16,7 +16,7 @@ namespace Quan_Ly_Thi.DAO
         
         public static void BackupDataBase(string Path, ConnectionStringSettings conStrSettings)
         {
-            using (var qlttn = new QLTTNDataContext())
+            if (Path != null)
             {
                 DbConnection Connection;
                 DbProviderFactory factory;
@@ -36,19 +36,22 @@ namespace Quan_Ly_Thi.DAO
 
         public static void RestoreDataBase(string Path, ConnectionStringSettings conStrSettings)
         {
-            DbConnection Connection;
-            DbProviderFactory factory;
-            DbDataAdapter data;
+            if (Path != null)
+            {
+                DbConnection Connection;
+                DbProviderFactory factory;
+                DbDataAdapter data;
 
-            factory = DbProviderFactories.GetFactory(conStrSettings.ProviderName);
-            Connection = factory.CreateConnection();
-            Connection.ConnectionString = conStrSettings.ConnectionString;
+                factory = DbProviderFactories.GetFactory(conStrSettings.ProviderName);
+                Connection = factory.CreateConnection();
+                Connection.ConnectionString = conStrSettings.ConnectionString;
 
-            data = factory.CreateDataAdapter();
-            data.SelectCommand = factory.CreateCommand();
-            data.SelectCommand.CommandText = @"restore database QuanLyThiTracNghiemDB from disk = '" + Path + "QLTTN.bak' with recovery";
-            data.SelectCommand.Connection = Connection;
-            data.SelectCommand.ExecuteNonQuery();
+                data = factory.CreateDataAdapter();
+                data.SelectCommand = factory.CreateCommand();
+                data.SelectCommand.CommandText = @"restore database QuanLyThiTracNghiemDB from disk = '" + Path + "QLTTN.bak' with recovery";
+                data.SelectCommand.Connection = Connection;
+                data.SelectCommand.ExecuteNonQuery();
+            }
         }
 
         public static void GetListOfTeacher(DataGridView gridView, ConnectionStringSettings conStrSettings, Label lbPage_student, ref int n, ref int Page, ref int Count, ref int NOP)

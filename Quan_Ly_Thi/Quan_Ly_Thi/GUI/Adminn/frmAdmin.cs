@@ -25,7 +25,6 @@ namespace Quan_Ly_Thi.GUI.Adminn
         static string Teacher_User_Account = null;
         static List<Classes> listClasses = new List<Classes>();
         static List<Grades> listGrades = new List<Grades>();
-
         public static Tai_khoan tk;
         private void btnImport_Click(object sender, EventArgs e)
         {
@@ -188,6 +187,7 @@ namespace Quan_Ly_Thi.GUI.Adminn
             Class_CBB.DataSource = listClasses;
             listGrades = BUS_Admin.LoadGrades();
             Grade_CBB.DataSource = listGrades;
+
         }
 
         private void btnUpdate_teacher_Click(object sender, EventArgs e)
@@ -290,6 +290,10 @@ namespace Quan_Ly_Thi.GUI.Adminn
 
         private void btnExport_Click(object sender, EventArgs e)
         {
+            if (ControlAdmin.SelectedIndex == -1)
+            {
+                return;
+            }
             if (ControlAdmin.TabPages[ControlAdmin.SelectedIndex] == TabList_student || ControlAdmin.TabPages[ControlAdmin.SelectedIndex] == TabList_teacher)
             {
                 BUS_Admin.btnExport_Click(_inputParameter, bgWorker_Export, dt_student, dt_teacher, ControlAdmin, TabList_student, TabList_teacher, pgBar);

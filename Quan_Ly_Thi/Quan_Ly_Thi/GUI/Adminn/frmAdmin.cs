@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using System.Threading;
 using Microsoft.Office.Interop.Excel;
 using Quan_Ly_Thi.GUI.He_Thong;
+using Quan_Ly_Thi.Validator;
 
 namespace Quan_Ly_Thi.GUI.Adminn
 {
@@ -188,6 +189,74 @@ namespace Quan_Ly_Thi.GUI.Adminn
             listGrades = BUS_Admin.LoadGrades();
             Grade_CBB.DataSource = listGrades;
 
+            var SearchInfomation_Student = new RegexValidator();
+            SearchInfomation_Student.ControlToValidate = txtSearch_student;
+            SearchInfomation_Student.ErrorMessage = "Infomation Incorrect, Correct Form: TK000001 or Nguyen Van A";
+            SearchInfomation_Student.Pattern = @"^[A-Z][a-zA-Z0-9\s]{7,60}$";
+
+            var SearchInfomation_Teacher = new RegexValidator();
+            SearchInfomation_Teacher.ControlToValidate = txtSearch_teacher;
+            SearchInfomation_Teacher.ErrorMessage = "Infomation Incorrect, Correct Form: TK000001 or Nguyen Van A";
+            SearchInfomation_Teacher.Pattern = @"^[A-Z][a-zA-Z0-9\s]{7,60}$";
+
+            var TeacherUserName = new RegexValidator();
+            TeacherUserName.ControlToValidate = txtUserName_teacher;
+            TeacherUserName.ErrorMessage = "Teacher Name Incorrect, Correct Form: TK000001";
+            TeacherUserName.Pattern = @"^[a-z][a-zA-Z0-9\s]{0,60}$";
+
+            var StudentUserName = new RegexValidator();
+            StudentUserName.ControlToValidate = txtUser_name_student;
+            StudentUserName.ErrorMessage = "Teacher Name Incorrect, Correct Form: TK000001";
+            StudentUserName.Pattern = @"^[A-X][a-zA-Z0-9\s]{0,60}$";
+
+            var TeacherName = new RegexValidator();
+            TeacherName.ControlToValidate = txtFull_name_teacher;
+            TeacherName.ErrorMessage = "Teacher Name Incorrect, Correct Form: Nguyen Van A";
+            TeacherName.Pattern = @"^[a-z][a-zA-Z0-9\s]{0,60}$";
+
+            var StudentName = new RegexValidator();
+            StudentName.ControlToValidate = txtFull_name_student;
+            StudentName.ErrorMessage = "Teacher Name Incorrect, Correct Form: Nguyen Van A";
+            StudentName.Pattern = @"^[A-X][a-zA-Z0-9\s]{0,60}$";
+
+            var StudentDOB = new DateValidator();
+            StudentDOB.ControlToValidate = maskedStdDOB;
+            StudentDOB.ErrorMessage = "Date Incorrect, Correct Form: 01/01/1999";
+
+            var TeacherDOB = new DateValidator();
+            TeacherDOB.ControlToValidate = maskedTchDOB;
+            TeacherDOB.ErrorMessage = "Date Incorrect, Correct Form: 01/01/1999";
+
+            var StudentEmail = new RegexValidator();
+            StudentEmail.ControlToValidate = txtMail_student;
+            StudentEmail.ErrorMessage = "Email Incorrect, Correct Form: abc123@abc.com";
+            StudentEmail.Pattern = @"^[a-z][a-zA-Z0-9_\.@]{13,40}$";
+
+            var TeacherEmail = new RegexValidator();
+            TeacherEmail.ControlToValidate = txtMail_teacher;
+            TeacherEmail.ErrorMessage = "Email Incorrect, Correct Form: abc123@abc.com";
+            TeacherEmail.Pattern = @"^[a-z][a-zA-Z0-9_\.@]{13,40}$";
+
+            var StudentPhoneNumber = new RegexValidator();
+            StudentPhoneNumber.ControlToValidate = txtSDT_student;
+            StudentPhoneNumber.ErrorMessage = "PhoneNumber Incorrect, Correct Form: 0944686099";
+            StudentPhoneNumber.Pattern = @"^[0-9]{10,15}$";
+
+            var TeacherPhoneNumber = new RegexValidator();
+            TeacherPhoneNumber.ControlToValidate = txtSDT_teacher;
+            TeacherPhoneNumber.ErrorMessage = "PhoneNumber Incorrect, Correct Form: 0944686099";
+            TeacherPhoneNumber.Pattern = @"^[0-9]{9,15}$";
+
+            var StudentCMND_TCC = new RegexValidator();
+            StudentCMND_TCC.ControlToValidate = txtCMND_TCC_student;
+            StudentCMND_TCC.ErrorMessage = "PhoneNumber Incorrect, Correct Form: 123456789";
+            StudentCMND_TCC.Pattern = @"^[0-9]{10,15}$";
+
+            var TeacherCMND_TCC = new RegexValidator();
+            TeacherCMND_TCC.ControlToValidate = txtCMND_TCC_teacher;
+            TeacherCMND_TCC.ErrorMessage = "PhoneNumber Incorrect, Correct Form: 123456789";
+            TeacherCMND_TCC.Pattern = @"^[0-9]{9,15}$";
+
         }
 
         private void btnUpdate_teacher_Click(object sender, EventArgs e)
@@ -354,6 +423,12 @@ namespace Quan_Ly_Thi.GUI.Adminn
         private void btnexit_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.Application.Exit();
+        }
+
+        private void reportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUserReport Report = new frmUserReport();
+            Report.ShowDialog();
         }
     }
 }

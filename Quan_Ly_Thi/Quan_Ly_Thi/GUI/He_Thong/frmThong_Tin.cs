@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using Quan_Ly_Thi.BUS;
 using Quan_Ly_Thi.DTO;
 using Quan_Ly_Thi.DAO;
+using Quan_Ly_Thi.Validator;
+
 namespace Quan_Ly_Thi.GUI.He_Thong
 {
     public partial class frmThong_Tin : Form
@@ -40,6 +42,31 @@ namespace Quan_Ly_Thi.GUI.He_Thong
                     txtStudent_class.AutoCompleteCustomSource.Add(item.TenLop);
                 }
             }
+
+            var UserAccount = new RegexValidator();
+            UserAccount.ControlToValidate = txtSudent_code;
+            UserAccount.ErrorMessage = "Account Name Incorrect, Correct Form: TK000001";
+            UserAccount.Pattern = @"^[a-z][a-zA-Z0-9\s]{0,60}$";
+
+            var UserPass = new RegexValidator();
+            UserPass.ControlToValidate = txtPassword;
+            UserPass.ErrorMessage = "Password Incorrect, Correct Form: abc123";
+            UserPass.Pattern = @"^[a-z][a-zA-Z0-9\s]{0,60}$";
+
+            var UserName = new RegexValidator();
+            UserName.ControlToValidate = txtStudent_Name;
+            UserName.ErrorMessage = "User Name Incorrect, Correct Form: Nguyen Van A";
+            UserName.Pattern = @"^[a-z][a-zA-Z0-9\s]{0,60}$";
+
+            var UserCMND_TCC = new RegexValidator();
+            UserCMND_TCC.ControlToValidate = txtCMND;
+            UserCMND_TCC.ErrorMessage = "PhoneNumber Incorrect, Correct Form: 123456789";
+            UserCMND_TCC.Pattern = @"^[0-9]{10,15}$";
+
+            var UserClass = new RegexValidator();
+            UserClass.ControlToValidate = txtStudent_class;
+            UserClass.ErrorMessage = "PhoneNumber Incorrect, Correct Form: 10C1 or 11B2 or 12A3";
+            UserClass.Pattern = @"^[0-9]{9,15}$";
         }
 
         private void btnSave_Click(object sender, EventArgs e)

@@ -96,12 +96,22 @@
     <Compile Include="DTO\Ket_Qua_Thi.cs" />
     <Compile Include="DTO\Lich_Thi.cs" />
     <Compile Include="DTO\Tai_khoan.cs" />
+    <Compile Include="DTO\UserRevenue.cs" />
     <Compile Include="GUI\Adminn\frmAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\Adminn\frmAdmin.Designer.cs">
       <DependentUpon>frmAdmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Adminn\frmUserReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Adminn\frmUserReport.Designer.cs">
+      <DependentUpon>frmUserReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Adminn\Models\Decentralization.cs" />
+    <Compile Include="GUI\Adminn\Presenters\MainPresent.cs" />
+    <Compile Include="GUI\Adminn\Views\IUserReportView.cs" />
     <Compile Include="GUI\Giao_Vien\frmGiao_Vien.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,9 +198,25 @@
       <DependentUpon>QuanLyThiTracNghiemDBDataSet2.xsd</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="Validator\BaseValidator.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Validator\DateValidator.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Validator\RegexValidator.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <None Include="DAO\QLTTN.dbml.layout">
+      <DependentUpon>QLTTN.dbml</DependentUpon>
+    </None>
     <EmbeddedResource Include="GUI\Adminn\frmAdmin.resx">
       <DependentUpon>frmAdmin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Adminn\frmUserReport.resx">
+      <DependentUpon>frmUserReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Adminn\Reports\ReportUserRevenue.rdlc" />
     <EmbeddedResource Include="GUI\Giao_Vien\frmGiao_Vien.resx">
       <DependentUpon>frmGiao_Vien.cs</DependentUpon>
     </EmbeddedResource>
@@ -246,9 +272,6 @@
       <LastGenOutput>QLTTN.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DAO\QLTTN.dbml.layout">
-      <DependentUpon>QLTTN.dbml</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Quan_Ly_Thi.DAO.CAUHOI.datasource" />
     <None Include="Properties\DataSources\Quan_Ly_Thi.DAO.DAO_De_Thi.datasource" />
@@ -258,6 +281,7 @@
     <None Include="Properties\DataSources\Quan_Ly_Thi.DAO.MONHOC.datasource" />
     <None Include="Properties\DataSources\Quan_Ly_Thi.DAO.NGUOIDUNG.datasource" />
     <None Include="Properties\DataSources\Quan_Ly_Thi.DAO.QLTTNDataContext.datasource" />
+    <None Include="Properties\DataSources\Quan_Ly_Thi.DTO.UserRevenue.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

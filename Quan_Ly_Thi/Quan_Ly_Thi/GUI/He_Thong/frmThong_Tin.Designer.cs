@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label label5;
             System.Windows.Forms.Label label3;
             System.Windows.Forms.Label label1;
@@ -45,6 +46,7 @@
             this.txtCMND = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.cbb_Quyen = new System.Windows.Forms.ComboBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             label5 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
@@ -52,6 +54,7 @@
             label2 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
             label8 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label5
@@ -224,13 +227,17 @@
             this.cbb_Quyen.Size = new System.Drawing.Size(223, 32);
             this.cbb_Quyen.TabIndex = 33;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmThong_Tin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(394, 412);
+            this.ClientSize = new System.Drawing.Size(429, 412);
             this.Controls.Add(this.cbb_Quyen);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.dpStudent_birth_date);
@@ -251,6 +258,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Thông Tin Học Sinh";
             this.Load += new System.EventHandler(this.frmThong_Tin_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -267,5 +275,6 @@
         private System.Windows.Forms.TextBox txtCMND;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.ComboBox cbb_Quyen;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

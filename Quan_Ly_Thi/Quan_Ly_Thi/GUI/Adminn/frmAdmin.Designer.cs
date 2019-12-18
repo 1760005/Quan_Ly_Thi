@@ -49,6 +49,7 @@
             this.btnExit_teacher = new System.Windows.Forms.Button();
             this.ControlAdmin = new System.Windows.Forms.TabControl();
             this.TabList_student = new System.Windows.Forms.TabPage();
+            this.btnRefresh_student = new System.Windows.Forms.Button();
             this.lbStatus = new System.Windows.Forms.Label();
             this.pgBar = new System.Windows.Forms.ProgressBar();
             this.Radiobtn_ClassName = new System.Windows.Forms.RadioButton();
@@ -77,6 +78,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.TabList_teacher = new System.Windows.Forms.TabPage();
+            this.btnRefresh_teacher = new System.Windows.Forms.Button();
             this.Radiobtn_GradeName = new System.Windows.Forms.RadioButton();
             this.Radiobtn_FullName_teacher = new System.Windows.Forms.RadioButton();
             this.Grade_CBB = new System.Windows.Forms.ComboBox();
@@ -107,8 +109,7 @@
             this.TabResult = new System.Windows.Forms.TabPage();
             this.dt_Result = new System.Windows.Forms.DataGridView();
             this.bgWorker_Export = new System.ComponentModel.BackgroundWorker();
-            this.btnRefresh_student = new System.Windows.Forms.Button();
-            this.btnRefresh_teacher = new System.Windows.Forms.Button();
+            this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.ControlAdmin.SuspendLayout();
             this.TabList_student.SuspendLayout();
@@ -154,7 +155,8 @@
             this.hethong,
             this.dữLiệuToolStripMenuItem,
             this.quảnLýDanhSáchToolStripMenuItem,
-            this.btnResult});
+            this.btnResult,
+            this.reportToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1175, 29);
@@ -174,7 +176,7 @@
             // btnChange_pass
             // 
             this.btnChange_pass.Name = "btnChange_pass";
-            this.btnChange_pass.Size = new System.Drawing.Size(180, 26);
+            this.btnChange_pass.Size = new System.Drawing.Size(174, 26);
             this.btnChange_pass.Text = "Đổi Mật Khẩu";
             this.btnChange_pass.Click += new System.EventHandler(this.btnChange_pass_Click);
             // 
@@ -182,7 +184,7 @@
             // 
             this.btnLogout.Image = ((System.Drawing.Image)(resources.GetObject("btnLogout.Image")));
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(180, 26);
+            this.btnLogout.Size = new System.Drawing.Size(174, 26);
             this.btnLogout.Text = "Đăng Xuất";
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
@@ -190,7 +192,7 @@
             // 
             this.btnexit.Image = ((System.Drawing.Image)(resources.GetObject("btnexit.Image")));
             this.btnexit.Name = "btnexit";
-            this.btnexit.Size = new System.Drawing.Size(180, 26);
+            this.btnexit.Size = new System.Drawing.Size(174, 26);
             this.btnexit.Text = "Thoát";
             this.btnexit.Click += new System.EventHandler(this.btnexit_Click);
             // 
@@ -325,6 +327,16 @@
             this.TabList_student.TabIndex = 0;
             this.TabList_student.Text = "Danh Sách Học Sinh";
             this.TabList_student.UseVisualStyleBackColor = true;
+            // 
+            // btnRefresh_student
+            // 
+            this.btnRefresh_student.Location = new System.Drawing.Point(814, 19);
+            this.btnRefresh_student.Name = "btnRefresh_student";
+            this.btnRefresh_student.Size = new System.Drawing.Size(75, 23);
+            this.btnRefresh_student.TabIndex = 87;
+            this.btnRefresh_student.Text = "Refresh";
+            this.btnRefresh_student.UseVisualStyleBackColor = true;
+            this.btnRefresh_student.Click += new System.EventHandler(this.btnRefresh_student_Click);
             // 
             // lbStatus
             // 
@@ -461,7 +473,7 @@
             // dt_student
             // 
             this.dt_student.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dt_student.Location = new System.Drawing.Point(15, 74);
+            this.dt_student.Location = new System.Drawing.Point(15, 76);
             this.dt_student.Name = "dt_student";
             this.dt_student.Size = new System.Drawing.Size(767, 388);
             this.dt_student.TabIndex = 63;
@@ -628,6 +640,16 @@
             this.TabList_teacher.TabIndex = 1;
             this.TabList_teacher.Text = "Danh Sách Giáo Viên";
             this.TabList_teacher.UseVisualStyleBackColor = true;
+            // 
+            // btnRefresh_teacher
+            // 
+            this.btnRefresh_teacher.Location = new System.Drawing.Point(799, 15);
+            this.btnRefresh_teacher.Name = "btnRefresh_teacher";
+            this.btnRefresh_teacher.Size = new System.Drawing.Size(75, 23);
+            this.btnRefresh_teacher.TabIndex = 88;
+            this.btnRefresh_teacher.Text = "Refresh";
+            this.btnRefresh_teacher.UseVisualStyleBackColor = true;
+            this.btnRefresh_teacher.Click += new System.EventHandler(this.btnRefresh_teacher_Click);
             // 
             // Radiobtn_GradeName
             // 
@@ -923,25 +945,12 @@
             this.bgWorker_Export.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgWorker_Export_ProgressChanged);
             this.bgWorker_Export.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorker_Export_RunWorkerCompleted);
             // 
-            // btnRefresh_student
+            // reportToolStripMenuItem
             // 
-            this.btnRefresh_student.Location = new System.Drawing.Point(814, 19);
-            this.btnRefresh_student.Name = "btnRefresh_student";
-            this.btnRefresh_student.Size = new System.Drawing.Size(75, 23);
-            this.btnRefresh_student.TabIndex = 87;
-            this.btnRefresh_student.Text = "Refresh";
-            this.btnRefresh_student.UseVisualStyleBackColor = true;
-            this.btnRefresh_student.Click += new System.EventHandler(this.btnRefresh_student_Click);
-            // 
-            // btnRefresh_teacher
-            // 
-            this.btnRefresh_teacher.Location = new System.Drawing.Point(799, 15);
-            this.btnRefresh_teacher.Name = "btnRefresh_teacher";
-            this.btnRefresh_teacher.Size = new System.Drawing.Size(75, 23);
-            this.btnRefresh_teacher.TabIndex = 88;
-            this.btnRefresh_teacher.Text = "Refresh";
-            this.btnRefresh_teacher.UseVisualStyleBackColor = true;
-            this.btnRefresh_teacher.Click += new System.EventHandler(this.btnRefresh_teacher_Click);
+            this.reportToolStripMenuItem.Name = "reportToolStripMenuItem";
+            this.reportToolStripMenuItem.Size = new System.Drawing.Size(69, 25);
+            this.reportToolStripMenuItem.Text = "Report";
+            this.reportToolStripMenuItem.Click += new System.EventHandler(this.reportToolStripMenuItem_Click);
             // 
             // frmAdmin
             // 
@@ -1051,5 +1060,6 @@
         private System.Windows.Forms.ProgressBar pgBar;
         private System.Windows.Forms.Button btnRefresh_student;
         private System.Windows.Forms.Button btnRefresh_teacher;
+        private System.Windows.Forms.ToolStripMenuItem reportToolStripMenuItem;
     }
 }

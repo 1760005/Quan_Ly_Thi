@@ -1,10 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QuanLyThiTracNghiemDB" Class="QLTTNDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-4RNGLB2\SQLEXPRESS;Initial Catalog=QuanLyThiTracNghiemDB;Persist Security Info=True;User ID=sa" SettingsObjectName="Quan_Ly_Thi.Properties.Settings" SettingsPropertyName="QuanLyThiTracNghiemDBConnectionString4" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-PD2UJ9U;Initial Catalog=QuanLyThiTracNghiemDB;Persist Security Info=True;User ID=sa" SettingsObjectName="Quan_Ly_Thi.Properties.Settings" SettingsPropertyName="QuanLyThiTracNghiemDBConnectionString3" Provider="System.Data.SqlClient" />
   <Table Name="dbo.CAPDOCAUHOI" Member="CAPDOCAUHOIs">
     <Type Name="CAPDOCAUHOI">
       <Column Name="MaCapDo" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="TenCapDo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Association Name="CAPDOCAUHOI_CAUHOI" Member="CAUHOIs" ThisKey="MaCapDo" OtherKey="MaCapDo" Type="CAUHOI" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PHANQUYEN" Member="PHANQUYENs">
+    <Type Name="PHANQUYEN">
+      <Column Name="MaPhanQuyen" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenPhanQuyen" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="PHANQUYEN_NGUOIDUNG" Member="NGUOIDUNGs" ThisKey="MaPhanQuyen" OtherKey="MaPhanQuyen" Type="NGUOIDUNG" />
     </Type>
   </Table>
   <Table Name="dbo.CAUHOI" Member="CAUHOIs">
@@ -133,7 +140,7 @@
   <Table Name="dbo.NGUOIDUNG" Member="NGUOIDUNGs">
     <Type Name="NGUOIDUNG">
       <Column Name="TaiKhoan" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="MatKhau" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MatKhau" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="MaPhanQuyen" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
       <Column Name="MaKhoi" Type="System.String" DbType="Char(10)" CanBeNull="true" />
       <Column Name="MaLop" Type="System.String" DbType="Char(10)" CanBeNull="true" />
@@ -147,13 +154,6 @@
       <Association Name="KHOI_NGUOIDUNG" Member="KHOI" ThisKey="MaKhoi" OtherKey="MaKhoi" Type="KHOI" IsForeignKey="true" />
       <Association Name="LOPHOC_NGUOIDUNG" Member="LOPHOC" ThisKey="MaLop" OtherKey="MaLop" Type="LOPHOC" IsForeignKey="true" />
       <Association Name="PHANQUYEN_NGUOIDUNG" Member="PHANQUYEN" ThisKey="MaPhanQuyen" OtherKey="MaPhanQuyen" Type="PHANQUYEN" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.PHANQUYEN" Member="PHANQUYENs">
-    <Type Name="PHANQUYEN">
-      <Column Name="MaPhanQuyen" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="TenPhanQuyen" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="PHANQUYEN_NGUOIDUNG" Member="NGUOIDUNGs" ThisKey="MaPhanQuyen" OtherKey="MaPhanQuyen" Type="NGUOIDUNG" />
     </Type>
   </Table>
 </Database>

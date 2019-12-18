@@ -186,3 +186,4 @@ C:\Users\nthed\Desktop\Quan_Ly_Thi\Quan_Ly_Thi\Quan_Ly_Thi\obj\Debug\RdlCompile.
 C:\Users\nthed\Desktop\Quan_Ly_Thi\Quan_Ly_Thi\Quan_Ly_Thi\obj\Debug\Quan_Ly_Thi.csproj.CopyComplete
 C:\Users\nthed\Desktop\Quan_Ly_Thi\Quan_Ly_Thi\Quan_Ly_Thi\obj\Debug\Quan_Ly_Thi.exe
 C:\Users\nthed\Desktop\Quan_Ly_Thi\Quan_Ly_Thi\Quan_Ly_Thi\obj\Debug\Quan_Ly_Thi.pdb
+C:\Users\nthed\Desktop\Quan_Ly_Thi\Quan_Ly_Thi\Quan_Ly_Thi\obj\Debug\Quan_Ly_Thi.GUI.Adminn.frmUserReport.resources

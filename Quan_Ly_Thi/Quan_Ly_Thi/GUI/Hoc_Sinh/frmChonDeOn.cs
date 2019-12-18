@@ -25,7 +25,9 @@ namespace Quan_Ly_Thi.GUI.Hoc_Sinh
             De_On._ma_khoi_ = BUS_De_Thi.ID_Khoi(cbb_Khoi.Text);
             De_On._do_kho_ = BUS_De_Thi.ID_Do_Kho(cbb_DoKho.Text);
             De_On._ma_mon_hoc_ = BUS_De_Thi.ID_Mon(cbb_MonHoc.Text);
+            this.Hide();
             de.ShowDialog();
+
         }
 
         private void frmChon_De_On_Load(object sender, EventArgs e)

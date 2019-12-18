@@ -127,6 +127,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "frmChon_De_On";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chọn Đề Ôn";
             this.Load += new System.EventHandler(this.frmChon_De_On_Load);
             this.ResumeLayout(false);

@@ -700,7 +700,7 @@ namespace Quan_Ly_Thi.GUI.Hoc_Sinh
         //Ôn Tập
         private void btnDocument_Click(object sender, EventArgs e)
         {
-            De_On De = new De_On();
+            frmChon_De_On De = new frmChon_De_On();
             De.ShowDialog();
         }
 

@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using Microsoft.Office.Interop.Excel;
+using Quan_Ly_Thi.GUI.He_Thong;
 
 namespace Quan_Ly_Thi.GUI.Adminn
 {
@@ -312,6 +313,43 @@ namespace Quan_Ly_Thi.GUI.Adminn
         private void bgWorker_Export_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             BUS_Admin.bgWorker_Export_RunWorkerCompleted(sender, e, lbStatus);
+        }
+
+        private void btnRefresh_student_Click(object sender, EventArgs e)
+        {
+            txtFull_name_student.Text = "";
+            txtCMND_TCC_student.Text = "";
+            txtMail_student.Text = "";
+            txtSDT_student.Text = "";
+            txtUser_name_student.Text = "";
+            maskedStdDOB.Text = "";
+        }
+
+        private void btnRefresh_teacher_Click(object sender, EventArgs e)
+        {
+            txtFull_name_teacher.Text = "";
+            txtCMND_TCC_teacher.Text = "";
+            txtMail_teacher.Text = "";
+            txtSDT_teacher.Text = "";
+            txtUserName_teacher.Text = "";
+            maskedTchDOB.Text = "";
+        }
+
+        private void btnChange_pass_Click(object sender, EventArgs e)
+        {
+            frmDoi_Mat_Khau.Tai_Khoan = tk.Tai_Khoan;
+            frmDoi_Mat_Khau ChangePass = new frmDoi_Mat_Khau();
+            ChangePass.ShowDialog();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnexit_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
         }
     }
 }

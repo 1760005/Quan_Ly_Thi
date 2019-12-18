@@ -68,7 +68,7 @@ namespace Quan_Ly_Thi.DAO
 
             data = factory.CreateDataAdapter();
             data.SelectCommand = factory.CreateCommand();
-            data.SelectCommand.CommandText = @"select nd.* from NGUOIDUNG nd JOIN KHOI k on k.MaKhoi = nd.MaKhoi where nd.MaPhanQuyen = 'GV'";
+            data.SelectCommand.CommandText = @"select nd.*, k.TenKhoi from NGUOIDUNG nd JOIN KHOI k on k.MaKhoi = nd.MaKhoi where nd.MaPhanQuyen = 'GV'";
             data.SelectCommand.Connection = Connection;
             var crbuilder = factory.CreateCommandBuilder();
             crbuilder.DataAdapter = data;
@@ -81,7 +81,7 @@ namespace Quan_Ly_Thi.DAO
 
             data = factory.CreateDataAdapter();
             data.SelectCommand = factory.CreateCommand();
-            data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, ROW_NUMBER() OVER (ORDER BY nd.MaKhoi) AS RowNum FROM NGUOIDUNG nd JOIN KHOI k on k.MaKhoi = nd.MaKhoi WHERE nd.MaPhanQuyen = 'GV') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN 1 AND 10";
+            data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, k.TenKhoi, ROW_NUMBER() OVER (ORDER BY nd.MaKhoi) AS RowNum FROM NGUOIDUNG nd JOIN KHOI k on k.MaKhoi = nd.MaKhoi WHERE nd.MaPhanQuyen = 'GV') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN 1 AND 10";
             data.SelectCommand.Connection = Connection;
             crbuilder = factory.CreateCommandBuilder();
             crbuilder.DataAdapter = data;
@@ -111,7 +111,7 @@ namespace Quan_Ly_Thi.DAO
 
             data = factory.CreateDataAdapter();
             data.SelectCommand = factory.CreateCommand();
-            data.SelectCommand.CommandText = @"select nd.* from NGUOIDUNG nd JOIN LOPHOC lh on lh.MaLop = nd.MaLop where nd.MaPhanQuyen = 'HS'";
+            data.SelectCommand.CommandText = @"select nd.*, lh.TenLop from NGUOIDUNG nd JOIN LOPHOC lh on lh.MaLop = nd.MaLop where nd.MaPhanQuyen = 'HS'";
             data.SelectCommand.Connection = Connection;
             var crbuilder = factory.CreateCommandBuilder();
             crbuilder.DataAdapter = data;
@@ -124,7 +124,7 @@ namespace Quan_Ly_Thi.DAO
 
             data = factory.CreateDataAdapter();
             data.SelectCommand = factory.CreateCommand();
-            data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, ROW_NUMBER() OVER (ORDER BY nd.MaLop) AS RowNum FROM NGUOIDUNG nd JOIN LOPHOC lh on lh.MaLop = nd.MaLop WHERE nd.MaPhanQuyen = 'HS') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN 1 AND 10";
+            data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, lh.TenLop, ROW_NUMBER() OVER (ORDER BY nd.MaLop) AS RowNum FROM NGUOIDUNG nd JOIN LOPHOC lh on lh.MaLop = nd.MaLop WHERE nd.MaPhanQuyen = 'HS') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN 1 AND 10";
             data.SelectCommand.Connection = Connection;
             crbuilder = factory.CreateCommandBuilder();
             crbuilder.DataAdapter = data;
@@ -444,7 +444,7 @@ namespace Quan_Ly_Thi.DAO
 
             data = factory.CreateDataAdapter();
             data.SelectCommand = factory.CreateCommand();
-            data.SelectCommand.CommandText = @"select nd.* from NGUOIDUNG nd join LOPHOC lh on nd.MaLop = lh.MaLop join KHOI k on k.MaKhoi = lh.MaKhoi where nd.HoTen like N'" + Information + "%'";
+            data.SelectCommand.CommandText = @"select nd.*, lh.TenLop from NGUOIDUNG nd join LOPHOC lh on nd.MaLop = lh.MaLop join KHOI k on k.MaKhoi = lh.MaKhoi where nd.HoTen like N'%" + Information + "%'";
             data.SelectCommand.Connection = Connection;
             var crbuilder = factory.CreateCommandBuilder();
             crbuilder.DataAdapter = data;
@@ -458,7 +458,7 @@ namespace Quan_Ly_Thi.DAO
 
             data = factory.CreateDataAdapter();
             data.SelectCommand = factory.CreateCommand();
-            data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, ROW_NUMBER() OVER (ORDER BY nd.MaLop) AS RowNum FROM NGUOIDUNG nd JOIN LOPHOC lh on lh.MaLop = nd.MaLop WHERE nd.HoTen like N'" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN 1 AND 10";
+            data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, lh.TenLop, ROW_NUMBER() OVER (ORDER BY nd.MaLop) AS RowNum FROM NGUOIDUNG nd JOIN LOPHOC lh on lh.MaLop = nd.MaLop WHERE nd.HoTen like N'%" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN 1 AND 10";
             data.SelectCommand.Connection = Connection;
             crbuilder = factory.CreateCommandBuilder();
             crbuilder.DataAdapter = data;
@@ -488,7 +488,7 @@ namespace Quan_Ly_Thi.DAO
 
             data = factory.CreateDataAdapter();
             data.SelectCommand = factory.CreateCommand();
-            data.SelectCommand.CommandText = @"select nd.* from NGUOIDUNG nd join KHOI k on k.MaKhoi = nd.MaKhoi where nd.HoTen like N'" + Information + "%'";
+            data.SelectCommand.CommandText = @"select nd.*, k.TenKhoi from NGUOIDUNG nd join KHOI k on k.MaKhoi = nd.MaKhoi where nd.HoTen like N'%" + Information + "%'";
             data.SelectCommand.Connection = Connection;
             var crbuilder = factory.CreateCommandBuilder();
             crbuilder.DataAdapter = data;
@@ -502,7 +502,7 @@ namespace Quan_Ly_Thi.DAO
 
             data = factory.CreateDataAdapter();
             data.SelectCommand = factory.CreateCommand();
-            data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, ROW_NUMBER() OVER (ORDER BY nd.MaKhoi) AS RowNum FROM NGUOIDUNG nd JOIN KHOI k on k.MaKhoi = nd.MaKhoi WHERE nd.HoTen like N'" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN 1 AND 10";
+            data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, k.TenKhoi ROW_NUMBER() OVER (ORDER BY nd.MaKhoi) AS RowNum FROM NGUOIDUNG nd JOIN KHOI k on k.MaKhoi = nd.MaKhoi WHERE nd.HoTen like N'%" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN 1 AND 10";
             data.SelectCommand.Connection = Connection;
             crbuilder = factory.CreateCommandBuilder();
             crbuilder.DataAdapter = data;
@@ -532,7 +532,7 @@ namespace Quan_Ly_Thi.DAO
 
             data = factory.CreateDataAdapter();
             data.SelectCommand = factory.CreateCommand();
-            data.SelectCommand.CommandText = @"select nd.* from NGUOIDUNG nd join LOPHOC lh on nd.MaLop = lh.MaLop join LOPHOC lh on lh.MaLop = lh.MaLop where lh.TenLop like N'" + Information + "%'";
+            data.SelectCommand.CommandText = @"select nd.*, lh.TenLop from NGUOIDUNG nd join LOPHOC lh on nd.MaLop = lh.MaLop join LOPHOC lh on lh.MaLop = lh.MaLop where lh.TenLop like N'%" + Information + "%'";
             data.SelectCommand.Connection = Connection;
             var crbuilder = factory.CreateCommandBuilder();
             crbuilder.DataAdapter = data;
@@ -546,7 +546,7 @@ namespace Quan_Ly_Thi.DAO
 
             data = factory.CreateDataAdapter();
             data.SelectCommand = factory.CreateCommand();
-            data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, ROW_NUMBER() OVER (ORDER BY nd.MaLop) AS RowNum FROM NGUOIDUNG nd JOIN LOPHOC lh on lh.MaLop = nd.MaLop WHERE lh.TenLop like N'" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN 1 AND 10";
+            data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, lh.TenLop, ROW_NUMBER() OVER (ORDER BY nd.MaLop) AS RowNum FROM NGUOIDUNG nd JOIN LOPHOC lh on lh.MaLop = nd.MaLop WHERE lh.TenLop like N'%" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN 1 AND 10";
             data.SelectCommand.Connection = Connection;
             crbuilder = factory.CreateCommandBuilder();
             crbuilder.DataAdapter = data;
@@ -576,7 +576,7 @@ namespace Quan_Ly_Thi.DAO
 
             data = factory.CreateDataAdapter();
             data.SelectCommand = factory.CreateCommand();
-            data.SelectCommand.CommandText = @"select nd.* from NGUOIDUNG nd join KHOI k on k.MaKhoi = nd.MaKhoi where nd.TenKhoi like N'" + Information + "%'";
+            data.SelectCommand.CommandText = @"select nd.*, k.TenKhoi from NGUOIDUNG nd join KHOI k on k.MaKhoi = nd.MaKhoi where nd.TenKhoi like N'%" + Information + "%'";
             data.SelectCommand.Connection = Connection;
             var crbuilder = factory.CreateCommandBuilder();
             crbuilder.DataAdapter = data;
@@ -590,7 +590,7 @@ namespace Quan_Ly_Thi.DAO
 
             data = factory.CreateDataAdapter();
             data.SelectCommand = factory.CreateCommand();
-            data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, ROW_NUMBER() OVER (ORDER BY nd.MaKhoi) AS RowNum FROM NGUOIDUNG nd JOIN KHOI k on k.MaKhoi = nd.MaKhoi WHERE k.TenKhoi like N'" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN 1 AND 10";
+            data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, k.TenKhoi, ROW_NUMBER() OVER (ORDER BY nd.MaKhoi) AS RowNum FROM NGUOIDUNG nd JOIN KHOI k on k.MaKhoi = nd.MaKhoi WHERE k.TenKhoi like N'%" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN 1 AND 10";
             data.SelectCommand.Connection = Connection;
             crbuilder = factory.CreateCommandBuilder();
             crbuilder.DataAdapter = data;
@@ -620,11 +620,11 @@ namespace Quan_Ly_Thi.DAO
 
             if (radioButton_StdName.Checked == true)
             {
-                data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, ROW_NUMBER() OVER (ORDER BY nd.MaLop) AS RowNum FROM NGUOIDUNG nd JOIN LOPHOC lh on lh.MaLop = nd.MaLop WHERE nd.HoTen like N'" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN " + (Count + 1).ToString() + " AND " + (Count + 10).ToString();
+                data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, lh.TenLop, ROW_NUMBER() OVER (ORDER BY nd.MaLop) AS RowNum FROM NGUOIDUNG nd JOIN LOPHOC lh on lh.MaLop = nd.MaLop WHERE nd.HoTen like N'%" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN " + (Count + 1).ToString() + " AND " + (Count + 10).ToString();
             }
             if (radioButton_StdClass.Checked == true)
             {
-                data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, ROW_NUMBER() OVER (ORDER BY nd.MaLop) AS RowNum FROM NGUOIDUNG nd JOIN LOPHOC lh on lh.MaLop = nd.MaLop WHERE lh.TenLop like N'" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN " + (Count + 1).ToString() + " AND " + (Count + 10).ToString();
+                data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, lh.TenLop, ROW_NUMBER() OVER (ORDER BY nd.MaLop) AS RowNum FROM NGUOIDUNG nd JOIN LOPHOC lh on lh.MaLop = nd.MaLop WHERE lh.TenLop like N'%" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN " + (Count + 1).ToString() + " AND " + (Count + 10).ToString();
             }
             if (radioButton_StdName.Checked == false && radioButton_StdClass.Checked == false)
             {
@@ -662,11 +662,11 @@ namespace Quan_Ly_Thi.DAO
 
             if (radioButton_StdName.Checked == true)
             {
-                data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, ROW_NUMBER() OVER (ORDER BY nd.MaLop) AS RowNum FROM NGUOIDUNG nd JOIN LOPHOC lh on lh.MaLop = nd.MaLop WHERE nd.HoTen like N'" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN " + (Count + 1).ToString() + " AND " + Temp.ToString();
+                data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, lh.TenLop, ROW_NUMBER() OVER (ORDER BY nd.MaLop) AS RowNum FROM NGUOIDUNG nd JOIN LOPHOC lh on lh.MaLop = nd.MaLop WHERE nd.HoTen like N'%" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN " + (Count + 1).ToString() + " AND " + Temp.ToString();
             }
             if (radioButton_StdClass.Checked == true)
             {
-                data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, ROW_NUMBER() OVER (ORDER BY nd.MaLop) AS RowNum FROM NGUOIDUNG nd JOIN LOPHOC lh on lh.MaLop = nd.MaLop WHERE lh.TenLop like N'" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN " + (Count + 1).ToString() + " AND " + Temp.ToString();
+                data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, lh.TenLop, ROW_NUMBER() OVER (ORDER BY nd.MaLop) AS RowNum FROM NGUOIDUNG nd JOIN LOPHOC lh on lh.MaLop = nd.MaLop WHERE lh.TenLop like N'%" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN " + (Count + 1).ToString() + " AND " + Temp.ToString();
             }
             if (radioButton_StdName.Checked == false && radioButton_StdClass.Checked == false)
             {
@@ -702,11 +702,11 @@ namespace Quan_Ly_Thi.DAO
 
             if (radioButton_StdName.Checked == true)
             {
-                data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, ROW_NUMBER() OVER (ORDER BY nd.MaLop) AS RowNum FROM NGUOIDUNG nd JOIN LOPHOC lh on lh.MaLop = nd.MaLop WHERE nd.HoTen like N'" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN " + (Count + 1).ToString() + " AND " + (Count + 10).ToString();
+                data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, lh.TenLop, ROW_NUMBER() OVER (ORDER BY nd.MaLop) AS RowNum FROM NGUOIDUNG nd JOIN LOPHOC lh on lh.MaLop = nd.MaLop WHERE nd.HoTen like N'%" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN " + (Count + 1).ToString() + " AND " + (Count + 10).ToString();
             }
             if (radioButton_StdClass.Checked == true)
             {
-                data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, ROW_NUMBER() OVER (ORDER BY nd.MaLop) AS RowNum FROM NGUOIDUNG nd JOIN LOPHOC lh on lh.MaLop = nd.MaLop WHERE lh.TenLop like N'" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN " + (Count + 1).ToString() + " AND " + (Count + 10).ToString();
+                data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, lh.TenLop, ROW_NUMBER() OVER (ORDER BY nd.MaLop) AS RowNum FROM NGUOIDUNG nd JOIN LOPHOC lh on lh.MaLop = nd.MaLop WHERE lh.TenLop like N'%" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN " + (Count + 1).ToString() + " AND " + (Count + 10).ToString();
             }
             if (radioButton_StdName.Checked == false && radioButton_StdClass.Checked == false)
             {
@@ -742,11 +742,11 @@ namespace Quan_Ly_Thi.DAO
 
             if (radioButton_TchName.Checked == true)
             {
-                data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, ROW_NUMBER() OVER (ORDER BY nd.MaKhoi) AS RowNum FROM NGUOIDUNG nd JOIN KHOI k on k.MaKhoi = nd.MaKhoi WHERE nd.HoTen like N'" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN " + (Count + 1).ToString() + " AND " + (Count + 10).ToString();
+                data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, k.TenKhoi, ROW_NUMBER() OVER (ORDER BY nd.MaKhoi) AS RowNum FROM NGUOIDUNG nd JOIN KHOI k on k.MaKhoi = nd.MaKhoi WHERE nd.HoTen like N'%" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN " + (Count + 1).ToString() + " AND " + (Count + 10).ToString();
             }
             if (radioButton_TchGrade.Checked == true)
             {
-                data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, ROW_NUMBER() OVER (ORDER BY nd.MaKhoi) AS RowNum FROM NGUOIDUNG nd JOIN KHOI k on k.MaKhoi = nd.MaKhoi WHERE k.TenKhoi like N'" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN " + (Count + 1).ToString() + " AND " + (Count + 10).ToString();
+                data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, k.TenKhoi, ROW_NUMBER() OVER (ORDER BY nd.MaKhoi) AS RowNum FROM NGUOIDUNG nd JOIN KHOI k on k.MaKhoi = nd.MaKhoi WHERE k.TenKhoi like N'%" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN " + (Count + 1).ToString() + " AND " + (Count + 10).ToString();
             }
             if (radioButton_TchName.Checked == false && radioButton_TchGrade.Checked == false)
             {
@@ -784,11 +784,11 @@ namespace Quan_Ly_Thi.DAO
 
             if (radioButton_TchName.Checked == true)
             {
-                data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, ROW_NUMBER() OVER (ORDER BY nd.MaKhoi) AS RowNum FROM NGUOIDUNG nd JOIN KHOI k on k.MaKhoi = nd.MaKhoi WHERE nd.HoTen like N'" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN " + (Count + 1).ToString() + " AND " + Temp.ToString();
+                data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, k.TenKhoi, ROW_NUMBER() OVER (ORDER BY nd.MaKhoi) AS RowNum FROM NGUOIDUNG nd JOIN KHOI k on k.MaKhoi = nd.MaKhoi WHERE nd.HoTen like N'%" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN " + (Count + 1).ToString() + " AND " + Temp.ToString();
             }
             if (radioButton_TchGrade.Checked == true)
             {
-                data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, ROW_NUMBER() OVER (ORDER BY nd.MaKhoi) AS RowNum FROM NGUOIDUNG nd JOIN KHOI k on k.MaKhoi = nd.MaKhoi WHERE k.TenKhoi like N'" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN " + (Count + 1).ToString() + " AND " + Temp.ToString();
+                data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, k.TenKhoi, ROW_NUMBER() OVER (ORDER BY nd.MaKhoi) AS RowNum FROM NGUOIDUNG nd JOIN KHOI k on k.MaKhoi = nd.MaKhoi WHERE k.TenKhoi like N'%" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN " + (Count + 1).ToString() + " AND " + Temp.ToString();
             }
             if (radioButton_TchName.Checked == false && radioButton_TchGrade.Checked == false)
             {
@@ -825,11 +825,11 @@ namespace Quan_Ly_Thi.DAO
 
             if (radioButton_TchName.Checked == true)
             {
-                data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, ROW_NUMBER() OVER (ORDER BY nd.MaKhoi) AS RowNum FROM NGUOIDUNG nd JOIN KHOI k on k.MaKhoi = nd.MaKhoi WHERE nd.HoTen like N'" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN " + (Count + 1).ToString() + " AND " + (Count + 10).ToString();
+                data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, k.TenKhoi, ROW_NUMBER() OVER (ORDER BY nd.MaKhoi) AS RowNum FROM NGUOIDUNG nd JOIN KHOI k on k.MaKhoi = nd.MaKhoi WHERE nd.HoTen like N'%" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN " + (Count + 1).ToString() + " AND " + (Count + 10).ToString();
             }
             if (radioButton_TchGrade.Checked == true)
             {
-                data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, ROW_NUMBER() OVER (ORDER BY nd.MaKhoi) AS RowNum FROM NGUOIDUNG nd JOIN KHOI k on k.MaKhoi = nd.MaKhoi WHERE k.TenKhoi like N'" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN " + (Count + 1).ToString() + " AND " + (Count + 10).ToString();
+                data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, k.TenKhoi, ROW_NUMBER() OVER (ORDER BY nd.MaKhoi) AS RowNum FROM NGUOIDUNG nd JOIN KHOI k on k.MaKhoi = nd.MaKhoi WHERE k.TenKhoi like N'%" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN " + (Count + 1).ToString() + " AND " + (Count + 10).ToString();
             }
             if (radioButton_TchName.Checked == false && radioButton_TchGrade.Checked == false)
             {

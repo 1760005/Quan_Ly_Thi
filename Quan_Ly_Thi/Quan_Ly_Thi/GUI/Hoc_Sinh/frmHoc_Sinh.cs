@@ -7,9 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Quan_Ly_Thi.GUI.He_Thong;
 using Quan_Ly_Thi.BUS;
 using Quan_Ly_Thi.DAO;
 using Quan_Ly_Thi.DTO;
+using Quan_Ly_Thi.GUI.Hoc_Sinh.Report_Viewer;
 
 namespace Quan_Ly_Thi.GUI.Hoc_Sinh
 {
@@ -123,6 +125,7 @@ namespace Quan_Ly_Thi.GUI.Hoc_Sinh
             if (_ma_de_thi_ == null || _ma_ky_thi_ == null)
             {
                 frmChon_Bai_Thi.lop = hs.Lop;
+                frmChon_Bai_Thi._tai_khoan_ = hs.Tai_Khoan;
                 frmChon_Bai_Thi chon_Bai_Thi = new frmChon_Bai_Thi();
                 chon_Bai_Thi.ShowDialog();
             }
@@ -430,6 +433,7 @@ namespace Quan_Ly_Thi.GUI.Hoc_Sinh
             if (_ma_de_thi_ == null || _ma_ky_thi_ == null)
             {
                 frmChon_Bai_Thi.lop = hs.Lop;
+                frmChon_Bai_Thi._tai_khoan_ =null;
                 frmChon_Bai_Thi chon_Bai_Thi = new frmChon_Bai_Thi();
                 chon_Bai_Thi.Text = "Chọn Bài Thi Thử";
                 chon_Bai_Thi.ShowDialog();
@@ -635,17 +639,15 @@ namespace Quan_Ly_Thi.GUI.Hoc_Sinh
             kqua.ThoiGianBatDau = Start_time;
             kqua.ThoiGianKetThuc = End_time;
             frmDap_An.DS_Cau_Tra_Loi = DS_Cau_Tra_Loi;
-            if (BUS_Hoc_Sinh.Luu_Ket_Qua(kqua) == true)
+            if (BUS_Hoc_Sinh.Luu_Ket_Qua(kqua) != true)
             {
-                MessageBox.Show("Đã Lưu ^_^", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                frmKetQua.Diem = Diem;
-                frmKetQua frmKetQua1 = new frmKetQua();
-                frmKetQua1.ShowDialog();
+                BUS_Hoc_Sinh.Cap_Nhat_Ket_Qua(kqua, Diem);
             }
-            else
-            {
-                MessageBox.Show("Đã Có Kết Quả Đề Này ^_^", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+               MessageBox.Show("Đã Lưu ^_^", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            frmKetQua.Diem = Diem;
+            frmKetQua frmKetQua1 = new frmKetQua();
+            frmKetQua1.ShowDialog();
 
             btnTrial_submit.Enabled = false;
             btnTrial_Prev.Enabled = false;
@@ -685,6 +687,100 @@ namespace Quan_Ly_Thi.GUI.Hoc_Sinh
         private void btnLog_out_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        //đổi mật khẩu
+        private void btnChange_Password_Click(object sender, EventArgs e)
+        {
+            frmDoi_Mat_Khau.Tai_Khoan = hs.Tai_Khoan;
+            frmDoi_Mat_Khau doi_Mat_Khau = new frmDoi_Mat_Khau();
+            doi_Mat_Khau.ShowDialog();
+        }
+
+        //Ôn Tập
+        private void btnDocument_Click(object sender, EventArgs e)
+        {
+            De_On De = new De_On();
+            De.ShowDialog();
+        }
+
+        // kết quả
+        private void btnResult_Click(object sender, EventArgs e)
+        {
+            controlStudent.TabPages.Clear();
+            controlStudent.TabPages.Add(TabResult);
+          
+            using (var QLTTN = new QLTTNDataContext())
+            {
+                var querry = from q in QLTTN.KETQUATHIs
+                             where q.TaiKhoan == hs.Tai_Khoan
+                             orderby q.MaKyThi
+                             select new
+                             {
+                                 q.CHITIETKYTHI.MaKyThi,
+                                 q.CHITIETKYTHI.KYTHI.TenKyThi,
+                                 q.CHITIETKYTHI.KYTHI.LOAIKYTHI.TenLoaiKyThi,
+                                 q.Diem
+                             };
+
+                double s = 0;
+                int c = 0;
+                int index = 0;
+                var lst = querry.ToList();
+                string t = lst[0].MaKyThi;
+                dt_result.RowCount = lst.Count;
+
+                for (int i = 0; i < lst.Count; i++)
+                {
+                    if (lst[i].MaKyThi == t )
+                    {
+                        s += lst[i].Diem.Value;
+                        c++;
+                    }
+                    else
+                    {
+
+
+                        dt_result.Rows[index].Cells[0].Value = lst[i - 1].MaKyThi;
+                        dt_result.Rows[index].Cells[1].Value = lst[i - 1].TenKyThi;
+                        dt_result.Rows[index].Cells[2].Value = lst[i - 1].TenLoaiKyThi;
+                        dt_result.Rows[index].Cells[3].Value =( s / c);
+
+                        t = lst[i].MaKyThi;
+                        s = lst[i].Diem.Value;
+                        c = 1;
+
+                        index++;
+
+                    }
+
+                    if (i == lst.Count - 1)
+                    {
+                        dt_result.Rows[index].Cells[0].Value = lst[i].MaKyThi;
+                        dt_result.Rows[index].Cells[1].Value = lst[i].TenKyThi;
+                        dt_result.Rows[index].Cells[2].Value = lst[i].TenLoaiKyThi;
+                        dt_result.Rows[index].Cells[3].Value = (s / c);
+
+                    }
+                }
+
+                for (int i = index+1; i < dt_result.Rows.Count; i++)
+                {
+                    dt_result.Rows.RemoveAt(i);
+                }
+            }
+        }
+
+        // chọn kết quả in
+        private void dt_result_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dt_result.CurrentCell.RowIndex;
+
+            PhieuDiem pd = new PhieuDiem();
+            PhieuDiem._ma_ky_thi_ = dt_result.Rows[index].Cells[0].Value.ToString();
+            PhieuDiem.TaiKhoan_ = hs.Tai_Khoan;
+
+            pd.ShowDialog();
         }
     }
 }

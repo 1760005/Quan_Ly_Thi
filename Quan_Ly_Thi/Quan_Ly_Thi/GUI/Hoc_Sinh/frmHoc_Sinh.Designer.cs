@@ -59,11 +59,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rbtn_D = new System.Windows.Forms.RadioButton();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dt_result = new System.Windows.Forms.DataGridView();
             this.TabResult = new System.Windows.Forms.TabPage();
             this.Tab_test_day = new System.Windows.Forms.TabPage();
@@ -103,7 +98,6 @@
             this.btnTrial_test = new System.Windows.Forms.ToolStripMenuItem();
             this.ônTậpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnStart = new System.Windows.Forms.ToolStripMenuItem();
-            this.btn_Reporting = new System.Windows.Forms.ToolStripMenuItem();
             this.kiểmTraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnTest_day = new System.Windows.Forms.ToolStripMenuItem();
             this.btnInformation = new System.Windows.Forms.ToolStripMenuItem();
@@ -117,6 +111,10 @@
             this.Play_pause = new System.Windows.Forms.ImageList(this.components);
             this.Thoi_Gian = new System.Windows.Forms.Timer(this.components);
             this.thoi_gian1 = new System.Windows.Forms.Timer(this.components);
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -509,58 +507,20 @@
             this.imageList1.Images.SetKeyName(0, "Start.png");
             this.imageList1.Images.SetKeyName(1, "pause.png");
             // 
-            // Column8
-            // 
-            this.Column8.DataPropertyName = "Diem";
-            this.Column8.HeaderText = "Điểm";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "NgayGioThi";
-            this.Column7.HeaderText = "Ngày Thi";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column6.DataPropertyName = "TenMonHoc";
-            this.Column6.HeaderText = "Môn Thi";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column5.DataPropertyName = "TenLoaiKyThi";
-            this.Column5.HeaderText = "Loại Kỳ Thi";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column4.DataPropertyName = "TenKyThi";
-            this.Column4.HeaderText = "Tên Kỳ Thi";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
             // dt_result
             // 
             this.dt_result.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dt_result.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column7,
             this.Column4,
             this.Column5,
-            this.Column6,
-            this.Column7,
-            this.Column8});
+            this.Column6});
             this.dt_result.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dt_result.Location = new System.Drawing.Point(3, 3);
             this.dt_result.Name = "dt_result";
             this.dt_result.Size = new System.Drawing.Size(605, 466);
             this.dt_result.TabIndex = 0;
+            this.dt_result.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dt_result_CellDoubleClick);
             // 
             // TabResult
             // 
@@ -1012,14 +972,15 @@
             // 
             this.btnDocument.Image = ((System.Drawing.Image)(resources.GetObject("btnDocument.Image")));
             this.btnDocument.Name = "btnDocument";
-            this.btnDocument.Size = new System.Drawing.Size(131, 26);
+            this.btnDocument.Size = new System.Drawing.Size(180, 26);
             this.btnDocument.Text = "Ôn Tập";
+            this.btnDocument.Click += new System.EventHandler(this.btnDocument_Click);
             // 
             // btnTrial_test
             // 
             this.btnTrial_test.Image = ((System.Drawing.Image)(resources.GetObject("btnTrial_test.Image")));
             this.btnTrial_test.Name = "btnTrial_test";
-            this.btnTrial_test.Size = new System.Drawing.Size(131, 26);
+            this.btnTrial_test.Size = new System.Drawing.Size(180, 26);
             this.btnTrial_test.Text = "Thi Thử";
             this.btnTrial_test.Click += new System.EventHandler(this.btnTrial_test_Click);
             // 
@@ -1039,12 +1000,6 @@
             this.btnStart.Size = new System.Drawing.Size(159, 26);
             this.btnStart.Text = "Bắt Đầu Thi";
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
-            // 
-            // btn_Reporting
-            // 
-            this.btn_Reporting.Name = "btn_Reporting";
-            this.btn_Reporting.Size = new System.Drawing.Size(133, 25);
-            this.btn_Reporting.Text = "Xuất Bảng Điểm";
             // 
             // kiểmTraToolStripMenuItem
             // 
@@ -1086,12 +1041,13 @@
             this.btnResult.Name = "btnResult";
             this.btnResult.Size = new System.Drawing.Size(213, 26);
             this.btnResult.Text = "Kết Quả ";
+            this.btnResult.Click += new System.EventHandler(this.btnResult_Click);
             // 
             // btnExit
             // 
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(180, 26);
+            this.btnExit.Size = new System.Drawing.Size(174, 26);
             this.btnExit.Text = "Thoát";
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
@@ -1099,7 +1055,7 @@
             // 
             this.btnLog_out.Image = ((System.Drawing.Image)(resources.GetObject("btnLog_out.Image")));
             this.btnLog_out.Name = "btnLog_out";
-            this.btnLog_out.Size = new System.Drawing.Size(180, 26);
+            this.btnLog_out.Size = new System.Drawing.Size(174, 26);
             this.btnLog_out.Text = "Đăng Xuất";
             this.btnLog_out.Click += new System.EventHandler(this.btnLog_out_Click);
             // 
@@ -1107,8 +1063,9 @@
             // 
             this.btnChange_Password.Image = ((System.Drawing.Image)(resources.GetObject("btnChange_Password.Image")));
             this.btnChange_Password.Name = "btnChange_Password";
-            this.btnChange_Password.Size = new System.Drawing.Size(180, 26);
+            this.btnChange_Password.Size = new System.Drawing.Size(174, 26);
             this.btnChange_Password.Text = "Đổi Mật Khẩu";
+            this.btnChange_Password.Click += new System.EventHandler(this.btnChange_Password_Click);
             // 
             // hệThốngToolStripMenuItem
             // 
@@ -1127,8 +1084,7 @@
             this.hệThốngToolStripMenuItem,
             this.thôngTinToolStripMenuItem,
             this.kiểmTraToolStripMenuItem,
-            this.ônTậpToolStripMenuItem,
-            this.btn_Reporting});
+            this.ônTậpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(619, 29);
@@ -1149,6 +1105,35 @@
             // thoi_gian1
             // 
             this.thoi_gian1.Tick += new System.EventHandler(this.thoi_gian1_Tick);
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Mã Kỳ Thi";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column4.DataPropertyName = "TenKyThi";
+            this.Column4.HeaderText = "Tên Kỳ Thi";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column5.DataPropertyName = "TenLoaiKyThi";
+            this.Column5.HeaderText = "Loại Kỳ Thi";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "Diem";
+            this.Column6.HeaderText = "Điểm Trung Bình";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
             // 
             // frmHoc_Sinh
             // 
@@ -1220,11 +1205,6 @@
         private System.Windows.Forms.DateTimePicker dpTrial_birth_day;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ImageList imageList1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridView dt_result;
         private System.Windows.Forms.TabPage TabResult;
         private System.Windows.Forms.TabPage Tab_test_day;
@@ -1257,7 +1237,6 @@
         private System.Windows.Forms.ToolStripMenuItem btnTrial_test;
         private System.Windows.Forms.ToolStripMenuItem ônTậpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem btnStart;
-        private System.Windows.Forms.ToolStripMenuItem btn_Reporting;
         private System.Windows.Forms.ToolStripMenuItem kiểmTraToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem btnTest_day;
         private System.Windows.Forms.ToolStripMenuItem btnInformation;
@@ -1279,5 +1258,9 @@
         private System.Windows.Forms.ImageList Play_pause;
         private System.Windows.Forms.Timer Thoi_Gian;
         private System.Windows.Forms.Timer thoi_gian1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
     }
 }

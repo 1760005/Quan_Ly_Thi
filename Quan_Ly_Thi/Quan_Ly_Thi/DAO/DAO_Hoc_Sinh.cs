@@ -26,13 +26,11 @@ namespace Quan_Ly_Thi.DAO
                 List<Lich_Thi> data = new List<Lich_Thi>();
         
                 Querry = null;
-                var Querry1 = from kt in QLTTN.KYTHIs
-                              join l_kt in QLTTN.LOAIKYTHIs on kt.MaLoaiKyThi equals l_kt.MaLoaiKyThi
-                              join ct_kt in QLTTN.CHITIETKYTHIs on kt.MaKyThi equals ct_kt.MaKyThi
-                              join d in QLTTN.DETHIs on ct_kt.MaDeThi equals d.MaDeThi
-                              join mh in QLTTN.MONHOCs on d.MaMonHoc equals mh.MaMonHoc
-                              where d.MaKhoi == ma_Khoi
-                              select new { kt.TenKyThi, l_kt.TenLoaiKyThi, mh.TenMonHoc, ct_kt.ThoiGianBatDau, ct_kt.ThoiGianKetThuc };
+                var Querry1 = from ct_kt in QLTTN.CHITIETKYTHIs
+                              where ct_kt.DETHI.KHOI.MaKhoi == ma_Khoi
+                              select new {ct_kt.KYTHI.TenKyThi,ct_kt.DETHI.MONHOC.TenMonHoc,
+                                  ct_kt.KYTHI.LOAIKYTHI.TenLoaiKyThi,ct_kt.ThoiGianKetThuc,ct_kt.ThoiGianBatDau };
+
                 foreach (var item in Querry1)
                 {
                     Lich_Thi k = new Lich_Thi();
@@ -41,9 +39,23 @@ namespace Quan_Ly_Thi.DAO
                     k.TenMonHoc = item.TenMonHoc;
                     k.ThoiGianKetThuc = item.ThoiGianKetThuc.Value.ToString();
                     k.ThoiGianBatDau = item.ThoiGianBatDau.Value.ToString();
-                    data.Add(k);
+                    bool check = true;
+                    for (int i = 0; i < data.Count; i++)
+                    {
+                        if (k.TenKyThi == data[i].TenKyThi && k.TenLoaiKyThi == data[i].TenLoaiKyThi && k.TenMonHoc == data[i].TenMonHoc && k.ThoiGianKetThuc == data[i].ThoiGianKetThuc && k.ThoiGianBatDau == data[i].ThoiGianBatDau)
+                        {
+                            check = false;
+                            break;
+                        }
+                    }
+                    if (check == true)
+                    {
+                        data.Add(k);
+                    }
+                    check = true;
+
                 }
-                return data;
+                    return data;
             }
         }
 
@@ -97,6 +109,18 @@ namespace Quan_Ly_Thi.DAO
             using (var QLTTN = new QLTTNDataContext())
             {
                 QLTTN.KETQUATHIs.InsertOnSubmit(kqua);
+                QLTTN.SubmitChanges();
+            }
+        }
+
+        public static void Cap_Nhat_Ket_Qua(KETQUATHI kqua, double Diem)
+        {
+            using (var QLTTN = new QLTTNDataContext())
+            {
+                var query = from q in QLTTN.KETQUATHIs
+                            where q.TaiKhoan == kqua.TaiKhoan && q.MaKyThi == kqua.MaKyThi && q.MaDeThi == kqua.MaDeThi
+                            select q;
+                query.First().Diem = Diem;
                 QLTTN.SubmitChanges();
             }
         }

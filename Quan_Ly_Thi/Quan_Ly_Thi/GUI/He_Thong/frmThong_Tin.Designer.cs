@@ -211,6 +211,7 @@
             this.txtPassword.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(148, 103);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '❤';
             this.txtPassword.Size = new System.Drawing.Size(223, 31);
             this.txtPassword.TabIndex = 21;
             // 

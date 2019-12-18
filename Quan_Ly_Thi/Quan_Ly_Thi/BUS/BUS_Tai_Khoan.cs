@@ -98,5 +98,25 @@ namespace Quan_Ly_Thi.BUS
         {
             return DAO_Tai_Khoan.ID_Quyen(Ten_Quyen);
         }
+
+        public static bool Doi_mat_khau(string TaiKhoan, string Mat_Khau, string Mat_khau_moi)
+        {
+            using (var QLTTN = new QLTTNDataContext())
+            {
+                    var Querry = from p in QLTTN.NGUOIDUNGs
+                                 where p.TaiKhoan == TaiKhoan
+                                 select p;
+
+                if (Querry.First().MatKhau == Mat_Khau)
+                {
+                    DAO_Tai_Khoan.Doi_Mat_Khau(TaiKhoan, Mat_khau_moi);
+                    return true;
+                }
+                return false;
+            }
+
+        }
+
+
     }
 }

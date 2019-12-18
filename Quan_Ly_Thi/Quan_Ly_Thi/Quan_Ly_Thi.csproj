@@ -36,10 +36,26 @@
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1400.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1400.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1400.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="SplashScreen, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SplashScreen.Winforms.1.0.0\lib\SplashScreen.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -116,6 +132,12 @@
     <Compile Include="GUI\He_Thong\frmThong_Tin.Designer.cs">
       <DependentUpon>frmThong_Tin.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Hoc_Sinh\frmChonDeOn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Hoc_Sinh\frmChonDeOn.Designer.cs">
+      <DependentUpon>frmChonDeOn.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Hoc_Sinh\frmChon_Bai_Thi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,8 +168,26 @@
     <Compile Include="GUI\Hoc_Sinh\frmThong_Tin.Designer.cs">
       <DependentUpon>frmThong_Tin.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Hoc_Sinh\Report_Viewer\De_On.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Hoc_Sinh\Report_Viewer\De_On.Designer.cs">
+      <DependentUpon>De_On.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Hoc_Sinh\Report_Viewer\PhieuDiem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Hoc_Sinh\Report_Viewer\PhieuDiem.Designer.cs">
+      <DependentUpon>PhieuDiem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuanLyThiTracNghiemDBDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyThiTracNghiemDBDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="GUI\Adminn\frmAdmin.resx">
       <DependentUpon>frmAdmin.cs</DependentUpon>
     </EmbeddedResource>
@@ -166,6 +206,9 @@
     <EmbeddedResource Include="GUI\He_Thong\frmThong_Tin.resx">
       <DependentUpon>frmThong_Tin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Hoc_Sinh\frmChonDeOn.resx">
+      <DependentUpon>frmChonDeOn.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Hoc_Sinh\frmChon_Bai_Thi.resx">
       <DependentUpon>frmChon_Bai_Thi.cs</DependentUpon>
     </EmbeddedResource>
@@ -180,6 +223,14 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Hoc_Sinh\frmThong_Tin.resx">
       <DependentUpon>frmThong_Tin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Hoc_Sinh\Report_Viewer\DeOn.rdlc" />
+    <EmbeddedResource Include="GUI\Hoc_Sinh\Report_Viewer\De_On.resx">
+      <DependentUpon>De_On.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Hoc_Sinh\Report_Viewer\PhieuDiem.rdlc" />
+    <EmbeddedResource Include="GUI\Hoc_Sinh\Report_Viewer\PhieuDiem.resx">
+      <DependentUpon>PhieuDiem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -198,6 +249,15 @@
     <None Include="DAO\QLTTN.dbml.layout">
       <DependentUpon>QLTTN.dbml</DependentUpon>
     </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\Quan_Ly_Thi.DAO.CAUHOI.datasource" />
+    <None Include="Properties\DataSources\Quan_Ly_Thi.DAO.DAO_De_Thi.datasource" />
+    <None Include="Properties\DataSources\Quan_Ly_Thi.DAO.DETHI.datasource" />
+    <None Include="Properties\DataSources\Quan_Ly_Thi.DAO.KETQUATHI.datasource" />
+    <None Include="Properties\DataSources\Quan_Ly_Thi.DAO.KYTHI.datasource" />
+    <None Include="Properties\DataSources\Quan_Ly_Thi.DAO.MONHOC.datasource" />
+    <None Include="Properties\DataSources\Quan_Ly_Thi.DAO.NGUOIDUNG.datasource" />
+    <None Include="Properties\DataSources\Quan_Ly_Thi.DAO.QLTTNDataContext.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -207,12 +267,38 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="QuanLyThiTracNghiemDBDataSet2.xsc">
+      <DependentUpon>QuanLyThiTracNghiemDBDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="QuanLyThiTracNghiemDBDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QuanLyThiTracNghiemDBDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QuanLyThiTracNghiemDBDataSet2.xss">
+      <DependentUpon>QuanLyThiTracNghiemDBDataSet2.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

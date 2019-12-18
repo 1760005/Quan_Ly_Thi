@@ -45,13 +45,11 @@ namespace Quan_Ly_Thi.DAO
             List<string> DS_Ten_KyThi = new List<string>();
             using (var QLTTN = new QLTTNDataContext())
             {
-                var Querry = from kt in QLTTN.KYTHIs
-                             join ct_kt in QLTTN.CHITIETKYTHIs on kt.MaKyThi equals ct_kt.MaKyThi
-                             join D in QLTTN.DETHIs on ct_kt.MaDeThi equals D.MaDeThi
-                             join l in QLTTN.LOAIKYTHIs on kt.MaLoaiKyThi equals l.MaLoaiKyThi
-                             where D.MaKhoi == _ma_khoi_ && l.MaLoaiKyThi == maLoai
+                var Querry = from kthi in  QLTTN.KYTHIs
+                             join ct_kt in QLTTN.CHITIETKYTHIs on kthi.MaKyThi equals ct_kt.MaKyThi
+                             where ct_kt.DETHI.KHOI.MaKhoi == _ma_khoi_ && kthi.LOAIKYTHI.MaLoaiKyThi == maLoai
                              && ct_kt.ThoiGianBatDau <= DateTime.Now && ct_kt.ThoiGianKetThuc >= DateTime.Now
-                             select new { kt.TenKyThi };
+                             select new { kthi.TenKyThi };
                 foreach (var item in Querry )
                 {
                     DS_Ten_KyThi.Add(item.TenKyThi);

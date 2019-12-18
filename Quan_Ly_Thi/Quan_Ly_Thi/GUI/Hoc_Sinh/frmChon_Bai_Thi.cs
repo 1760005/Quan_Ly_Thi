@@ -14,6 +14,7 @@ namespace Quan_Ly_Thi.GUI.Hoc_Sinh
     public partial class frmChon_Bai_Thi : Form
     {
         public static string lop;
+        public static string _tai_khoan_;
 
         public frmChon_Bai_Thi()
         {
@@ -50,9 +51,18 @@ namespace Quan_Ly_Thi.GUI.Hoc_Sinh
         //Chọn Đề
         private void btn_Chon_Click(object sender, EventArgs e)
         {
-            frmHoc_Sinh._ma_de_thi_ = cbb_MaDe.Text;
-            frmHoc_Sinh._ma_ky_thi_ = BUS_De_Thi.Ma_Ky_Thi(cbb_Ky_Thi.Text);
-            this.Close();
+            if (BUS_Hoc_Sinh.Kiem_tra_de(_tai_khoan_, BUS_De_Thi.Ma_Ky_Thi(cbb_Ky_Thi.Text), cbb_MaDe.Text) == false)
+            {
+                MessageBox.Show("Đã Thi Đề Này !_!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                frmHoc_Sinh._ma_de_thi_ = cbb_MaDe.Text;
+                frmHoc_Sinh._ma_ky_thi_ = BUS_De_Thi.Ma_Ky_Thi(cbb_Ky_Thi.Text);
+                this.Close();
+            }
+            
+    
         }
     }
 }

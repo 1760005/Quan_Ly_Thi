@@ -123,6 +123,17 @@ namespace Quan_Ly_Thi.DAO
             }
         }
 
+        public static void Doi_Mat_Khau(string Tai_khoan, string MatKhau_moi)
+        {
+            using (var QLTTN = new QLTTNDataContext())
+            {
+                var Querry = from p in QLTTN.NGUOIDUNGs
+                             where p.TaiKhoan == Tai_khoan
+                             select p;
+                Querry.First().MatKhau = MatKhau_moi;
+                QLTTN.SubmitChanges();
+            }
 
+        }
     }
 }

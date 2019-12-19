@@ -722,7 +722,10 @@ namespace Quan_Ly_Thi.GUI.Hoc_Sinh
                                  q.CHITIETKYTHI.KYTHI.LOAIKYTHI.TenLoaiKyThi,
                                  q.Diem
                              };
-
+                if (querry.Count() == 0)
+                {
+                    return;
+                }
                 double s = 0;
                 int c = 0;
                 int index = 0;

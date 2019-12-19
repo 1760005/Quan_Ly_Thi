@@ -49,7 +49,7 @@ namespace Quan_Ly_Thi.BUS
                 }
                 else
                 {
-                    if (Querry.First().TaiKhoan == taiKhoan && Querry.First().MatKhau == matKhau)
+                    if (Querry.First().TaiKhoan == taiKhoan && Querry.First().MatKhau == BUS_Tai_Khoan.GetHashString( matKhau))
                     {
                         return true;
                     }
@@ -89,9 +89,9 @@ namespace Quan_Ly_Thi.BUS
             return DAO_Tai_Khoan.ID_Lop(Ten_lop);
         }
 
-        public static string ID_Khoi(string Ten_lop)
+        public static string ID_Khoi(string TenKhoi)
         {
-            return DAO_Tai_Khoan.ID_Khoi(Ten_lop);
+            return DAO_Tai_Khoan.ID_Khoi(TenKhoi);
         }
 
         public static string ID_Quyen(string Ten_Quyen)
@@ -107,9 +107,9 @@ namespace Quan_Ly_Thi.BUS
                                  where p.TaiKhoan == TaiKhoan
                                  select p;
 
-                if (Querry.First().MatKhau == Mat_Khau)
+                if (Querry.First().MatKhau == BUS_Tai_Khoan.GetHashString( Mat_Khau))
                 {
-                    DAO_Tai_Khoan.Doi_Mat_Khau(TaiKhoan, Mat_khau_moi);
+                    DAO_Tai_Khoan.Doi_Mat_Khau(TaiKhoan, BUS_Tai_Khoan.GetHashString( Mat_khau_moi));
                     return true;
                 }
                 return false;

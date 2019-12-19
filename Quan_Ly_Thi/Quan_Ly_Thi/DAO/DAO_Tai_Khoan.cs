@@ -101,12 +101,12 @@ namespace Quan_Ly_Thi.DAO
             }
         }
 
-        public static string ID_Khoi(string Ten_lop)
+        public static string ID_Khoi(string TenKhoi)
        {
             using (var QLTTN = new QLTTNDataContext())
             {
-                var Querry = from id in QLTTN.LOPHOCs
-                             where id.TenLop == Ten_lop
+                var Querry = from id in QLTTN.KHOIs
+                             where id.TenKhoi == TenKhoi
                              select new { id.MaKhoi };
                 return Querry.First().MaKhoi;
             }

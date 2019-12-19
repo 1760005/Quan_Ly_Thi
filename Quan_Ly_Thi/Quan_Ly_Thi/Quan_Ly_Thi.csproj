@@ -207,9 +207,6 @@
     <Compile Include="Validator\RegexValidator.cs">
       <SubType>Component</SubType>
     </Compile>
-    <None Include="DAO\QLTTN.dbml.layout">
-      <DependentUpon>QLTTN.dbml</DependentUpon>
-    </None>
     <EmbeddedResource Include="GUI\Adminn\frmAdmin.resx">
       <DependentUpon>frmAdmin.cs</DependentUpon>
     </EmbeddedResource>
@@ -271,6 +268,9 @@
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>QLTTN.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </None>
+    <None Include="DAO\QLTTN.dbml.layout">
+      <DependentUpon>QLTTN.dbml</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Quan_Ly_Thi.DAO.CAUHOI.datasource" />

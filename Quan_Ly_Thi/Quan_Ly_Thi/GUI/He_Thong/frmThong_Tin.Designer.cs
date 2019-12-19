@@ -29,13 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label label5;
             System.Windows.Forms.Label label3;
             System.Windows.Forms.Label label1;
-            System.Windows.Forms.Label label4;
             System.Windows.Forms.Label label2;
             System.Windows.Forms.Label label7;
             System.Windows.Forms.Label label8;
+            System.Windows.Forms.Label label4;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmThong_Tin));
             this.btnSave = new System.Windows.Forms.Button();
             this.dpStudent_birth_date = new System.Windows.Forms.DateTimePicker();
@@ -45,28 +44,17 @@
             this.txtSudent_code = new System.Windows.Forms.TextBox();
             this.txtCMND = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
-            this.cbb_Quyen = new System.Windows.Forms.ComboBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            label5 = new System.Windows.Forms.Label();
+            this.cbb_Quyen = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
-            label4 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
             label8 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label5.ForeColor = System.Drawing.SystemColors.Highlight;
-            label5.Location = new System.Drawing.Point(24, 315);
-            label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(76, 23);
-            label5.TabIndex = 24;
-            label5.Text = "Lớp học:";
             // 
             // label3
             // 
@@ -90,18 +78,6 @@
             label1.Size = new System.Drawing.Size(90, 23);
             label1.TabIndex = 30;
             label1.Text = "Tài Khoản:";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.BackColor = System.Drawing.Color.White;
-            label4.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label4.ForeColor = System.Drawing.SystemColors.Highlight;
-            label4.Location = new System.Drawing.Point(23, 228);
-            label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(65, 23);
-            label4.TabIndex = 29;
-            label4.Text = "CMND:";
             // 
             // label2
             // 
@@ -136,6 +112,18 @@
             label8.Size = new System.Drawing.Size(66, 23);
             label8.TabIndex = 26;
             label8.Text = "Quyền:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = System.Drawing.Color.White;
+            label4.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label4.ForeColor = System.Drawing.SystemColors.Highlight;
+            label4.Location = new System.Drawing.Point(23, 228);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(65, 23);
+            label4.TabIndex = 29;
+            label4.Text = "CMND:";
             // 
             // btnSave
             // 
@@ -218,6 +206,10 @@
             this.txtPassword.Size = new System.Drawing.Size(223, 31);
             this.txtPassword.TabIndex = 21;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // cbb_Quyen
             // 
             this.cbb_Quyen.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -226,10 +218,18 @@
             this.cbb_Quyen.Name = "cbb_Quyen";
             this.cbb_Quyen.Size = new System.Drawing.Size(223, 32);
             this.cbb_Quyen.TabIndex = 33;
+            this.cbb_Quyen.SelectedValueChanged += new System.EventHandler(this.cbb_Quyen_SelectedValueChanged);
             // 
-            // errorProvider1
+            // label5
             // 
-            this.errorProvider1.ContainerControl = this;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Italic);
+            this.label5.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.label5.Location = new System.Drawing.Point(23, 317);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(44, 23);
+            this.label5.TabIndex = 34;
+            this.label5.Text = "Lớp:";
             // 
             // frmThong_Tin
             // 
@@ -238,10 +238,10 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(429, 412);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.cbb_Quyen);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.dpStudent_birth_date);
-            this.Controls.Add(label5);
             this.Controls.Add(label8);
             this.Controls.Add(label3);
             this.Controls.Add(label2);
@@ -267,6 +267,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label label;
         private System.Windows.Forms.DateTimePicker dpStudent_birth_date;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtStudent_class;
@@ -274,7 +275,8 @@
         private System.Windows.Forms.TextBox txtSudent_code;
         private System.Windows.Forms.TextBox txtCMND;
         private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.ComboBox cbb_Quyen;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ComboBox cbb_Quyen;
+        private System.Windows.Forms.Label label5;
     }
 }

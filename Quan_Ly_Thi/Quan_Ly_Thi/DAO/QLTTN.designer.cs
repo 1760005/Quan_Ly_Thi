@@ -78,7 +78,7 @@ namespace Quan_Ly_Thi.DAO
     #endregion
 		
 		public QLTTNDataContext() : 
-				base(global::Quan_Ly_Thi.Properties.Settings.Default.QuanLyThiTracNghiemDBConnectionString3, mappingSource)
+				base(global::Quan_Ly_Thi.Properties.Settings.Default.QuanLyThiTracNghiemDBConnectionString4, mappingSource)
 		{
 			OnCreated();
 		}
@@ -3142,7 +3142,7 @@ namespace Quan_Ly_Thi.DAO
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatKhau", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatKhau", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 		public string MatKhau
 		{
 			get

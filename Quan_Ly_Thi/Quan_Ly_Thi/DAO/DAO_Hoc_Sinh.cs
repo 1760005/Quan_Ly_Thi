@@ -70,6 +70,7 @@ namespace Quan_Ly_Thi.DAO
                 Querry.First().CMND_TCC = hs_new.CMND_TCC;
                 Querry.First().Email = hs_new.Email;
                 Querry.First().NgaySinh = hs_new.Ngay_Sinh;
+                Querry.First().SoDienThoai = hs_new.SDT;
                 Querry.First().MaLop = BUS_Hoc_Sinh.ID_Lop(hs_new.Lop);
                 QLTTN.SubmitChanges();
             }

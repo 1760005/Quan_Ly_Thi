@@ -46,6 +46,7 @@
             this.btnList_Student = new System.Windows.Forms.ToolStripMenuItem();
             this.btnList_Teacher = new System.Windows.Forms.ToolStripMenuItem();
             this.btnResult = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnExit_teacher = new System.Windows.Forms.Button();
             this.ControlAdmin = new System.Windows.Forms.TabControl();
             this.TabList_student = new System.Windows.Forms.TabPage();
@@ -58,7 +59,6 @@
             this.txtCMND_TCC_student = new System.Windows.Forms.TextBox();
             this.Class_CBB = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnDecentra_student = new System.Windows.Forms.Button();
             this.btnUpdate_student = new System.Windows.Forms.Button();
             this.btnAdd_student = new System.Windows.Forms.Button();
             this.btnRemove_student = new System.Windows.Forms.Button();
@@ -84,7 +84,6 @@
             this.Grade_CBB = new System.Windows.Forms.ComboBox();
             this.btnTeacher_Search = new System.Windows.Forms.Button();
             this.maskedTchDOB = new System.Windows.Forms.MaskedTextBox();
-            this.btnDecentra_teacher = new System.Windows.Forms.Button();
             this.btnUpdate_teacher = new System.Windows.Forms.Button();
             this.btnAdd_teacher = new System.Windows.Forms.Button();
             this.btnRemove_teacher = new System.Windows.Forms.Button();
@@ -109,7 +108,6 @@
             this.TabResult = new System.Windows.Forms.TabPage();
             this.dt_Result = new System.Windows.Forms.DataGridView();
             this.bgWorker_Export = new System.ComponentModel.BackgroundWorker();
-            this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.ControlAdmin.SuspendLayout();
             this.TabList_student.SuspendLayout();
@@ -159,7 +157,7 @@
             this.reportToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1175, 29);
+            this.menuStrip1.Size = new System.Drawing.Size(1206, 29);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -265,6 +263,13 @@
             this.btnResult.Text = "Kết Quả";
             this.btnResult.Click += new System.EventHandler(this.btnResult_Click);
             // 
+            // reportToolStripMenuItem
+            // 
+            this.reportToolStripMenuItem.Name = "reportToolStripMenuItem";
+            this.reportToolStripMenuItem.Size = new System.Drawing.Size(69, 25);
+            this.reportToolStripMenuItem.Text = "Report";
+            this.reportToolStripMenuItem.Click += new System.EventHandler(this.reportToolStripMenuItem_Click);
+            // 
             // btnExit_teacher
             // 
             this.btnExit_teacher.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExit_teacher.BackgroundImage")));
@@ -284,7 +289,7 @@
             this.ControlAdmin.Location = new System.Drawing.Point(0, 32);
             this.ControlAdmin.Name = "ControlAdmin";
             this.ControlAdmin.SelectedIndex = 0;
-            this.ControlAdmin.Size = new System.Drawing.Size(1177, 546);
+            this.ControlAdmin.Size = new System.Drawing.Size(1206, 546);
             this.ControlAdmin.TabIndex = 5;
             // 
             // TabList_student
@@ -298,7 +303,6 @@
             this.TabList_student.Controls.Add(this.txtCMND_TCC_student);
             this.TabList_student.Controls.Add(this.Class_CBB);
             this.TabList_student.Controls.Add(this.label5);
-            this.TabList_student.Controls.Add(this.btnDecentra_student);
             this.TabList_student.Controls.Add(this.btnUpdate_student);
             this.TabList_student.Controls.Add(this.btnAdd_student);
             this.TabList_student.Controls.Add(this.btnRemove_student);
@@ -323,7 +327,7 @@
             this.TabList_student.Location = new System.Drawing.Point(4, 25);
             this.TabList_student.Name = "TabList_student";
             this.TabList_student.Padding = new System.Windows.Forms.Padding(3);
-            this.TabList_student.Size = new System.Drawing.Size(1169, 517);
+            this.TabList_student.Size = new System.Drawing.Size(1198, 517);
             this.TabList_student.TabIndex = 0;
             this.TabList_student.Text = "Danh Sách Học Sinh";
             this.TabList_student.UseVisualStyleBackColor = true;
@@ -412,17 +416,6 @@
             this.label5.TabIndex = 79;
             this.label5.Text = "Lớp:";
             // 
-            // btnDecentra_student
-            // 
-            this.btnDecentra_student.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDecentra_student.BackgroundImage")));
-            this.btnDecentra_student.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnDecentra_student.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDecentra_student.Location = new System.Drawing.Point(1069, 456);
-            this.btnDecentra_student.Name = "btnDecentra_student";
-            this.btnDecentra_student.Size = new System.Drawing.Size(60, 50);
-            this.btnDecentra_student.TabIndex = 78;
-            this.btnDecentra_student.UseVisualStyleBackColor = true;
-            // 
             // btnUpdate_student
             // 
             this.btnUpdate_student.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnUpdate_student.BackgroundImage")));
@@ -475,6 +468,7 @@
             this.dt_student.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dt_student.Location = new System.Drawing.Point(15, 76);
             this.dt_student.Name = "dt_student";
+            this.dt_student.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dt_student.Size = new System.Drawing.Size(767, 388);
             this.dt_student.TabIndex = 63;
             this.dt_student.SelectionChanged += new System.EventHandler(this.dt_student_SelectionChanged);
@@ -611,7 +605,6 @@
             this.TabList_teacher.Controls.Add(this.btnTeacher_Search);
             this.TabList_teacher.Controls.Add(this.maskedTchDOB);
             this.TabList_teacher.Controls.Add(this.btnExit_teacher);
-            this.TabList_teacher.Controls.Add(this.btnDecentra_teacher);
             this.TabList_teacher.Controls.Add(this.btnUpdate_teacher);
             this.TabList_teacher.Controls.Add(this.btnAdd_teacher);
             this.TabList_teacher.Controls.Add(this.btnRemove_teacher);
@@ -636,7 +629,7 @@
             this.TabList_teacher.Location = new System.Drawing.Point(4, 25);
             this.TabList_teacher.Name = "TabList_teacher";
             this.TabList_teacher.Padding = new System.Windows.Forms.Padding(3);
-            this.TabList_teacher.Size = new System.Drawing.Size(1169, 517);
+            this.TabList_teacher.Size = new System.Drawing.Size(1198, 517);
             this.TabList_teacher.TabIndex = 1;
             this.TabList_teacher.Text = "Danh Sách Giáo Viên";
             this.TabList_teacher.UseVisualStyleBackColor = true;
@@ -699,17 +692,6 @@
             this.maskedTchDOB.Size = new System.Drawing.Size(206, 22);
             this.maskedTchDOB.TabIndex = 63;
             this.maskedTchDOB.ValidatingType = typeof(System.DateTime);
-            // 
-            // btnDecentra_teacher
-            // 
-            this.btnDecentra_teacher.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDecentra_teacher.BackgroundImage")));
-            this.btnDecentra_teacher.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnDecentra_teacher.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDecentra_teacher.Location = new System.Drawing.Point(1078, 456);
-            this.btnDecentra_teacher.Name = "btnDecentra_teacher";
-            this.btnDecentra_teacher.Size = new System.Drawing.Size(60, 50);
-            this.btnDecentra_teacher.TabIndex = 61;
-            this.btnDecentra_teacher.UseVisualStyleBackColor = true;
             // 
             // btnUpdate_teacher
             // 
@@ -882,6 +864,7 @@
             this.dt_teacher.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dt_teacher.Location = new System.Drawing.Point(4, 78);
             this.dt_teacher.Name = "dt_teacher";
+            this.dt_teacher.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dt_teacher.Size = new System.Drawing.Size(729, 395);
             this.dt_teacher.TabIndex = 45;
             this.dt_teacher.SelectionChanged += new System.EventHandler(this.dt_teacher_SelectionChanged);
@@ -923,7 +906,7 @@
             this.TabResult.Location = new System.Drawing.Point(4, 25);
             this.TabResult.Name = "TabResult";
             this.TabResult.Padding = new System.Windows.Forms.Padding(3);
-            this.TabResult.Size = new System.Drawing.Size(1169, 517);
+            this.TabResult.Size = new System.Drawing.Size(1198, 517);
             this.TabResult.TabIndex = 2;
             this.TabResult.Text = "Kết Quả Thi";
             this.TabResult.UseVisualStyleBackColor = true;
@@ -934,7 +917,7 @@
             this.dt_Result.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dt_Result.Location = new System.Drawing.Point(3, 3);
             this.dt_Result.Name = "dt_Result";
-            this.dt_Result.Size = new System.Drawing.Size(1163, 511);
+            this.dt_Result.Size = new System.Drawing.Size(1192, 511);
             this.dt_Result.TabIndex = 0;
             // 
             // bgWorker_Export
@@ -945,18 +928,11 @@
             this.bgWorker_Export.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgWorker_Export_ProgressChanged);
             this.bgWorker_Export.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorker_Export_RunWorkerCompleted);
             // 
-            // reportToolStripMenuItem
-            // 
-            this.reportToolStripMenuItem.Name = "reportToolStripMenuItem";
-            this.reportToolStripMenuItem.Size = new System.Drawing.Size(69, 25);
-            this.reportToolStripMenuItem.Text = "Report";
-            this.reportToolStripMenuItem.Click += new System.EventHandler(this.reportToolStripMenuItem_Click);
-            // 
             // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1175, 570);
+            this.ClientSize = new System.Drawing.Size(1206, 570);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.ControlAdmin);
             this.Name = "frmAdmin";
@@ -1000,7 +976,6 @@
         private System.Windows.Forms.Button btnExit_teacher;
         private System.Windows.Forms.TabControl ControlAdmin;
         private System.Windows.Forms.TabPage TabList_student;
-        private System.Windows.Forms.Button btnDecentra_student;
         private System.Windows.Forms.Button btnUpdate_student;
         private System.Windows.Forms.Button btnAdd_student;
         private System.Windows.Forms.Button btnRemove_student;
@@ -1022,7 +997,6 @@
         private System.Windows.Forms.TabPage TabList_teacher;
         private System.Windows.Forms.Button btnTeacher_Search;
         private System.Windows.Forms.MaskedTextBox maskedTchDOB;
-        private System.Windows.Forms.Button btnDecentra_teacher;
         private System.Windows.Forms.Button btnUpdate_teacher;
         private System.Windows.Forms.Button btnAdd_teacher;
         private System.Windows.Forms.Button btnRemove_teacher;

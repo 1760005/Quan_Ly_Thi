@@ -101,6 +101,8 @@
       <Column Name="MaKyThi" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="TenKyThi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="MaLoaiKyThi" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ThoiGianBatDau" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ThoiGianKetThuc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="KYTHI_CHITIETKYTHI" Member="CHITIETKYTHIs" ThisKey="MaKyThi" OtherKey="MaKyThi" Type="CHITIETKYTHI" />
       <Association Name="KYTHI_DANHSACHTHISINH" Member="DANHSACHTHISINHs" ThisKey="MaKyThi" OtherKey="MaKyThi" Type="DANHSACHTHISINH" />
       <Association Name="LOAIKYTHI_KYTHI" Member="LOAIKYTHI" ThisKey="MaLoaiKyThi" OtherKey="MaLoaiKyThi" Type="LOAIKYTHI" IsForeignKey="true" />
@@ -140,7 +142,7 @@
   <Table Name="dbo.NGUOIDUNG" Member="NGUOIDUNGs">
     <Type Name="NGUOIDUNG">
       <Column Name="TaiKhoan" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="MatKhau" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MatKhau" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="MaPhanQuyen" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
       <Column Name="MaKhoi" Type="System.String" DbType="Char(10)" CanBeNull="true" />
       <Column Name="MaLop" Type="System.String" DbType="Char(10)" CanBeNull="true" />

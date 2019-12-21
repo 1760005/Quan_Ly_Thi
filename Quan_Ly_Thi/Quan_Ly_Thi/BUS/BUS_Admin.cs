@@ -144,8 +144,12 @@ namespace Quan_Ly_Thi.BUS
             if (Student.Tai_Khoan == Student_User_Account)
             {
                 DAO_Admin.UpdateStudent(Student);
+                MessageBox.Show("Update Success");
             }
-            MessageBox.Show("You Can't Change The Name Account Of User!");
+            else
+            {
+                MessageBox.Show("You Can't Change The Name Account Of User!");
+            }
         }
 
         public static void UpdateTeacher(Giao_Vienn Teacher, string Teacher_User_Account)
@@ -153,6 +157,7 @@ namespace Quan_Ly_Thi.BUS
             if (Teacher.Tai_Khoan == Teacher_User_Account)
             {
                 DAO_Admin.UpdateTeacher(Teacher);
+                MessageBox.Show("Update Success");
             }
             MessageBox.Show("You Can't Change The Name Account Of User!");
         }
@@ -169,6 +174,7 @@ namespace Quan_Ly_Thi.BUS
 
         public static System.Data.DataTable SearchingForStudentWithName(string Information, ConnectionStringSettings conStrSettings, System.Windows.Forms.Label lbPage_student)
         {
+            
             return DAO_Admin.SearchingForStudentWithName(Information, conStrSettings, lbPage_student, ref n, ref Page, ref Count, ref NOP);
         }
 

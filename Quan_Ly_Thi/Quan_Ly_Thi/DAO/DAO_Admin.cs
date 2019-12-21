@@ -21,10 +21,12 @@ namespace Quan_Ly_Thi.DAO
                 DbConnection Connection;
                 DbProviderFactory factory;
                 DbDataAdapter data;
+                
 
                 factory = DbProviderFactories.GetFactory(conStrSettings.ProviderName);
                 Connection = factory.CreateConnection();
                 Connection.ConnectionString = conStrSettings.ConnectionString;
+                Connection.Open();
 
                 data = factory.CreateDataAdapter();
                 data.SelectCommand = factory.CreateCommand();
@@ -41,14 +43,22 @@ namespace Quan_Ly_Thi.DAO
                 DbConnection Connection;
                 DbProviderFactory factory;
                 DbDataAdapter data;
+                
 
                 factory = DbProviderFactories.GetFactory(conStrSettings.ProviderName);
                 Connection = factory.CreateConnection();
                 Connection.ConnectionString = conStrSettings.ConnectionString;
+                Connection.Open();
 
                 data = factory.CreateDataAdapter();
                 data.SelectCommand = factory.CreateCommand();
-                data.SelectCommand.CommandText = @"restore database QuanLyThiTracNghiemDB from disk = '" + Path + "QLTTN.bak' with recovery";
+                data.SelectCommand.CommandText = @"use [master]";
+                data.SelectCommand.Connection = Connection;
+                data.SelectCommand.ExecuteNonQuery();
+
+                data = factory.CreateDataAdapter();
+                data.SelectCommand = factory.CreateCommand();
+                data.SelectCommand.CommandText = @"restore database QuanLyThiTracNghiemDB from disk = '" + Path + "' with replace, stats = 5";
                 data.SelectCommand.Connection = Connection;
                 data.SelectCommand.ExecuteNonQuery();
             }
@@ -328,8 +338,22 @@ namespace Quan_Ly_Thi.DAO
         {
             using (var dataContext = new QLTTNDataContext())
             {
+                var ResultTemp = dataContext.KETQUATHIs.Where(kq => kq.TaiKhoan.Equals(taiKhoan)).Select(kq => kq).ToList();
+                var listStudentTemp = dataContext.DANHSACHTHISINHs.Where(ds => ds.TaiKhoan.Equals(taiKhoan)).Select(ds => ds).ToList();
                 NGUOIDUNG Student = dataContext.NGUOIDUNGs.Where(nd => nd.TaiKhoan.Equals(taiKhoan)).Select(nd => nd).Single();
-
+                KETQUATHI Result = null;
+                DANHSACHTHISINH listStudent = null;
+                if (ResultTemp.Count > 0)
+                {
+                    Result = dataContext.KETQUATHIs.Where(kq => kq.TaiKhoan.Equals(taiKhoan)).Select(kq => kq).Single();
+                    dataContext.KETQUATHIs.DeleteOnSubmit(Result);
+                }
+                if (listStudentTemp.Count > 0)
+                {
+                    listStudent = dataContext.DANHSACHTHISINHs.Where(ds => ds.TaiKhoan.Equals(taiKhoan)).Select(ds => ds).Single();
+                    dataContext.DANHSACHTHISINHs.DeleteOnSubmit(listStudent);
+                }
+                
                 dataContext.NGUOIDUNGs.DeleteOnSubmit(Student);
                 dataContext.SubmitChanges();
             }
@@ -341,24 +365,17 @@ namespace Quan_Ly_Thi.DAO
             {
                 var data = dataContext.NGUOIDUNGs.Where(nd => nd.TaiKhoan.Equals(Student.Tai_Khoan)).Select(nd => nd).Single();
 
-                dataContext.NGUOIDUNGs.DeleteOnSubmit(data);
-                dataContext.SubmitChanges();
+                data.TaiKhoan = Student.Tai_Khoan;
+                data.MatKhau = Student.Mat_Khau;
+                data.MaKhoi = Student.Khoi;
+                data.MaLop = Student.Lop;
+                data.HoTen = Student.Ho_Ten;
+                data.CMND_TCC = Student.CMND_TCC;
+                data.NgaySinh = Student.Ngay_Sinh;
+                data.SoDienThoai = Student.SDT;
+                data.Email = Student.Email;
 
-                NGUOIDUNG newUser = new NGUOIDUNG()
-                {
-                    TaiKhoan = Student.Tai_Khoan,
-                    MatKhau = Student.Mat_Khau,
-                    MaKhoi = Student.Khoi,
-                    MaLop = Student.Lop,
-                    HoTen = Student.Ho_Ten,
-                    CMND_TCC = Student.CMND_TCC,
-                    NgaySinh = Student.Ngay_Sinh,
-                    SoDienThoai = Student.SDT,
-                    Email = Student.Email,
-                    MaPhanQuyen = "HS"
-                };
-
-                dataContext.NGUOIDUNGs.InsertOnSubmit(newUser);
+                
                 dataContext.SubmitChanges();
             }
         }
@@ -369,24 +386,17 @@ namespace Quan_Ly_Thi.DAO
             {
                 var data = dataContext.NGUOIDUNGs.Where(nd => nd.TaiKhoan.Equals(Teacher.Tai_Khoan)).Select(nd => nd).Single();
 
-                dataContext.NGUOIDUNGs.DeleteOnSubmit(data);
-                dataContext.SubmitChanges();
 
-                NGUOIDUNG newUser = new NGUOIDUNG()
-                {
-                    TaiKhoan = Teacher.Tai_Khoan,
-                    MatKhau = Teacher.Mat_Khau,
-                    MaKhoi = Teacher.Khoi,
-                    MaLop = Teacher.Lop,
-                    HoTen = Teacher.Ho_Ten,
-                    CMND_TCC = Teacher.CMND_TCC,
-                    NgaySinh = Teacher.Ngay_Sinh,
-                    SoDienThoai = Teacher.SDT,
-                    Email = Teacher.Email,
-                    MaPhanQuyen = "GV"
-                };
+                data.TaiKhoan = Teacher.Tai_Khoan;
+                data.MatKhau = Teacher.Mat_Khau;
+                data.MaKhoi = Teacher.Khoi;
+                data.MaLop = Teacher.Lop;
+                data.HoTen = Teacher.Ho_Ten;
+                data.CMND_TCC = Teacher.CMND_TCC;
+                data.NgaySinh = Teacher.Ngay_Sinh;
+                data.SoDienThoai = Teacher.SDT;
+                data.Email = Teacher.Email;
 
-                dataContext.NGUOIDUNGs.InsertOnSubmit(newUser);
                 dataContext.SubmitChanges();
             }
         }
@@ -396,13 +406,14 @@ namespace Quan_Ly_Thi.DAO
             List<Classes> listClasses = new List<Classes>();
             using (var data = new QLTTNDataContext())
             {
-                var Data = data.LOPHOCs.Select(lh => lh.TenLop).ToList();
+                var Data = data.LOPHOCs.Select(lh => new { lh.TenLop, lh.MaLop }).ToList();
 
                 foreach (var i in Data)
                 {
                     Classes Class = new Classes()
                     {
-                        ClassName = i
+                        ClassName = i.TenLop,
+                        ClassID = i.MaLop
                     };
 
                     listClasses.Add(Class);
@@ -416,13 +427,14 @@ namespace Quan_Ly_Thi.DAO
             List<Grades> listGrades = new List<Grades>();
             using (var data = new QLTTNDataContext())
             {
-                var Data = data.KHOIs.Select(k => k.TenKhoi).ToList();
+                var Data = data.KHOIs.Select(k => new { k.TenKhoi, k.MaKhoi }).ToList();
 
                 foreach (var i in Data)
                 {
                     Grades Grade = new Grades()
                     {
-                        GradeName = i
+                        GradeName = i.TenKhoi,
+                        GradeID = i.MaKhoi
                     };
 
                     listGrades.Add(Grade);
@@ -505,7 +517,7 @@ namespace Quan_Ly_Thi.DAO
 
             data = factory.CreateDataAdapter();
             data.SelectCommand = factory.CreateCommand();
-            data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, k.TenKhoi ROW_NUMBER() OVER (ORDER BY nd.MaKhoi) AS RowNum FROM NGUOIDUNG nd JOIN KHOI k on k.MaKhoi = nd.MaKhoi WHERE nd.HoTen like N'%" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN 1 AND 10";
+            data.SelectCommand.CommandText = @"SELECT * FROM (SELECT nd.*, k.TenKhoi, ROW_NUMBER() OVER (ORDER BY nd.MaKhoi) AS RowNum FROM NGUOIDUNG nd JOIN KHOI k on k.MaKhoi = nd.MaKhoi WHERE nd.HoTen like N'%" + Information + "%') AS MyDerivedTable WHERE MyDerivedTable.RowNum BETWEEN 1 AND 10";
             data.SelectCommand.Connection = Connection;
             crbuilder = factory.CreateCommandBuilder();
             crbuilder.DataAdapter = data;
@@ -535,7 +547,7 @@ namespace Quan_Ly_Thi.DAO
 
             data = factory.CreateDataAdapter();
             data.SelectCommand = factory.CreateCommand();
-            data.SelectCommand.CommandText = @"select nd.*, lh.TenLop from NGUOIDUNG nd join LOPHOC lh on nd.MaLop = lh.MaLop join LOPHOC lh on lh.MaLop = lh.MaLop where lh.TenLop like N'%" + Information + "%'";
+            data.SelectCommand.CommandText = @"select nd.*, lh.TenLop from NGUOIDUNG nd join LOPHOC lh on nd.MaLop = lh.MaLop where lh.TenLop like N'%" + Information + "%'";
             data.SelectCommand.Connection = Connection;
             var crbuilder = factory.CreateCommandBuilder();
             crbuilder.DataAdapter = data;

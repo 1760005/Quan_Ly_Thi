@@ -55,8 +55,7 @@ namespace Quan_Ly_Thi.Validator
             {
                 checkday = day > 0 && day <= DayOfMonth(month, year);
                 checkmonth = month > 0 && month < 13;
-                checkyear = year > 0;
-
+                checkyear = year > 1800;
                 return checkday && checkmonth && checkyear;
             }
             else

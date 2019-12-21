@@ -8,6 +8,7 @@ namespace Quan_Ly_Thi.DTO
 {
     public class Classes
     {
+        public string ClassID { get; set; }
         public string ClassName { get; set; }
 
         public override string ToString()

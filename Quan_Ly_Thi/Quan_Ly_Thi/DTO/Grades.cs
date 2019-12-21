@@ -8,6 +8,7 @@ namespace Quan_Ly_Thi.DTO
 {
     public class Grades
     {
+        public string GradeID { get; set; }
         public string GradeName { get; set; }
 
         public override string ToString()

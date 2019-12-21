@@ -2306,6 +2306,10 @@ namespace Quan_Ly_Thi.DAO
 		
 		private string _MaLoaiKyThi;
 		
+		private System.Nullable<System.DateTime> _ThoiGianBatDau;
+		
+		private System.Nullable<System.DateTime> _ThoiGianKetThuc;
+		
 		private EntitySet<CHITIETKYTHI> _CHITIETKYTHIs;
 		
 		private EntitySet<DANHSACHTHISINH> _DANHSACHTHISINHs;
@@ -2322,6 +2326,10 @@ namespace Quan_Ly_Thi.DAO
     partial void OnTenKyThiChanged();
     partial void OnMaLoaiKyThiChanging(string value);
     partial void OnMaLoaiKyThiChanged();
+    partial void OnThoiGianBatDauChanging(System.Nullable<System.DateTime> value);
+    partial void OnThoiGianBatDauChanged();
+    partial void OnThoiGianKetThucChanging(System.Nullable<System.DateTime> value);
+    partial void OnThoiGianKetThucChanged();
     #endregion
 		
 		public KYTHI()
@@ -2392,6 +2400,46 @@ namespace Quan_Ly_Thi.DAO
 					this._MaLoaiKyThi = value;
 					this.SendPropertyChanged("MaLoaiKyThi");
 					this.OnMaLoaiKyThiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThoiGianBatDau", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ThoiGianBatDau
+		{
+			get
+			{
+				return this._ThoiGianBatDau;
+			}
+			set
+			{
+				if ((this._ThoiGianBatDau != value))
+				{
+					this.OnThoiGianBatDauChanging(value);
+					this.SendPropertyChanging();
+					this._ThoiGianBatDau = value;
+					this.SendPropertyChanged("ThoiGianBatDau");
+					this.OnThoiGianBatDauChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThoiGianKetThuc", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ThoiGianKetThuc
+		{
+			get
+			{
+				return this._ThoiGianKetThuc;
+			}
+			set
+			{
+				if ((this._ThoiGianKetThuc != value))
+				{
+					this.OnThoiGianKetThucChanging(value);
+					this.SendPropertyChanging();
+					this._ThoiGianKetThuc = value;
+					this.SendPropertyChanged("ThoiGianKetThuc");
+					this.OnThoiGianKetThucChanged();
 				}
 			}
 		}
@@ -3142,7 +3190,7 @@ namespace Quan_Ly_Thi.DAO
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatKhau", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatKhau", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
 		public string MatKhau
 		{
 			get

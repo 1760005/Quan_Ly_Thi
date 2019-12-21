@@ -64,7 +64,6 @@
             this.btnRemove_student = new System.Windows.Forms.Button();
             this.btnStudent_Seach = new System.Windows.Forms.Button();
             this.dt_student = new System.Windows.Forms.DataGridView();
-            this.maskedStdDOB = new System.Windows.Forms.MaskedTextBox();
             this.btnNext_student = new System.Windows.Forms.Button();
             this.btnExit_student = new System.Windows.Forms.Button();
             this.btnPrev_student = new System.Windows.Forms.Button();
@@ -83,7 +82,6 @@
             this.Radiobtn_FullName_teacher = new System.Windows.Forms.RadioButton();
             this.Grade_CBB = new System.Windows.Forms.ComboBox();
             this.btnTeacher_Search = new System.Windows.Forms.Button();
-            this.maskedTchDOB = new System.Windows.Forms.MaskedTextBox();
             this.btnUpdate_teacher = new System.Windows.Forms.Button();
             this.btnAdd_teacher = new System.Windows.Forms.Button();
             this.btnRemove_teacher = new System.Windows.Forms.Button();
@@ -108,6 +106,8 @@
             this.TabResult = new System.Windows.Forms.TabPage();
             this.dt_Result = new System.Windows.Forms.DataGridView();
             this.bgWorker_Export = new System.ComponentModel.BackgroundWorker();
+            this.dtStudent_Picker = new System.Windows.Forms.DateTimePicker();
+            this.dtTeacher_Picker = new System.Windows.Forms.DateTimePicker();
             this.menuStrip1.SuspendLayout();
             this.ControlAdmin.SuspendLayout();
             this.TabList_student.SuspendLayout();
@@ -294,6 +294,7 @@
             // 
             // TabList_student
             // 
+            this.TabList_student.Controls.Add(this.dtStudent_Picker);
             this.TabList_student.Controls.Add(this.btnRefresh_student);
             this.TabList_student.Controls.Add(this.lbStatus);
             this.TabList_student.Controls.Add(this.pgBar);
@@ -308,7 +309,6 @@
             this.TabList_student.Controls.Add(this.btnRemove_student);
             this.TabList_student.Controls.Add(this.btnStudent_Seach);
             this.TabList_student.Controls.Add(this.dt_student);
-            this.TabList_student.Controls.Add(this.maskedStdDOB);
             this.TabList_student.Controls.Add(this.btnNext_student);
             this.TabList_student.Controls.Add(this.btnExit_student);
             this.TabList_student.Controls.Add(this.btnPrev_student);
@@ -473,15 +473,6 @@
             this.dt_student.TabIndex = 63;
             this.dt_student.SelectionChanged += new System.EventHandler(this.dt_student_SelectionChanged);
             // 
-            // maskedStdDOB
-            // 
-            this.maskedStdDOB.Location = new System.Drawing.Point(947, 240);
-            this.maskedStdDOB.Mask = "00/00/0000";
-            this.maskedStdDOB.Name = "maskedStdDOB";
-            this.maskedStdDOB.Size = new System.Drawing.Size(206, 22);
-            this.maskedStdDOB.TabIndex = 73;
-            this.maskedStdDOB.ValidatingType = typeof(System.DateTime);
-            // 
             // btnNext_student
             // 
             this.btnNext_student.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -598,12 +589,12 @@
             // 
             // TabList_teacher
             // 
+            this.TabList_teacher.Controls.Add(this.dtTeacher_Picker);
             this.TabList_teacher.Controls.Add(this.btnRefresh_teacher);
             this.TabList_teacher.Controls.Add(this.Radiobtn_GradeName);
             this.TabList_teacher.Controls.Add(this.Radiobtn_FullName_teacher);
             this.TabList_teacher.Controls.Add(this.Grade_CBB);
             this.TabList_teacher.Controls.Add(this.btnTeacher_Search);
-            this.TabList_teacher.Controls.Add(this.maskedTchDOB);
             this.TabList_teacher.Controls.Add(this.btnExit_teacher);
             this.TabList_teacher.Controls.Add(this.btnUpdate_teacher);
             this.TabList_teacher.Controls.Add(this.btnAdd_teacher);
@@ -683,15 +674,6 @@
             this.btnTeacher_Search.Text = "Tìm Kiếm";
             this.btnTeacher_Search.UseVisualStyleBackColor = true;
             this.btnTeacher_Search.Click += new System.EventHandler(this.btnTeacher_Search_Click);
-            // 
-            // maskedTchDOB
-            // 
-            this.maskedTchDOB.Location = new System.Drawing.Point(932, 236);
-            this.maskedTchDOB.Mask = "00/00/0000";
-            this.maskedTchDOB.Name = "maskedTchDOB";
-            this.maskedTchDOB.Size = new System.Drawing.Size(206, 22);
-            this.maskedTchDOB.TabIndex = 63;
-            this.maskedTchDOB.ValidatingType = typeof(System.DateTime);
             // 
             // btnUpdate_teacher
             // 
@@ -928,6 +910,22 @@
             this.bgWorker_Export.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgWorker_Export_ProgressChanged);
             this.bgWorker_Export.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorker_Export_RunWorkerCompleted);
             // 
+            // dtStudent_Picker
+            // 
+            this.dtStudent_Picker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtStudent_Picker.Location = new System.Drawing.Point(946, 236);
+            this.dtStudent_Picker.Name = "dtStudent_Picker";
+            this.dtStudent_Picker.Size = new System.Drawing.Size(207, 22);
+            this.dtStudent_Picker.TabIndex = 88;
+            // 
+            // dtTeacher_Picker
+            // 
+            this.dtTeacher_Picker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtTeacher_Picker.Location = new System.Drawing.Point(931, 235);
+            this.dtTeacher_Picker.Name = "dtTeacher_Picker";
+            this.dtTeacher_Picker.Size = new System.Drawing.Size(207, 22);
+            this.dtTeacher_Picker.TabIndex = 89;
+            // 
             // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -981,7 +979,6 @@
         private System.Windows.Forms.Button btnRemove_student;
         private System.Windows.Forms.Button btnStudent_Seach;
         private System.Windows.Forms.DataGridView dt_student;
-        private System.Windows.Forms.MaskedTextBox maskedStdDOB;
         private System.Windows.Forms.Button btnNext_student;
         private System.Windows.Forms.Button btnExit_student;
         private System.Windows.Forms.Button btnPrev_student;
@@ -996,7 +993,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TabPage TabList_teacher;
         private System.Windows.Forms.Button btnTeacher_Search;
-        private System.Windows.Forms.MaskedTextBox maskedTchDOB;
         private System.Windows.Forms.Button btnUpdate_teacher;
         private System.Windows.Forms.Button btnAdd_teacher;
         private System.Windows.Forms.Button btnRemove_teacher;
@@ -1035,5 +1031,7 @@
         private System.Windows.Forms.Button btnRefresh_student;
         private System.Windows.Forms.Button btnRefresh_teacher;
         private System.Windows.Forms.ToolStripMenuItem reportToolStripMenuItem;
+        private System.Windows.Forms.DateTimePicker dtStudent_Picker;
+        private System.Windows.Forms.DateTimePicker dtTeacher_Picker;
     }
 }

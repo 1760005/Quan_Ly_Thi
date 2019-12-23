@@ -53,7 +53,7 @@ namespace Quan_Ly_Thi.BUS
                     {
                         return true;
                     }
-                    MessageBox.Show("Sai mật khẩu", "Thông Báo");
+                    MessageBox.Show("Sai Tài Khoản Hoặc Mật Khẩu", "Thông Báo");
                     return false;
                 }
             }

@@ -106,7 +106,7 @@ namespace Quan_Ly_Thi.DAO
             using (var QLTTN = new QLTTNDataContext())
             {
                 var Querry = from id in QLTTN.KHOIs
-                             where id.TenKhoi == TenKhoi
+                             where id.TenKhoi.Contains(TenKhoi)
                              select new { id.MaKhoi };
                 return Querry.First().MaKhoi;
             }

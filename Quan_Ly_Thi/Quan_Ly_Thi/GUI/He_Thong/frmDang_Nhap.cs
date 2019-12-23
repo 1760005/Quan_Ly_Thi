@@ -11,7 +11,6 @@ using System.Windows.Forms;
 using Quan_Ly_Thi.DTO;
 using Quan_Ly_Thi.BUS;
 using Quan_Ly_Thi.GUI.Hoc_Sinh;
-using Quan_Ly_Thi.GUI.Giao_Vien;
 using Quan_Ly_Thi.GUI.Adminn;
 
 namespace Quan_Ly_Thi.GUI.He_Thong
@@ -42,7 +41,6 @@ namespace Quan_Ly_Thi.GUI.He_Thong
                     frmHoc_Sinh.hs = hoc_Sinh;
                     frmHoc_Sinh hs = new frmHoc_Sinh();
                     hs.ShowDialog();
-                   
                 }
                 else if (BUS_Tai_Khoan.Quyen(txtUserName.Text).Contains("AD"))
                 {
@@ -52,7 +50,6 @@ namespace Quan_Ly_Thi.GUI.He_Thong
                     admin.ShowDialog();
 
                 }
-                this.Show();
                 txtPassWord.Clear();
                 txtUserName.Clear();
             }

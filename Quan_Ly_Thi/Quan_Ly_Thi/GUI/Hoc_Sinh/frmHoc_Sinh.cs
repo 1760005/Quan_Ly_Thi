@@ -65,6 +65,7 @@ namespace Quan_Ly_Thi.GUI.Hoc_Sinh
 
         private void btnStart_Click(object sender, EventArgs e)
         {
+
             controlStudent.TabPages.Clear();
             controlStudent.TabPages.Add(TabTest);
             controlStudent.SelectedTab = TabTest;
@@ -76,6 +77,7 @@ namespace Quan_Ly_Thi.GUI.Hoc_Sinh
             //Set all
             _ma_de_thi_ = null;
             _ma_ky_thi_ = null;
+            De = null;
 
             _vi_tri_Cau_hoi_ = 0;
             Dem_Lan_Bam = 0;
@@ -83,6 +85,7 @@ namespace Quan_Ly_Thi.GUI.Hoc_Sinh
             Thoi_gian_lam_bai = 0;
             lb_minute.Text = "00";
             lb_second.Text = ":00";
+            lbSTT_Question.Text = "00/00";
 
             btnStart_Pause.Enabled = true;
             btnNext.Enabled = true;
@@ -179,7 +182,11 @@ namespace Quan_Ly_Thi.GUI.Hoc_Sinh
             Reset_Cau_Tra_Loi();
             _vi_tri_Cau_hoi_--;
 
-            lbSTT_Question.Text = "Câu " + (_vi_tri_Cau_hoi_ + 1).ToString() + " / " + De.De.Count.ToString();
+            if (De.De.Count > 0)
+            {
+                lbSTT_Question.Text = "Câu " + (_vi_tri_Cau_hoi_ + 1).ToString() + " / " + De.De.Count.ToString();
+            }
+               
             Dap_an_Da_Chon(_vi_tri_Cau_hoi_);
             int so_cau = De.De.Count;
             if (_vi_tri_Cau_hoi_ > 0)
@@ -197,17 +204,21 @@ namespace Quan_Ly_Thi.GUI.Hoc_Sinh
         //Xử Lý Câu Hỏi
         private void lbSTT_Question_TextChanged(object sender, EventArgs e)
         {
-            int a = _vi_tri_Cau_hoi_;
-            if (De.De[_vi_tri_Cau_hoi_].noi_dung.Length > 50)
+            if (De != null)
             {
-                De.De[_vi_tri_Cau_hoi_].noi_dung = De.De[_vi_tri_Cau_hoi_].noi_dung.Replace("\n", ""); ;
-                De.De[_vi_tri_Cau_hoi_].noi_dung = De.De[_vi_tri_Cau_hoi_].noi_dung.Insert(De.De[_vi_tri_Cau_hoi_].noi_dung.Length / 2, "\n");
+                int a = _vi_tri_Cau_hoi_;
+                if (De.De[_vi_tri_Cau_hoi_].noi_dung.Length > 50)
+                {
+                    De.De[_vi_tri_Cau_hoi_].noi_dung = De.De[_vi_tri_Cau_hoi_].noi_dung.Replace("\n", ""); ;
+                    De.De[_vi_tri_Cau_hoi_].noi_dung = De.De[_vi_tri_Cau_hoi_].noi_dung.Insert(De.De[_vi_tri_Cau_hoi_].noi_dung.Length / 2, "\n");
+                }
+                lb_Question.Text = De.De[_vi_tri_Cau_hoi_].noi_dung;
+                rbtn_A.Text = De.De[_vi_tri_Cau_hoi_].Cau_A;
+                rbtn_B.Text = De.De[_vi_tri_Cau_hoi_].Cau_B;
+                rbtn_C.Text = De.De[_vi_tri_Cau_hoi_].Cau_C;
+                rbtn_D.Text = De.De[_vi_tri_Cau_hoi_].Cau_D;
             }
-           lb_Question.Text  = De.De[_vi_tri_Cau_hoi_].noi_dung;
-           rbtn_A.Text  = De.De[_vi_tri_Cau_hoi_].Cau_A;
-           rbtn_B.Text = De.De[_vi_tri_Cau_hoi_].Cau_B;
-           rbtn_C.Text = De.De[_vi_tri_Cau_hoi_].Cau_C;
-           rbtn_D.Text = De.De[_vi_tri_Cau_hoi_].Cau_D;
+
         }
 
         //Nộp Bài
@@ -394,6 +405,8 @@ namespace Quan_Ly_Thi.GUI.Hoc_Sinh
         // Thi Thử 
         private void btnTrial_test_Click(object sender, EventArgs e)
         {
+            thoi_gian1.Stop();
+
             controlStudent.TabPages.Clear();
             controlStudent.TabPages.Add(TabTrial_test);
 
@@ -407,6 +420,7 @@ namespace Quan_Ly_Thi.GUI.Hoc_Sinh
             _ma_de_thi_ = null;
             _ma_ky_thi_ = null;
 
+            De = null;
             _vi_tri_Cau_hoi_ = 0;
             Dem_Lan_Bam = 0;
 
@@ -414,6 +428,7 @@ namespace Quan_Ly_Thi.GUI.Hoc_Sinh
             lb_minute.Text = "00";
             lb_second.Text = ":00";
 
+            lbTrial_STT_question.Text = "00/00";
             btnTrial_start_pause.Enabled = true;
             btnTrial_Next.Enabled = true;
 
@@ -425,6 +440,8 @@ namespace Quan_Ly_Thi.GUI.Hoc_Sinh
             reset_Lua_Chon();
 
             lbTrial_Question.Text = "Câu Hỏi";
+
+           
         }
 
         //bắt đầu thi thử
@@ -445,7 +462,12 @@ namespace Quan_Ly_Thi.GUI.Hoc_Sinh
                 De = BUS_De_Thi.Lay_De_Thi_(_ma_de_thi_);
                 Thoi_gian_lam_bai = BUS_De_Thi.Thoi_Gian_Thi(_ma_de_thi_);
                 DS_Cau_Tra_Loi = new List<CauTraLoi>();
-                lbTrial_STT_question.Text = "Câu " + (_vi_tri_Cau_hoi_ + 1).ToString() + " / " + De.De.Count.ToString();
+                if (De.De.Count > 0)
+                {
+                    
+                    lbTrial_STT_question.Text = "Câu " + (_vi_tri_Cau_hoi_ + 1).ToString() + " / " + De.De.Count.ToString();
+                }
+               
                 Dem_Lan_Bam = 1;
 
                 //set up Thoi Gian
@@ -466,16 +488,20 @@ namespace Quan_Ly_Thi.GUI.Hoc_Sinh
         //cập nhật câu hỏi
         private void lbTrial_STT_question_TextChanged(object sender, EventArgs e)
         {
-            if (De.De[_vi_tri_Cau_hoi_].noi_dung.Length > 50)
+            if (De !=null)
             {
-                De.De[_vi_tri_Cau_hoi_].noi_dung = De.De[_vi_tri_Cau_hoi_].noi_dung.Replace("\n", ""); ;
-                De.De[_vi_tri_Cau_hoi_].noi_dung = De.De[_vi_tri_Cau_hoi_].noi_dung.Insert(De.De[_vi_tri_Cau_hoi_].noi_dung.Length / 2, "\n");
+                if (De.De[_vi_tri_Cau_hoi_].noi_dung.Length > 50)
+                {
+                    De.De[_vi_tri_Cau_hoi_].noi_dung = De.De[_vi_tri_Cau_hoi_].noi_dung.Replace("\n", ""); ;
+                    De.De[_vi_tri_Cau_hoi_].noi_dung = De.De[_vi_tri_Cau_hoi_].noi_dung.Insert(De.De[_vi_tri_Cau_hoi_].noi_dung.Length / 2, "\n");
+                }
+                lbTrial_Question.Text = De.De[_vi_tri_Cau_hoi_].noi_dung;
+                rbtnTrial_A.Text = De.De[_vi_tri_Cau_hoi_].Cau_A;
+                rbtnTrial_B.Text = De.De[_vi_tri_Cau_hoi_].Cau_B;
+                rbtnTrial_C.Text = De.De[_vi_tri_Cau_hoi_].Cau_C;
+                rbtnTrial_D.Text = De.De[_vi_tri_Cau_hoi_].Cau_D;
             }
-            lbTrial_Question.Text = De.De[_vi_tri_Cau_hoi_].noi_dung;
-            rbtnTrial_A.Text = De.De[_vi_tri_Cau_hoi_].Cau_A;
-            rbtnTrial_B.Text = De.De[_vi_tri_Cau_hoi_].Cau_B;
-            rbtnTrial_C.Text = De.De[_vi_tri_Cau_hoi_].Cau_C;
-            rbtnTrial_D.Text = De.De[_vi_tri_Cau_hoi_].Cau_D;
+
 
         }
 
@@ -508,8 +534,11 @@ namespace Quan_Ly_Thi.GUI.Hoc_Sinh
             Lua_Chon_TT();
             reset_Lua_Chon();
             _vi_tri_Cau_hoi_--;
+            if (De.De.Count > 0)
+            {
+                lbTrial_STT_question.Text = "Câu " + (_vi_tri_Cau_hoi_ + 1).ToString() + " / " + De.De.Count.ToString();
+            }
 
-            lbTrial_STT_question.Text = "Câu " + (_vi_tri_Cau_hoi_ + 1).ToString() + " / " + De.De.Count.ToString();
             Lua_Chon(_vi_tri_Cau_hoi_);
             int so_cau = De.De.Count;
             if (_vi_tri_Cau_hoi_ > 0)
@@ -686,6 +715,8 @@ namespace Quan_Ly_Thi.GUI.Hoc_Sinh
         //Đăng Xuất 
         private void btnLog_out_Click(object sender, EventArgs e)
         {
+            frmDang_Nhap frm = new frmDang_Nhap();
+            frm.Show();
             this.Close();
         }
 

@@ -112,18 +112,6 @@
     <Compile Include="GUI\Adminn\Models\Decentralization.cs" />
     <Compile Include="GUI\Adminn\Presenters\MainPresent.cs" />
     <Compile Include="GUI\Adminn\Views\IUserReportView.cs" />
-    <Compile Include="GUI\Giao_Vien\frmGiao_Vien.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Giao_Vien\frmGiao_Vien.Designer.cs">
-      <DependentUpon>frmGiao_Vien.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\Giao_Vien\frmThong_Tin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Giao_Vien\frmThong_Tin.Designer.cs">
-      <DependentUpon>frmThong_Tin.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\He_Thong\frmDang_Nhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -214,12 +202,6 @@
       <DependentUpon>frmUserReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Adminn\Reports\ReportUserRevenue.rdlc" />
-    <EmbeddedResource Include="GUI\Giao_Vien\frmGiao_Vien.resx">
-      <DependentUpon>frmGiao_Vien.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Giao_Vien\frmThong_Tin.resx">
-      <DependentUpon>frmThong_Tin.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GUI\He_Thong\frmDang_Nhap.resx">
       <DependentUpon>frmDang_Nhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -324,6 +306,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="GUI\Giao_Vien\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

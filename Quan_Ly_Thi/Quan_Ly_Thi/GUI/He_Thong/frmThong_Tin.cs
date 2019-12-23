@@ -21,8 +21,10 @@ namespace Quan_Ly_Thi.GUI.He_Thong
         public frmThong_Tin()
         {
             InitializeComponent();
-        }
 
+        }
+        RegexValidator UserAccount = new RegexValidator();
+        RegexValidator UserCMND_TCC = new RegexValidator();
         private void frmThong_Tin_Load(object sender, EventArgs e)
         {
             //Quyền
@@ -35,35 +37,24 @@ namespace Quan_Ly_Thi.GUI.He_Thong
             }
             cbb_Quyen.SelectedIndex = 0;
 
+
+            UserAccount = new RegexValidator();
+            UserAccount.ControlToValidate = txtSudent_code;
+            UserAccount.ErrorMessage = "Account Name Incorrect, Correct Form: TK000001";
+            UserAccount.Pattern = @"^[A-X][A-Z0-9]{0,9}$";
+
+            UserCMND_TCC = new RegexValidator();
+            UserCMND_TCC.ControlToValidate = txtCMND;
+            UserCMND_TCC.ErrorMessage = "CMND Incorrect, Correct Form: 123456789";
+            UserCMND_TCC.Pattern = @"^[0-9]{10,15}$";
+
             
-            //var UserAccount = new RegexValidator();
-            //UserAccount.ControlToValidate = txtSudent_code;
-            //loi = UserAccount.ErrorMessage = "Account Name Incorrect, Correct Form: TK000001";
-            //UserAccount.Pattern = @"^[a-z][a-zA-Z0-9\s]{0,60}$";
-
-            //var UserPass = new RegexValidator();
-            //UserPass.ControlToValidate = txtPassword;
-            //loi = UserPass.ErrorMessage = "Password Incorrect, Correct Form: abc123";
-            //UserPass.Pattern = @"^[a-z][a-zA-Z0-9\s]{0,60}$";
-
-            //var UserName = new RegexValidator();
-            //UserName.ControlToValidate = txtStudent_Name;
-            //loi = UserName.ErrorMessage = "User Name Incorrect, Correct Form: Nguyen Van A";
-            //UserName.Pattern = @"^[a-z][a-zA-Z0-9\s]{0,60}$";
-
-            //var UserCMND_TCC = new RegexValidator();
-            //UserCMND_TCC.ControlToValidate = txtCMND;
-            //loi = UserCMND_TCC.ErrorMessage = "PhoneNumber Incorrect, Correct Form: 123456789";
-            //UserCMND_TCC.Pattern = @"^[0-9]{10,15}$";
-
-            //var UserClass = new RegexValidator();
-            //UserClass.ControlToValidate = txtStudent_class;
-            //loi = UserClass.ErrorMessage = "Class Incorrect, Correct Form: 10C1 or 11B2 or 12A3";
-            //UserClass.Pattern = @"^[a-z][a-zA-Z0-9\s]{0,60}$";
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            loi = UserAccount.ErrorMessage;
+            loi = UserCMND_TCC.ErrorMessage;
             if (loi == "")
             {
                 NGUOIDUNG nguoi_dung = new NGUOIDUNG();
@@ -113,6 +104,16 @@ namespace Quan_Ly_Thi.GUI.He_Thong
 
         private void cbb_Quyen_SelectedValueChanged(object sender, EventArgs e)
         {
+            UserAccount = new RegexValidator();
+            UserAccount.ControlToValidate = txtSudent_code;
+            UserAccount.ErrorMessage = "Account Name Incorrect, Correct Form: TK000001";
+            UserAccount.Pattern = @"^[A-X][A-Z0-9]{0,9}$";
+
+            UserCMND_TCC = new RegexValidator();
+            UserCMND_TCC.ControlToValidate = txtCMND;
+            UserCMND_TCC.ErrorMessage = "CMND Incorrect, Correct Form: 123456789";
+            UserCMND_TCC.Pattern = @"^[0-9]{10,15}$";
+
             string text = "";
             txtStudent_class.Visible = true;
             txtStudent_class.AutoCompleteCustomSource.Clear();

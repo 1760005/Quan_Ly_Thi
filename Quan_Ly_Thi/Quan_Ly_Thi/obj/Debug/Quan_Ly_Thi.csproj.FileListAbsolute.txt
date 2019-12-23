@@ -63,8 +63,6 @@ C:\Users\T_A\Desktop\Quan_Ly_Thi - Copy\Quan_Ly_Thi\Quan_Ly_Thi\bin\Debug\zh-CHT
 C:\Users\T_A\Desktop\Quan_Ly_Thi - Copy\Quan_Ly_Thi\Quan_Ly_Thi\obj\Debug\Quan_Ly_Thi.csprojAssemblyReference.cache
 C:\Users\T_A\Desktop\Quan_Ly_Thi - Copy\Quan_Ly_Thi\Quan_Ly_Thi\obj\Debug\Quan_Ly_Thi.GUI.Adminn.frmAdmin.resources
 C:\Users\T_A\Desktop\Quan_Ly_Thi - Copy\Quan_Ly_Thi\Quan_Ly_Thi\obj\Debug\Quan_Ly_Thi.GUI.Adminn.frmUserReport.resources
-C:\Users\T_A\Desktop\Quan_Ly_Thi - Copy\Quan_Ly_Thi\Quan_Ly_Thi\obj\Debug\Quan_Ly_Thi.GUI.Giao_Vien.frmGiao_Vien.resources
-C:\Users\T_A\Desktop\Quan_Ly_Thi - Copy\Quan_Ly_Thi\Quan_Ly_Thi\obj\Debug\Quan_Ly_Thi.GUI.Giao_Vien.frmThong_Tin.resources
 C:\Users\T_A\Desktop\Quan_Ly_Thi - Copy\Quan_Ly_Thi\Quan_Ly_Thi\obj\Debug\Quan_Ly_Thi.GUI.He_Thong.frmDang_Nhap.resources
 C:\Users\T_A\Desktop\Quan_Ly_Thi - Copy\Quan_Ly_Thi\Quan_Ly_Thi\obj\Debug\Quan_Ly_Thi.GUI.He_Thong.frmDoi_Mat_Khau.resources
 C:\Users\T_A\Desktop\Quan_Ly_Thi - Copy\Quan_Ly_Thi\Quan_Ly_Thi\obj\Debug\Quan_Ly_Thi.GUI.He_Thong.frmThong_Tin.resources

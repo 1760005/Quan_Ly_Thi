@@ -38,31 +38,42 @@ namespace Quan_Ly_Thi.GUI.Adminn
                 {
                     BUS_Admin.ImportStudent(Path, dt_student);
                 }
-                else
+                else if (ControlAdmin.TabPages[ControlAdmin.SelectedIndex] == TabList_teacher)
                 {
                     BUS_Admin.ImportTeacher(Path, dt_teacher);
+                }
+                else
+                {
+                    return;
                 }
             }
         }
 
         private void btnList_Student_Click(object sender, EventArgs e)
         {
+            dt_student.DataSource = null;
+            dt_student.Columns.Clear();
             ControlAdmin.TabPages.Clear();
             ControlAdmin.TabPages.Add(TabList_student);
-            
+
             BUS_Admin.GetListOfStudent(dt_student, conStrSettings, lbPage_student);
         }
 
         private void btnList_Teacher_Click(object sender, EventArgs e)
         {
+            dt_teacher.DataSource = null;
+            dt_teacher.Columns.Clear();
             ControlAdmin.TabPages.Clear();
             ControlAdmin.TabPages.Add(TabList_teacher);
-            
+
             BUS_Admin.GetListOfTeacher(dt_teacher, conStrSettings, lbPage_teacher);
         }
 
         private void btnResult_Click(object sender, EventArgs e)
         {
+
+            dt_Result.DataSource = null;
+            dt_Result.Columns.Clear();
             ControlAdmin.TabPages.Clear();
             ControlAdmin.TabPages.Add(TabResult);
             dt_Result.DataSource = BUS_Admin.GetExaminationResult();
@@ -70,50 +81,48 @@ namespace Quan_Ly_Thi.GUI.Adminn
 
         private void btnAdd_student_Click(object sender, EventArgs e)
         {
-            Hoc_Sinhh Student = new Hoc_Sinhh()
+            if (ValidateChildren(ValidationConstraints.Enabled))
             {
-                Ho_Ten = txtFull_name_student.Text,
-                Tai_Khoan = txtUser_name_student.Text,
-                Mat_Khau = txtUser_name_student.Text,
-                CMND_TCC = txtCMND_TCC_student.Text,
-                Lop = listClasses[Class_CBB.SelectedIndex].ClassID,
-                Khoi = null,
-                Email = txtMail_student.Text,
-                SDT = txtSDT_student.Text,
-                Ngay_Sinh = DateTime.Parse(maskedStdDOB.Text)
-            };
-            if (txtFull_name_student.Text == null || txtUser_name_student.Text == null || txtCMND_TCC_student.Text == null || txtMail_student.Text == null || maskedStdDOB.Text == null)
-            {
-                MessageBox.Show("Add Student Failed!");
-                return;
+                Hoc_Sinhh Student = new Hoc_Sinhh()
+                {
+                    Ho_Ten = txtFull_name_student.Text,
+                    Tai_Khoan = txtUser_name_student.Text,
+                    Mat_Khau = txtUser_name_student.Text,
+                    CMND_TCC = txtCMND_TCC_student.Text,
+                    Lop = listClasses[Class_CBB.SelectedIndex].ClassID,
+                    Khoi = null,
+                    Email = txtMail_student.Text,
+                    SDT = txtSDT_student.Text,
+                    Ngay_Sinh = DateTime.Parse(dtStudent_Picker.Value.ToString())
+                };
+                BUS_Admin.InsertStudent(Student);
+                MessageBox.Show("Add Student Success!");
             }
-            BUS_Admin.InsertStudent(Student);
-            MessageBox.Show("Add Student Success!");
+            MessageBox.Show("Add Student Failed!");
+            return;
         }
 
         private void btnAdd_teacher_Click(object sender, EventArgs e)
         {
-            Giao_Vienn Teacher = new Giao_Vienn()
+            if (ValidateChildren(ValidationConstraints.Enabled))
             {
-                Ho_Ten = txtFull_name_teacher.Text,
-                Tai_Khoan = txtUserName_teacher.Text,
-                Mat_Khau = txtUserName_teacher.Text,
-                CMND_TCC = txtCMND_TCC_teacher.Text,
-                Khoi = listGrades[Grade_CBB.SelectedIndex].GradeID,
-                Lop = null,
-                Email = txtMail_teacher.Text,
-                SDT = txtSDT_teacher.Text,
-                Ngay_Sinh = DateTime.Parse(maskedTchDOB.Text)
-            };
-
-            if (txtFull_name_teacher.Text == null || txtUserName_teacher.Text == null || txtCMND_TCC_teacher.Text == null || txtMail_teacher.Text == null || maskedTchDOB.Text == null)
-            {
-                MessageBox.Show("Add Teacher Failed!");
-                return;
+                Giao_Vienn Teacher = new Giao_Vienn()
+                {
+                    Ho_Ten = txtFull_name_teacher.Text,
+                    Tai_Khoan = txtUserName_teacher.Text,
+                    Mat_Khau = txtUserName_teacher.Text,
+                    CMND_TCC = txtCMND_TCC_teacher.Text,
+                    Khoi = listGrades[Grade_CBB.SelectedIndex].GradeID,
+                    Lop = null,
+                    Email = txtMail_teacher.Text,
+                    SDT = txtSDT_teacher.Text,
+                    Ngay_Sinh = DateTime.Parse(dtTeacher_Picker.Value.ToString())
+                };
+                BUS_Admin.InsertTeacher(Teacher);
+                MessageBox.Show("Add Teacher Success!");
             }
-
-            BUS_Admin.InsertTeacher(Teacher);
-            MessageBox.Show("Add Teacher Success!");
+            MessageBox.Show("Add Teacher Failed!");
+            return;
         }
 
         private void btnRemove_student_Click(object sender, EventArgs e)
@@ -142,8 +151,6 @@ namespace Quan_Ly_Thi.GUI.Adminn
             MessageBox.Show("Back up Success");
         }
 
-        //System.Data.DataTable StdTable, TchTable;
-
         private void btnRestore_Click(object sender, EventArgs e)
         {
             OpenFileDialog folder = new OpenFileDialog();
@@ -160,10 +167,9 @@ namespace Quan_Ly_Thi.GUI.Adminn
         {
             InitializeComponent();
             ControlAdmin.TabPages.Clear();
-            //AdminUser = Admin;
 
             Text = ConfigurationManager.AppSettings["title"];
-            conStrSettings = ConfigurationManager.ConnectionStrings["Quan_Ly_Thi.Properties.Settings.QuanLyThiTracNghiemDBConnectionString4"];
+            conStrSettings = ConfigurationManager.ConnectionStrings["Quan_Ly_Thi.Properties.Settings.QuanLyThiTracNghiemDBConnectionString2"];
         }
 
         private void btnUpdate_student_Click(object sender, EventArgs e)
@@ -178,7 +184,7 @@ namespace Quan_Ly_Thi.GUI.Adminn
                 Khoi = null,
                 Email = txtMail_student.Text,
                 SDT = txtSDT_student.Text,
-                Ngay_Sinh = DateTime.Parse(maskedStdDOB.Text)
+                Ngay_Sinh = DateTime.Parse(dtStudent_Picker.Value.ToString())
             };
 
             BUS_Admin.UpdateStudent(Student, Student_User_Account);
@@ -192,28 +198,15 @@ namespace Quan_Ly_Thi.GUI.Adminn
                 DataGridViewRow row = dt_student.SelectedRows[0];
                 Student_User_Account = row.Cells[0].Value.ToString();
                 txtUser_name_student.Text = row.Cells[0].Value.ToString();
-                txtCMND_TCC_student.Text = row.Cells[6].Value.ToString();
-                txtFull_name_student.Text = row.Cells[5].Value.ToString();
-                txtMail_student.Text = row.Cells[9].Value.ToString();
-                txtSDT_student.Text = row.Cells[8].Value.ToString();
-                maskedStdDOB.Text = row.Cells[7].Value.ToString();
-                Class_CBB.Text = row.Cells[10].Value.ToString();
+                txtCMND_TCC_student.Text = row.Cells[5].Value.ToString();
+                txtFull_name_student.Text = row.Cells[4].Value.ToString();
+                txtMail_student.Text = row.Cells[8].Value.ToString();
+                txtSDT_student.Text = row.Cells[7].Value.ToString();
+                dtStudent_Picker.Value = DateTime.Parse(row.Cells[6].Value.ToString());
+                Class_CBB.Text = BUS_Admin.findClassByID(row.Cells[3].Value.ToString());
             }
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
         private void frmAdmin_Load(object sender, EventArgs e)
         {
             listClasses = BUS_Admin.LoadClasses();
@@ -223,41 +216,41 @@ namespace Quan_Ly_Thi.GUI.Adminn
 
             RegexValidator SearchInfomation_Student = new RegexValidator();
             SearchInfomation_Student.ControlToValidate = txtSearch_student;
-            SearchInfomation_Student.ErrorMessage = "Infomation Incorrect, Correct Form: TK000001 or Nguyen Van A";
-            SearchInfomation_Student.Pattern = @"^{1,60}$";
+            SearchInfomation_Student.ErrorMessage = "Infomation Incorrect, Correct Form: Lop 10A or Nguyen Van A";
+            SearchInfomation_Student.Pattern = @"^[0-9A-Za-z][A-Za-z0-9\s]{1,60}$";
 
             RegexValidator SearchInfomation_Teacher = new RegexValidator();
             SearchInfomation_Teacher.ControlToValidate = txtSearch_teacher;
-            SearchInfomation_Teacher.ErrorMessage = "Infomation Incorrect, Correct Form: TK000001 or Nguyen Van A";
-            SearchInfomation_Teacher.Pattern = @"^{1,60}$";
+            SearchInfomation_Teacher.ErrorMessage = "Infomation Incorrect, Correct Form: Khoi 10 or Nguyen Van A";
+            SearchInfomation_Teacher.Pattern = @"^[0-9A-Za-z][A-Za-z0-9\s]{1,60}$";
 
             RegexValidator TeacherUserName = new RegexValidator();
             TeacherUserName.ControlToValidate = txtUserName_teacher;
             TeacherUserName.ErrorMessage = "Teacher Account Incorrect, Correct Form: TK000001";
-            TeacherUserName.Pattern = @"^[A-Z][A-Z0-9]{0,9}$";
+            TeacherUserName.Pattern = @"^[A-Z][A-Z0-9]{8,9}$";
 
             RegexValidator StudentUserName = new RegexValidator();
             StudentUserName.ControlToValidate = txtUser_name_student;
             StudentUserName.ErrorMessage = "Student Account Incorrect, Correct Form: TK000001";
-            StudentUserName.Pattern = @"^[A-X][A-Z0-9]{0,9}$";
+            StudentUserName.Pattern = @"^[A-Z][A-Z0-9]{8,9}$";
 
-            /*RegexValidator TeacherName = new RegexValidator();
+            RegexValidator TeacherName = new RegexValidator();
             TeacherName.ControlToValidate = txtFull_name_teacher;
             TeacherName.ErrorMessage = "Teacher Name Incorrect, Correct Form: Nguyen Van A";
-            TeacherName.Pattern = @"^[A-Z][^0-9]{1,60}$";
+            TeacherName.Pattern = @"^[A-Z][A-Za-z\s]{1,60}$";
 
             RegexValidator StudentName = new RegexValidator();
             StudentName.ControlToValidate = txtFull_name_student;
             StudentName.ErrorMessage = "Student Name Incorrect, Correct Form: Nguyen Van A";
-            StudentName.Pattern = @"^[A-Z][^0-9]{1,60}$";*/
+            StudentName.Pattern = @"^[A-Z][A-Za-z\s]{1,60}$";
 
             DateValidator StudentDOB = new DateValidator();
-            StudentDOB.ControlToValidate = maskedStdDOB;
-            StudentDOB.ErrorMessage = "Date Incorrect, Correct Form: 01/01/1999";
+            StudentDOB.ControlToValidate = dtStudent_Picker;
+            StudentDOB.ErrorMessage = "Date Incorrect, Correct Form: 01/01/1753";
 
             DateValidator TeacherDOB = new DateValidator();
-            TeacherDOB.ControlToValidate = maskedTchDOB;
-            TeacherDOB.ErrorMessage = "Date Incorrect, Correct Form: 01/01/1999";
+            TeacherDOB.ControlToValidate = dtTeacher_Picker;
+            TeacherDOB.ErrorMessage = "Date Incorrect, Correct Form: 01/01/1753";
 
             RegexValidator StudentEmail = new RegexValidator();
             StudentEmail.ControlToValidate = txtMail_student;
@@ -277,7 +270,7 @@ namespace Quan_Ly_Thi.GUI.Adminn
             RegexValidator TeacherPhoneNumber = new RegexValidator();
             TeacherPhoneNumber.ControlToValidate = txtSDT_teacher;
             TeacherPhoneNumber.ErrorMessage = "PhoneNumber Incorrect, Correct Form: 0944686099";
-            TeacherPhoneNumber.Pattern = @"^[0-9]{9,15}$";
+            TeacherPhoneNumber.Pattern = @"^[0-9]{10,15}$";
 
             RegexValidator StudentCMND_TCC = new RegexValidator();
             StudentCMND_TCC.ControlToValidate = txtCMND_TCC_student;
@@ -303,7 +296,7 @@ namespace Quan_Ly_Thi.GUI.Adminn
                 Khoi = listGrades[Grade_CBB.SelectedIndex].GradeID,
                 Email = txtMail_teacher.Text,
                 SDT = txtSDT_teacher.Text,
-                Ngay_Sinh = DateTime.Parse(maskedTchDOB.Text)
+                Ngay_Sinh = DateTime.Parse(dtTeacher_Picker.Value.ToString())
             };
 
             BUS_Admin.UpdateTeacher(Teacher, Teacher_User_Account);
@@ -311,11 +304,6 @@ namespace Quan_Ly_Thi.GUI.Adminn
 
         private void btnStudent_Seach_Click(object sender, EventArgs e)
         {
-            if (txtSearch_student.Text.ToString().StartsWith("0") || txtSearch_student.Text.ToString().StartsWith("1") || txtSearch_student.Text.ToString().StartsWith("2") || txtSearch_student.Text.ToString().StartsWith("3") || txtSearch_student.Text.ToString().StartsWith("4") || txtSearch_student.Text.ToString().StartsWith("5") || txtSearch_student.Text.ToString().StartsWith("6") || txtSearch_student.Text.ToString().StartsWith("7") || txtSearch_student.Text.ToString().StartsWith("8") || txtSearch_student.Text.ToString().StartsWith("9"))
-            {
-                MessageBox.Show("InCorrect Form");
-                return;
-            }
             if (Radiobtn_FullName_student.Checked == false && Radiobtn_ClassName.Checked == false)
             {
                 return;
@@ -332,11 +320,6 @@ namespace Quan_Ly_Thi.GUI.Adminn
 
         private void btnTeacher_Search_Click(object sender, EventArgs e)
         {
-            if (txtSearch_teacher.Text.ToString().StartsWith("0") || txtSearch_teacher.Text.ToString().StartsWith("1") || txtSearch_teacher.Text.ToString().StartsWith("2") || txtSearch_teacher.Text.ToString().StartsWith("3") || txtSearch_teacher.Text.ToString().StartsWith("4") || txtSearch_teacher.Text.ToString().StartsWith("5") || txtSearch_teacher.Text.ToString().StartsWith("6") || txtSearch_teacher.Text.ToString().StartsWith("7") || txtSearch_teacher.Text.ToString().StartsWith("8") || txtSearch_teacher.Text.ToString().StartsWith("9"))
-            {
-                MessageBox.Show("InCorrect Form");
-                return;
-            }
             if (Radiobtn_FullName_teacher.Checked == false && Radiobtn_GradeName.Checked == false)
             {
                 return;
@@ -379,12 +362,12 @@ namespace Quan_Ly_Thi.GUI.Adminn
                 DataGridViewRow row = dt_teacher.SelectedRows[0];
                 Teacher_User_Account = row.Cells[0].Value.ToString();
                 txtUserName_teacher.Text = row.Cells[0].Value.ToString();
-                txtCMND_TCC_teacher.Text = row.Cells[6].Value.ToString();
-                txtFull_name_teacher.Text = row.Cells[5].Value.ToString();
-                txtMail_teacher.Text = row.Cells[9].Value.ToString();
-                txtSDT_teacher.Text = row.Cells[8].Value.ToString();
-                maskedTchDOB.Text = row.Cells[7].Value.ToString();
-                Grade_CBB.Text = row.Cells[10].Value.ToString();
+                txtCMND_TCC_teacher.Text = row.Cells[5].Value.ToString();
+                txtFull_name_teacher.Text = row.Cells[4].Value.ToString();
+                txtMail_teacher.Text = row.Cells[8].Value.ToString();
+                txtSDT_teacher.Text = row.Cells[7].Value.ToString();
+                dtTeacher_Picker.Value = DateTime.Parse(row.Cells[6].Value.ToString());
+                Grade_CBB.Text = BUS_Admin.findGradeByID(row.Cells[2].Value.ToString());
             }
         }
 
@@ -428,7 +411,6 @@ namespace Quan_Ly_Thi.GUI.Adminn
             txtMail_student.Text = "";
             txtSDT_student.Text = "";
             txtUser_name_student.Text = "";
-            maskedStdDOB.Text = "";
             btnAdd_student.Visible = true;
         }
 
@@ -439,7 +421,6 @@ namespace Quan_Ly_Thi.GUI.Adminn
             txtMail_teacher.Text = "";
             txtSDT_teacher.Text = "";
             txtUserName_teacher.Text = "";
-            maskedTchDOB.Text = "";
             btnAdd_teacher.Visible = true;
         }
 

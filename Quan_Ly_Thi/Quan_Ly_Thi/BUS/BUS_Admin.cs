@@ -70,6 +70,7 @@ namespace Quan_Ly_Thi.BUS
                 xlWorkSheet = xlWorkBook.Worksheets["Sheet1"];
                 xlRange = xlWorkSheet.UsedRange;
 
+                gridView.DataSource = null;
                 gridView.ColumnCount = xlRange.Columns.Count;
                 int n = 0;
                 for (int i = 1; i < gridView.ColumnCount; i++)
@@ -78,10 +79,9 @@ namespace Quan_Ly_Thi.BUS
                     n++;
                 }
 
-                for (int i = 2; i < xlRange.Rows.Count; i++)
+                for (int i = 2; i <= xlRange.Rows.Count; i++)
                 {
-                    gridView.Rows.Add(xlRange.Cells[i, 1].Text, xlRange.Cells[i, 2].Text, xlRange.Cells[i, 3].Text, xlRange.Cells[i, 4].Text, xlRange.Cells[i, 5].Text, xlRange.Cells[i, 6].Text, xlRange.Cells[i, 7].Text, xlRange.Cells[i, 8].Text);
-
+                    gridView.Rows.Add(xlRange.Cells[i, 1].Text, xlRange.Cells[i, 2].Text, xlRange.Cells[i, 3].Text, xlRange.Cells[i, 4].Text, xlRange.Cells[i, 5].Text, xlRange.Cells[i, 6].Text, xlRange.Cells[i, 7].Text, xlRange.Cells[i, 8].Text, xlRange.Cells[i, 9]);
                     DAO_Admin.InsertStudentWithExcel(xlRange, i);
                 }
 
@@ -104,6 +104,7 @@ namespace Quan_Ly_Thi.BUS
                 xlWorkSheet = xlWorkBook.Worksheets["Sheet1"];
                 xlRange = xlWorkSheet.UsedRange;
 
+                gridView.DataSource = null;
                 gridView.ColumnCount = xlRange.Columns.Count;
                 int n = 0;
                 for (int i = 1; i < gridView.ColumnCount; i++)
@@ -112,10 +113,9 @@ namespace Quan_Ly_Thi.BUS
                     n++;
                 }
 
-                for (int i = 2; i < xlRange.Rows.Count; i++)
+                for (int i = 2; i <= xlRange.Rows.Count; i++)
                 {
-                    gridView.Rows.Add(xlRange.Cells[i, 1].Text, xlRange.Cells[i, 2].Text, xlRange.Cells[i, 3].Text, xlRange.Cells[i, 4].Text, xlRange.Cells[i, 5].Text, xlRange.Cells[i, 6].Text, xlRange.Cells[i, 7].Text, xlRange.Cells[i, 8].Text);
-
+                    gridView.Rows.Add(xlRange.Cells[i, 1].Text.ToString(), xlRange.Cells[i, 2].Text.ToString(), xlRange.Cells[i, 3].Text.ToString(), xlRange.Cells[i, 4].Text.ToString(), xlRange.Cells[i, 5].Text.ToString(), xlRange.Cells[i, 6].Text.ToString(), xlRange.Cells[i, 7].Text.ToString(), xlRange.Cells[i, 8].Text.ToString(), xlRange.Cells[i, 9].Text.ToString());
                     DAO_Admin.InsertTeacherWithExcel(xlRange, i);
                 }
 
@@ -174,7 +174,7 @@ namespace Quan_Ly_Thi.BUS
 
         public static System.Data.DataTable SearchingForStudentWithName(string Information, ConnectionStringSettings conStrSettings, System.Windows.Forms.Label lbPage_student)
         {
-            
+
             return DAO_Admin.SearchingForStudentWithName(Information, conStrSettings, lbPage_student, ref n, ref Page, ref Count, ref NOP);
         }
 
@@ -193,13 +193,13 @@ namespace Quan_Ly_Thi.BUS
             return DAO_Admin.SearchingForTeacherWithGrade(Information, conStrSettings, lbPage_teacher, ref n, ref Page, ref Count, ref NOP);
         }
 
-        public static void PrevPage_student(DataGridView gridView,ConnectionStringSettings conStrSettings, System.Windows.Forms.Label lbPage_student, string Information, RadioButton radioButton_StdName, RadioButton radioButton_StdClass)
+        public static void PrevPage_student(DataGridView gridView, ConnectionStringSettings conStrSettings, System.Windows.Forms.Label lbPage_student, string Information, RadioButton radioButton_StdName, RadioButton radioButton_StdClass)
         {
             if (Page > 1)
             {
                 DAO_Admin.PrevPage_student(gridView, conStrSettings, lbPage_student, ref n, ref Page, ref Count, ref NOP, Information, radioButton_StdName, radioButton_StdClass);
             }
-            
+
         }
 
         public static void NextPage_student(DataGridView gridView, ConnectionStringSettings conStrSettings, System.Windows.Forms.Label lbPage_student, string Information, RadioButton radioButton_StdName, RadioButton radioButton_StdClass)
@@ -349,6 +349,16 @@ namespace Quan_Ly_Thi.BUS
             pgBar.Value = e.ProgressPercentage;
             lbStatus.Text = string.Format("Process...{0}%", e.ProgressPercentage);
             pgBar.Update();
+        }
+
+        public static string findClassByID(string ClassID)
+        {
+            return DAO_Admin.findClassByID(ClassID);
+        }
+
+        public static string findGradeByID(string ClassID)
+        {
+            return DAO_Admin.findGradeByID(ClassID);
         }
     }
 }

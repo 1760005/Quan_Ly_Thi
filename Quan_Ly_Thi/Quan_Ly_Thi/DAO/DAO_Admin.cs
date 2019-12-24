@@ -11,7 +11,7 @@ namespace Quan_Ly_Thi.DAO
     {
         public static List<Giao_Vienn> layDanhSachGiaoVien()
         {
-            using (QuanLyThiTracNghiemDataContext qlttn = new QuanLyThiTracNghiemDataContext())
+            using (QLTTNDataContext qlttn = new QLTTNDataContext())
             {
                 var thongTin = qlttn.NGUOIDUNGs.Join(qlttn.KHOIs, nd => nd.MaKhoi, k => k.MaKhoi,
                                                         (nd, k) => new { nd, k.TenKhoi })
@@ -40,7 +40,7 @@ namespace Quan_Ly_Thi.DAO
 
         public static List<Hoc_Sinhh> layDanhSachHocSinh()
         {
-            using (QuanLyThiTracNghiemDataContext qlttn = new QuanLyThiTracNghiemDataContext())
+            using (QLTTNDataContext qlttn = new QLTTNDataContext())
             {
                 var thongTin = qlttn.NGUOIDUNGs.Join(qlttn.LOPHOCs, nd => nd.MaLop, lh => lh.MaLop,
                                                 (nd, lh) => new { nd, lh })

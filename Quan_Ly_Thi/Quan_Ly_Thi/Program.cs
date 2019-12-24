@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Quan_Ly_Thi.GUI.Giao_Vien;
+
 namespace Quan_Ly_Thi
 {
     static class Program
@@ -19,7 +21,7 @@ namespace Quan_Ly_Thi
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new frmHoc_Sinh());
+            Application.Run(new frmGiao_Vien());
 
         }
     }

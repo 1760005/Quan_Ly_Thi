@@ -169,7 +169,7 @@ namespace Quan_Ly_Thi.GUI.Adminn
             ControlAdmin.TabPages.Clear();
 
             Text = ConfigurationManager.AppSettings["title"];
-            conStrSettings = ConfigurationManager.ConnectionStrings["Quan_Ly_Thi.Properties.Settings.QuanLyThiTracNghiemDBConnectionString2"];
+            conStrSettings = ConfigurationManager.ConnectionStrings["Quan_Ly_Thi.Properties.Settings.QuanLyThiTracNghiemDBConnectionString4"];
         }
 
         private void btnUpdate_student_Click(object sender, EventArgs e)
@@ -433,7 +433,10 @@ namespace Quan_Ly_Thi.GUI.Adminn
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
+            frmDang_Nhap frm = new frmDang_Nhap();
+            frm.Show();
             this.Close();
+
         }
 
         private void btnexit_Click(object sender, EventArgs e)

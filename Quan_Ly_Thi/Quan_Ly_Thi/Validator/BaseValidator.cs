@@ -43,7 +43,8 @@ namespace Quan_Ly_Thi.Validator
             else
             {
                 e.Cancel = false;
-                errorProvider.SetError(control2Validate, null);
+                ErrorMessage = "";
+                errorProvider.SetError(control2Validate, ErrorMessage);
             }
         }
 

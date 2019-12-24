@@ -10,6 +10,7 @@ namespace Quan_Ly_Thi.DTO
     public class DataParameter
     {
         public List<NGUOIDUNG> listUser;
+        public List<CAUHOI> listQuestion;
         public string FileName { get; set; }
     }
 }

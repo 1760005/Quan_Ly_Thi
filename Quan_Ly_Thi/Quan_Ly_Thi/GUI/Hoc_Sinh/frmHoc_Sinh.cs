@@ -218,7 +218,6 @@ namespace Quan_Ly_Thi.GUI.Hoc_Sinh
                 rbtn_C.Text = De.De[_vi_tri_Cau_hoi_].Cau_C;
                 rbtn_D.Text = De.De[_vi_tri_Cau_hoi_].Cau_D;
             }
-
         }
 
         //Nộp Bài

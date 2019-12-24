@@ -8,6 +8,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Quan_Ly_Thi.GUI.Hoc_Sinh.Report_Viewer;
 using System.Windows.Forms;
+using Quan_Ly_Thi.GUI.Giao_Vien;
+
 namespace Quan_Ly_Thi
 {
     static class Program

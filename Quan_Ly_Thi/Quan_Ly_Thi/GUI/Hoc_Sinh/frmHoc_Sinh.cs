@@ -204,7 +204,7 @@ namespace Quan_Ly_Thi.GUI.Hoc_Sinh
                 De.De[_vi_tri_Cau_hoi_].noi_dung = De.De[_vi_tri_Cau_hoi_].noi_dung.Insert(De.De[_vi_tri_Cau_hoi_].noi_dung.Length / 2, "\n");
             }
            lb_Question.Text  = De.De[_vi_tri_Cau_hoi_].noi_dung;
-           rbtn_A.Text  = De.De[_vi_tri_Cau_hoi_].Cau_A;
+            rbtn_A.Text = De.De[_vi_tri_Cau_hoi_].Cau_A;
            rbtn_B.Text = De.De[_vi_tri_Cau_hoi_].Cau_B;
            rbtn_C.Text = De.De[_vi_tri_Cau_hoi_].Cau_C;
            rbtn_D.Text = De.De[_vi_tri_Cau_hoi_].Cau_D;

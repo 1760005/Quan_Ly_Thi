@@ -30,12 +30,12 @@ namespace Quan_Ly_Thi.DAO
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertCAPDOCAUHOI(CAPDOCAUHOI instance);
-    partial void UpdateCAPDOCAUHOI(CAPDOCAUHOI instance);
-    partial void DeleteCAPDOCAUHOI(CAPDOCAUHOI instance);
     partial void InsertPHANQUYEN(PHANQUYEN instance);
     partial void UpdatePHANQUYEN(PHANQUYEN instance);
     partial void DeletePHANQUYEN(PHANQUYEN instance);
+    partial void InsertCAPDOCAUHOI(CAPDOCAUHOI instance);
+    partial void UpdateCAPDOCAUHOI(CAPDOCAUHOI instance);
+    partial void DeleteCAPDOCAUHOI(CAPDOCAUHOI instance);
     partial void InsertCAUHOI(CAUHOI instance);
     partial void UpdateCAUHOI(CAUHOI instance);
     partial void DeleteCAUHOI(CAUHOI instance);
@@ -78,7 +78,7 @@ namespace Quan_Ly_Thi.DAO
     #endregion
 		
 		public QLTTNDataContext() : 
-				base(global::Quan_Ly_Thi.Properties.Settings.Default.QuanLyThiTracNghiemDBConnectionString3, mappingSource)
+				base(global::Quan_Ly_Thi.Properties.Settings.Default.QuanLyThiTracNghiemDBConnectionString5, mappingSource)
 		{
 			OnCreated();
 		}
@@ -107,19 +107,19 @@ namespace Quan_Ly_Thi.DAO
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<CAPDOCAUHOI> CAPDOCAUHOIs
-		{
-			get
-			{
-				return this.GetTable<CAPDOCAUHOI>();
-			}
-		}
-		
 		public System.Data.Linq.Table<PHANQUYEN> PHANQUYENs
 		{
 			get
 			{
 				return this.GetTable<PHANQUYEN>();
+			}
+		}
+		
+		public System.Data.Linq.Table<CAPDOCAUHOI> CAPDOCAUHOIs
+		{
+			get
+			{
+				return this.GetTable<CAPDOCAUHOI>();
 			}
 		}
 		
@@ -225,120 +225,6 @@ namespace Quan_Ly_Thi.DAO
 			{
 				return this.GetTable<NGUOIDUNG>();
 			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CAPDOCAUHOI")]
-	public partial class CAPDOCAUHOI : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _MaCapDo;
-		
-		private string _TenCapDo;
-		
-		private EntitySet<CAUHOI> _CAUHOIs;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnMaCapDoChanging(string value);
-    partial void OnMaCapDoChanged();
-    partial void OnTenCapDoChanging(string value);
-    partial void OnTenCapDoChanged();
-    #endregion
-		
-		public CAPDOCAUHOI()
-		{
-			this._CAUHOIs = new EntitySet<CAUHOI>(new Action<CAUHOI>(this.attach_CAUHOIs), new Action<CAUHOI>(this.detach_CAUHOIs));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaCapDo", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string MaCapDo
-		{
-			get
-			{
-				return this._MaCapDo;
-			}
-			set
-			{
-				if ((this._MaCapDo != value))
-				{
-					this.OnMaCapDoChanging(value);
-					this.SendPropertyChanging();
-					this._MaCapDo = value;
-					this.SendPropertyChanged("MaCapDo");
-					this.OnMaCapDoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenCapDo", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string TenCapDo
-		{
-			get
-			{
-				return this._TenCapDo;
-			}
-			set
-			{
-				if ((this._TenCapDo != value))
-				{
-					this.OnTenCapDoChanging(value);
-					this.SendPropertyChanging();
-					this._TenCapDo = value;
-					this.SendPropertyChanged("TenCapDo");
-					this.OnTenCapDoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CAPDOCAUHOI_CAUHOI", Storage="_CAUHOIs", ThisKey="MaCapDo", OtherKey="MaCapDo")]
-		public EntitySet<CAUHOI> CAUHOIs
-		{
-			get
-			{
-				return this._CAUHOIs;
-			}
-			set
-			{
-				this._CAUHOIs.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_CAUHOIs(CAUHOI entity)
-		{
-			this.SendPropertyChanging();
-			entity.CAPDOCAUHOI = this;
-		}
-		
-		private void detach_CAUHOIs(CAUHOI entity)
-		{
-			this.SendPropertyChanging();
-			entity.CAPDOCAUHOI = null;
 		}
 	}
 	
@@ -453,6 +339,120 @@ namespace Quan_Ly_Thi.DAO
 		{
 			this.SendPropertyChanging();
 			entity.PHANQUYEN = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CAPDOCAUHOI")]
+	public partial class CAPDOCAUHOI : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _MaCapDo;
+		
+		private string _TenCapDo;
+		
+		private EntitySet<CAUHOI> _CAUHOIs;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMaCapDoChanging(string value);
+    partial void OnMaCapDoChanged();
+    partial void OnTenCapDoChanging(string value);
+    partial void OnTenCapDoChanged();
+    #endregion
+		
+		public CAPDOCAUHOI()
+		{
+			this._CAUHOIs = new EntitySet<CAUHOI>(new Action<CAUHOI>(this.attach_CAUHOIs), new Action<CAUHOI>(this.detach_CAUHOIs));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaCapDo", DbType="Char(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string MaCapDo
+		{
+			get
+			{
+				return this._MaCapDo;
+			}
+			set
+			{
+				if ((this._MaCapDo != value))
+				{
+					this.OnMaCapDoChanging(value);
+					this.SendPropertyChanging();
+					this._MaCapDo = value;
+					this.SendPropertyChanged("MaCapDo");
+					this.OnMaCapDoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenCapDo", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string TenCapDo
+		{
+			get
+			{
+				return this._TenCapDo;
+			}
+			set
+			{
+				if ((this._TenCapDo != value))
+				{
+					this.OnTenCapDoChanging(value);
+					this.SendPropertyChanging();
+					this._TenCapDo = value;
+					this.SendPropertyChanged("TenCapDo");
+					this.OnTenCapDoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CAPDOCAUHOI_CAUHOI", Storage="_CAUHOIs", ThisKey="MaCapDo", OtherKey="MaCapDo")]
+		public EntitySet<CAUHOI> CAUHOIs
+		{
+			get
+			{
+				return this._CAUHOIs;
+			}
+			set
+			{
+				this._CAUHOIs.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_CAUHOIs(CAUHOI entity)
+		{
+			this.SendPropertyChanging();
+			entity.CAPDOCAUHOI = this;
+		}
+		
+		private void detach_CAUHOIs(CAUHOI entity)
+		{
+			this.SendPropertyChanging();
+			entity.CAPDOCAUHOI = null;
 		}
 	}
 	
@@ -3142,7 +3142,7 @@ namespace Quan_Ly_Thi.DAO
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatKhau", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatKhau", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 		public string MatKhau
 		{
 			get

@@ -58,13 +58,8 @@
             this.label15 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnExit_list_question = new System.Windows.Forms.Button();
-            this.btnFix_question = new System.Windows.Forms.Button();
             this.btnDelete_question = new System.Windows.Forms.Button();
             this.btnAdd_question = new System.Windows.Forms.Button();
-            this.nD = new System.Windows.Forms.NumericUpDown();
-            this.nC = new System.Windows.Forms.NumericUpDown();
-            this.nB = new System.Windows.Forms.NumericUpDown();
-            this.nA = new System.Windows.Forms.NumericUpDown();
             this.txtD = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtC = new System.Windows.Forms.TextBox();
@@ -73,12 +68,26 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtA = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtQuestion_code = new System.Windows.Forms.TextBox();
+            this.txtAnswerQuestion = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.txtQuestion = new System.Windows.Forms.TextBox();
-            this.dtList_question = new System.Windows.Forms.DataGridView();
+            this.txtContentQuestion = new System.Windows.Forms.TextBox();
+            this.dtgv_ListQuestion = new System.Windows.Forms.DataGridView();
             this.pnList_question = new System.Windows.Forms.Panel();
+            this.cboxLevelQuestion = new System.Windows.Forms.ComboBox();
+            this.cboxTypeQuestion = new System.Windows.Forms.ComboBox();
+            this.cboxGrade = new System.Windows.Forms.ComboBox();
+            this.cboxSubject = new System.Windows.Forms.ComboBox();
+            this.btnListQuestion = new System.Windows.Forms.Button();
+            this.txtSuggestionQuestion = new System.Windows.Forms.TextBox();
+            this.txtIdQuestion = new System.Windows.Forms.TextBox();
+            this.lbSubject = new System.Windows.Forms.Label();
+            this.lbSuggestion = new System.Windows.Forms.Label();
+            this.náme = new System.Windows.Forms.Label();
+            this.lbtype = new System.Windows.Forms.Label();
+            this.lbLevel = new System.Windows.Forms.Label();
+            this.lbGrade = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
             this.TabList_question = new System.Windows.Forms.TabPage();
             this.btnDelete_test = new System.Windows.Forms.Button();
             this.btnExit_list_result = new System.Windows.Forms.Button();
@@ -92,7 +101,7 @@
             this.rbtnDate = new System.Windows.Forms.RadioButton();
             this.label13 = new System.Windows.Forms.Label();
             this.dt_List_student_result = new System.Windows.Forms.DataGridView();
-            this.ControlTeacher = new System.Windows.Forms.TabControl();
+            this.TabControlTeacher = new System.Windows.Forms.TabControl();
             this.Tab_exam = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.gb = new System.Windows.Forms.GroupBox();
@@ -134,6 +143,10 @@
             this.btnfrm_student = new System.Windows.Forms.ToolStripMenuItem();
             this.asdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.pgBar = new System.Windows.Forms.ProgressBar();
+            this.lbStatus = new System.Windows.Forms.Label();
+            this.bgWorker = new System.ComponentModel.BackgroundWorker();
+            this.btnAllListQuestion = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtTrial_exam)).BeginInit();
@@ -143,18 +156,14 @@
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.Tab_Trial_infotest.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nC)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nA)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtList_question)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_ListQuestion)).BeginInit();
             this.pnList_question.SuspendLayout();
             this.TabList_question.SuspendLayout();
             this.Tab_result.SuspendLayout();
             this.pnList_student_result.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nCorrect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dt_List_student_result)).BeginInit();
-            this.ControlTeacher.SuspendLayout();
+            this.TabControlTeacher.SuspendLayout();
             this.Tab_exam.SuspendLayout();
             this.panel1.SuspendLayout();
             this.gb.SuspendLayout();
@@ -286,7 +295,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(630, 600);
+            this.panel3.Size = new System.Drawing.Size(966, 510);
             this.panel3.TabIndex = 11;
             // 
             // dtTrial_exam
@@ -303,7 +312,7 @@
             this.TabTrial_exam.Location = new System.Drawing.Point(4, 22);
             this.TabTrial_exam.Name = "TabTrial_exam";
             this.TabTrial_exam.Padding = new System.Windows.Forms.Padding(3);
-            this.TabTrial_exam.Size = new System.Drawing.Size(636, 606);
+            this.TabTrial_exam.Size = new System.Drawing.Size(972, 516);
             this.TabTrial_exam.TabIndex = 4;
             this.TabTrial_exam.Text = "Thông Tin Kỳ Thi Thử";
             this.TabTrial_exam.UseVisualStyleBackColor = true;
@@ -437,7 +446,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(630, 600);
+            this.panel2.Size = new System.Drawing.Size(966, 510);
             this.panel2.TabIndex = 8;
             // 
             // Tab_Trial_infotest
@@ -446,7 +455,7 @@
             this.Tab_Trial_infotest.Location = new System.Drawing.Point(4, 22);
             this.Tab_Trial_infotest.Name = "Tab_Trial_infotest";
             this.Tab_Trial_infotest.Padding = new System.Windows.Forms.Padding(3);
-            this.Tab_Trial_infotest.Size = new System.Drawing.Size(636, 606);
+            this.Tab_Trial_infotest.Size = new System.Drawing.Size(972, 516);
             this.Tab_Trial_infotest.TabIndex = 3;
             this.Tab_Trial_infotest.Text = "Thông Tin Đề Thi Thử";
             this.Tab_Trial_infotest.UseVisualStyleBackColor = true;
@@ -456,7 +465,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.Red;
-            this.label15.Location = new System.Drawing.Point(3, 38);
+            this.label15.Location = new System.Drawing.Point(15, 13);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(179, 25);
             this.label15.TabIndex = 1;
@@ -477,98 +486,38 @@
             // 
             this.btnExit_list_question.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExit_list_question.BackgroundImage")));
             this.btnExit_list_question.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnExit_list_question.Location = new System.Drawing.Point(598, 0);
+            this.btnExit_list_question.Location = new System.Drawing.Point(902, 0);
             this.btnExit_list_question.Name = "btnExit_list_question";
             this.btnExit_list_question.Size = new System.Drawing.Size(32, 32);
             this.btnExit_list_question.TabIndex = 36;
             this.btnExit_list_question.UseVisualStyleBackColor = true;
             // 
-            // btnFix_question
-            // 
-            this.btnFix_question.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFix_question.BackgroundImage")));
-            this.btnFix_question.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnFix_question.Location = new System.Drawing.Point(546, 414);
-            this.btnFix_question.Name = "btnFix_question";
-            this.btnFix_question.Size = new System.Drawing.Size(75, 65);
-            this.btnFix_question.TabIndex = 6;
-            this.btnFix_question.UseVisualStyleBackColor = true;
-            // 
             // btnDelete_question
             // 
             this.btnDelete_question.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDelete_question.BackgroundImage")));
             this.btnDelete_question.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnDelete_question.Location = new System.Drawing.Point(447, 414);
+            this.btnDelete_question.Location = new System.Drawing.Point(654, 446);
             this.btnDelete_question.Name = "btnDelete_question";
-            this.btnDelete_question.Size = new System.Drawing.Size(75, 65);
+            this.btnDelete_question.Size = new System.Drawing.Size(65, 50);
             this.btnDelete_question.TabIndex = 6;
             this.btnDelete_question.UseVisualStyleBackColor = true;
+            this.btnDelete_question.Click += new System.EventHandler(this.btnDelete_question_Click);
             // 
             // btnAdd_question
             // 
             this.btnAdd_question.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAdd_question.BackgroundImage")));
             this.btnAdd_question.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAdd_question.Location = new System.Drawing.Point(350, 414);
+            this.btnAdd_question.Location = new System.Drawing.Point(565, 446);
             this.btnAdd_question.Name = "btnAdd_question";
-            this.btnAdd_question.Size = new System.Drawing.Size(75, 65);
+            this.btnAdd_question.Size = new System.Drawing.Size(60, 50);
             this.btnAdd_question.TabIndex = 6;
             this.btnAdd_question.UseVisualStyleBackColor = true;
-            // 
-            // nD
-            // 
-            this.nD.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nD.Location = new System.Drawing.Point(580, 364);
-            this.nD.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nD.Name = "nD";
-            this.nD.Size = new System.Drawing.Size(34, 30);
-            this.nD.TabIndex = 5;
-            // 
-            // nC
-            // 
-            this.nC.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nC.Location = new System.Drawing.Point(580, 295);
-            this.nC.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nC.Name = "nC";
-            this.nC.Size = new System.Drawing.Size(34, 30);
-            this.nC.TabIndex = 5;
-            // 
-            // nB
-            // 
-            this.nB.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nB.Location = new System.Drawing.Point(580, 234);
-            this.nB.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nB.Name = "nB";
-            this.nB.Size = new System.Drawing.Size(34, 30);
-            this.nB.TabIndex = 5;
-            // 
-            // nA
-            // 
-            this.nA.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nA.Location = new System.Drawing.Point(580, 170);
-            this.nA.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nA.Name = "nA";
-            this.nA.Size = new System.Drawing.Size(34, 30);
-            this.nA.TabIndex = 5;
+            this.btnAdd_question.Click += new System.EventHandler(this.btnAdd_question_Click);
             // 
             // txtD
             // 
             this.txtD.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtD.Location = new System.Drawing.Point(394, 363);
+            this.txtD.Location = new System.Drawing.Point(43, 273);
             this.txtD.Name = "txtD";
             this.txtD.Size = new System.Drawing.Size(180, 30);
             this.txtD.TabIndex = 4;
@@ -578,7 +527,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label7.Location = new System.Drawing.Point(346, 370);
+            this.label7.Location = new System.Drawing.Point(14, 276);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(23, 23);
             this.label7.TabIndex = 3;
@@ -587,7 +536,7 @@
             // txtC
             // 
             this.txtC.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtC.Location = new System.Drawing.Point(394, 295);
+            this.txtC.Location = new System.Drawing.Point(43, 221);
             this.txtC.Name = "txtC";
             this.txtC.Size = new System.Drawing.Size(180, 30);
             this.txtC.TabIndex = 4;
@@ -597,7 +546,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label6.Location = new System.Drawing.Point(346, 302);
+            this.label6.Location = new System.Drawing.Point(16, 229);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(21, 23);
             this.label6.TabIndex = 3;
@@ -606,7 +555,7 @@
             // txtB
             // 
             this.txtB.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtB.Location = new System.Drawing.Point(394, 234);
+            this.txtB.Location = new System.Drawing.Point(43, 173);
             this.txtB.Name = "txtB";
             this.txtB.Size = new System.Drawing.Size(180, 30);
             this.txtB.TabIndex = 4;
@@ -616,7 +565,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label5.Location = new System.Drawing.Point(346, 241);
+            this.label5.Location = new System.Drawing.Point(14, 176);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(21, 23);
             this.label5.TabIndex = 3;
@@ -625,7 +574,7 @@
             // txtA
             // 
             this.txtA.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtA.Location = new System.Drawing.Point(394, 170);
+            this.txtA.Location = new System.Drawing.Point(43, 127);
             this.txtA.Name = "txtA";
             this.txtA.Size = new System.Drawing.Size(180, 30);
             this.txtA.TabIndex = 4;
@@ -635,27 +584,26 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label4.Location = new System.Drawing.Point(346, 177);
+            this.label4.Location = new System.Drawing.Point(16, 129);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(21, 23);
             this.label4.TabIndex = 3;
             this.label4.Text = "A";
             // 
-            // txtQuestion_code
+            // txtAnswerQuestion
             // 
-            this.txtQuestion_code.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQuestion_code.Location = new System.Drawing.Point(498, 66);
-            this.txtQuestion_code.Multiline = true;
-            this.txtQuestion_code.Name = "txtQuestion_code";
-            this.txtQuestion_code.Size = new System.Drawing.Size(116, 55);
-            this.txtQuestion_code.TabIndex = 2;
+            this.txtAnswerQuestion.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAnswerQuestion.Location = new System.Drawing.Point(43, 347);
+            this.txtAnswerQuestion.Name = "txtAnswerQuestion";
+            this.txtAnswerQuestion.Size = new System.Drawing.Size(180, 27);
+            this.txtAnswerQuestion.TabIndex = 2;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Red;
-            this.label11.Location = new System.Drawing.Point(389, 127);
+            this.label11.Location = new System.Drawing.Point(15, 99);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(176, 25);
             this.label11.TabIndex = 1;
@@ -666,41 +614,47 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.Red;
-            this.label14.Location = new System.Drawing.Point(500, 38);
+            this.label14.Location = new System.Drawing.Point(13, 319);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(121, 25);
+            this.label14.Size = new System.Drawing.Size(89, 25);
             this.label14.TabIndex = 1;
-            this.label14.Text = "Mã câu hỏi:";
+            this.label14.Text = "Đáp Án:";
             // 
-            // txtQuestion
+            // txtContentQuestion
             // 
-            this.txtQuestion.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQuestion.Location = new System.Drawing.Point(3, 66);
-            this.txtQuestion.Multiline = true;
-            this.txtQuestion.Name = "txtQuestion";
-            this.txtQuestion.Size = new System.Drawing.Size(472, 55);
-            this.txtQuestion.TabIndex = 2;
+            this.txtContentQuestion.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContentQuestion.Location = new System.Drawing.Point(43, 41);
+            this.txtContentQuestion.Multiline = true;
+            this.txtContentQuestion.Name = "txtContentQuestion";
+            this.txtContentQuestion.Size = new System.Drawing.Size(479, 55);
+            this.txtContentQuestion.TabIndex = 2;
             // 
-            // dtList_question
+            // dtgv_ListQuestion
             // 
-            this.dtList_question.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtList_question.Location = new System.Drawing.Point(8, 127);
-            this.dtList_question.Name = "dtList_question";
-            this.dtList_question.Size = new System.Drawing.Size(332, 470);
-            this.dtList_question.TabIndex = 0;
+            this.dtgv_ListQuestion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgv_ListQuestion.Location = new System.Drawing.Point(554, 41);
+            this.dtgv_ListQuestion.Name = "dtgv_ListQuestion";
+            this.dtgv_ListQuestion.Size = new System.Drawing.Size(380, 351);
+            this.dtgv_ListQuestion.TabIndex = 0;
+            this.dtgv_ListQuestion.SelectionChanged += new System.EventHandler(this.dtgv_ListQuestion_SelectionChanged);
             // 
             // pnList_question
             // 
             this.pnList_question.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.pnList_question.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.pnList_question.Controls.Add(this.lbStatus);
+            this.pnList_question.Controls.Add(this.pgBar);
+            this.pnList_question.Controls.Add(this.cboxLevelQuestion);
+            this.pnList_question.Controls.Add(this.cboxTypeQuestion);
+            this.pnList_question.Controls.Add(this.cboxGrade);
+            this.pnList_question.Controls.Add(this.cboxSubject);
             this.pnList_question.Controls.Add(this.btnExit_list_question);
-            this.pnList_question.Controls.Add(this.btnFix_question);
+            this.pnList_question.Controls.Add(this.btnAllListQuestion);
+            this.pnList_question.Controls.Add(this.btnListQuestion);
             this.pnList_question.Controls.Add(this.btnDelete_question);
             this.pnList_question.Controls.Add(this.btnAdd_question);
-            this.pnList_question.Controls.Add(this.nD);
-            this.pnList_question.Controls.Add(this.nC);
-            this.pnList_question.Controls.Add(this.nB);
-            this.pnList_question.Controls.Add(this.nA);
+            this.pnList_question.Controls.Add(this.txtSuggestionQuestion);
+            this.pnList_question.Controls.Add(this.txtIdQuestion);
             this.pnList_question.Controls.Add(this.txtD);
             this.pnList_question.Controls.Add(this.label7);
             this.pnList_question.Controls.Add(this.txtC);
@@ -709,17 +663,163 @@
             this.pnList_question.Controls.Add(this.label5);
             this.pnList_question.Controls.Add(this.txtA);
             this.pnList_question.Controls.Add(this.label4);
-            this.pnList_question.Controls.Add(this.txtQuestion_code);
+            this.pnList_question.Controls.Add(this.txtAnswerQuestion);
             this.pnList_question.Controls.Add(this.label11);
+            this.pnList_question.Controls.Add(this.lbSubject);
+            this.pnList_question.Controls.Add(this.lbSuggestion);
+            this.pnList_question.Controls.Add(this.náme);
+            this.pnList_question.Controls.Add(this.lbtype);
+            this.pnList_question.Controls.Add(this.lbLevel);
+            this.pnList_question.Controls.Add(this.lbGrade);
+            this.pnList_question.Controls.Add(this.label22);
             this.pnList_question.Controls.Add(this.label14);
-            this.pnList_question.Controls.Add(this.txtQuestion);
+            this.pnList_question.Controls.Add(this.txtContentQuestion);
             this.pnList_question.Controls.Add(this.label15);
-            this.pnList_question.Controls.Add(this.dtList_question);
+            this.pnList_question.Controls.Add(this.dtgv_ListQuestion);
             this.pnList_question.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnList_question.Location = new System.Drawing.Point(3, 3);
             this.pnList_question.Name = "pnList_question";
-            this.pnList_question.Size = new System.Drawing.Size(630, 600);
+            this.pnList_question.Size = new System.Drawing.Size(966, 510);
             this.pnList_question.TabIndex = 4;
+            // 
+            // cboxLevelQuestion
+            // 
+            this.cboxLevelQuestion.FormattingEnabled = true;
+            this.cboxLevelQuestion.Location = new System.Drawing.Point(396, 283);
+            this.cboxLevelQuestion.Name = "cboxLevelQuestion";
+            this.cboxLevelQuestion.Size = new System.Drawing.Size(121, 21);
+            this.cboxLevelQuestion.TabIndex = 37;
+            // 
+            // cboxTypeQuestion
+            // 
+            this.cboxTypeQuestion.FormattingEnabled = true;
+            this.cboxTypeQuestion.Location = new System.Drawing.Point(396, 330);
+            this.cboxTypeQuestion.Name = "cboxTypeQuestion";
+            this.cboxTypeQuestion.Size = new System.Drawing.Size(121, 21);
+            this.cboxTypeQuestion.TabIndex = 37;
+            // 
+            // cboxGrade
+            // 
+            this.cboxGrade.FormattingEnabled = true;
+            this.cboxGrade.Location = new System.Drawing.Point(396, 231);
+            this.cboxGrade.Name = "cboxGrade";
+            this.cboxGrade.Size = new System.Drawing.Size(121, 21);
+            this.cboxGrade.TabIndex = 37;
+            // 
+            // cboxSubject
+            // 
+            this.cboxSubject.FormattingEnabled = true;
+            this.cboxSubject.Location = new System.Drawing.Point(396, 186);
+            this.cboxSubject.Name = "cboxSubject";
+            this.cboxSubject.Size = new System.Drawing.Size(121, 21);
+            this.cboxSubject.TabIndex = 37;
+            // 
+            // btnListQuestion
+            // 
+            this.btnListQuestion.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnListQuestion.BackgroundImage")));
+            this.btnListQuestion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnListQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnListQuestion.Location = new System.Drawing.Point(758, 446);
+            this.btnListQuestion.Name = "btnListQuestion";
+            this.btnListQuestion.Size = new System.Drawing.Size(59, 50);
+            this.btnListQuestion.TabIndex = 6;
+            this.btnListQuestion.Text = "LISTQUESTION";
+            this.btnListQuestion.UseVisualStyleBackColor = true;
+            this.btnListQuestion.Click += new System.EventHandler(this.btnListQuestion_Click);
+            // 
+            // txtSuggestionQuestion
+            // 
+            this.txtSuggestionQuestion.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSuggestionQuestion.Location = new System.Drawing.Point(43, 405);
+            this.txtSuggestionQuestion.Multiline = true;
+            this.txtSuggestionQuestion.Name = "txtSuggestionQuestion";
+            this.txtSuggestionQuestion.Size = new System.Drawing.Size(479, 64);
+            this.txtSuggestionQuestion.TabIndex = 4;
+            // 
+            // txtIdQuestion
+            // 
+            this.txtIdQuestion.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIdQuestion.Location = new System.Drawing.Point(396, 126);
+            this.txtIdQuestion.Name = "txtIdQuestion";
+            this.txtIdQuestion.Size = new System.Drawing.Size(121, 30);
+            this.txtIdQuestion.TabIndex = 4;
+            // 
+            // lbSubject
+            // 
+            this.lbSubject.AutoSize = true;
+            this.lbSubject.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSubject.ForeColor = System.Drawing.Color.Red;
+            this.lbSubject.Location = new System.Drawing.Point(278, 179);
+            this.lbSubject.Name = "lbSubject";
+            this.lbSubject.Size = new System.Drawing.Size(98, 25);
+            this.lbSubject.TabIndex = 1;
+            this.lbSubject.Text = "Môn học:";
+            // 
+            // lbSuggestion
+            // 
+            this.lbSuggestion.AutoSize = true;
+            this.lbSuggestion.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSuggestion.ForeColor = System.Drawing.Color.Red;
+            this.lbSuggestion.Location = new System.Drawing.Point(15, 377);
+            this.lbSuggestion.Name = "lbSuggestion";
+            this.lbSuggestion.Size = new System.Drawing.Size(69, 25);
+            this.lbSuggestion.TabIndex = 1;
+            this.lbSuggestion.Text = "Gợi Ý:";
+            // 
+            // náme
+            // 
+            this.náme.AutoSize = true;
+            this.náme.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.náme.ForeColor = System.Drawing.Color.Red;
+            this.náme.Location = new System.Drawing.Point(278, 128);
+            this.náme.Name = "náme";
+            this.náme.Size = new System.Drawing.Size(121, 25);
+            this.náme.TabIndex = 1;
+            this.náme.Text = "Mã câu hỏi:";
+            // 
+            // lbtype
+            // 
+            this.lbtype.AutoSize = true;
+            this.lbtype.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbtype.ForeColor = System.Drawing.Color.Red;
+            this.lbtype.Location = new System.Drawing.Point(278, 326);
+            this.lbtype.Name = "lbtype";
+            this.lbtype.Size = new System.Drawing.Size(110, 25);
+            this.lbtype.TabIndex = 1;
+            this.lbtype.Text = "Phân Loại:";
+            // 
+            // lbLevel
+            // 
+            this.lbLevel.AutoSize = true;
+            this.lbLevel.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLevel.ForeColor = System.Drawing.Color.Red;
+            this.lbLevel.Location = new System.Drawing.Point(278, 276);
+            this.lbLevel.Name = "lbLevel";
+            this.lbLevel.Size = new System.Drawing.Size(88, 25);
+            this.lbLevel.TabIndex = 1;
+            this.lbLevel.Text = "Cấp Độ:";
+            // 
+            // lbGrade
+            // 
+            this.lbGrade.AutoSize = true;
+            this.lbGrade.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbGrade.ForeColor = System.Drawing.Color.Red;
+            this.lbGrade.Location = new System.Drawing.Point(278, 227);
+            this.lbGrade.Name = "lbGrade";
+            this.lbGrade.Size = new System.Drawing.Size(59, 25);
+            this.lbGrade.TabIndex = 1;
+            this.lbGrade.Text = "Khối:";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.Red;
+            this.label22.Location = new System.Drawing.Point(549, 13);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(192, 25);
+            this.label22.TabIndex = 1;
+            this.label22.Text = "Danh sách câu hỏi:";
             // 
             // TabList_question
             // 
@@ -727,7 +827,7 @@
             this.TabList_question.Location = new System.Drawing.Point(4, 22);
             this.TabList_question.Name = "TabList_question";
             this.TabList_question.Padding = new System.Windows.Forms.Padding(3);
-            this.TabList_question.Size = new System.Drawing.Size(636, 606);
+            this.TabList_question.Size = new System.Drawing.Size(972, 516);
             this.TabList_question.TabIndex = 5;
             this.TabList_question.Text = "Danh Sách Câu Hỏi";
             this.TabList_question.UseVisualStyleBackColor = true;
@@ -747,7 +847,7 @@
             // 
             this.btnExit_list_result.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExit_list_result.BackgroundImage")));
             this.btnExit_list_result.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnExit_list_result.Location = new System.Drawing.Point(585, 3);
+            this.btnExit_list_result.Location = new System.Drawing.Point(911, 15);
             this.btnExit_list_result.Name = "btnExit_list_result";
             this.btnExit_list_result.Size = new System.Drawing.Size(32, 32);
             this.btnExit_list_result.TabIndex = 35;
@@ -759,7 +859,7 @@
             this.Tab_result.Location = new System.Drawing.Point(4, 22);
             this.Tab_result.Name = "Tab_result";
             this.Tab_result.Padding = new System.Windows.Forms.Padding(3);
-            this.Tab_result.Size = new System.Drawing.Size(635, 395);
+            this.Tab_result.Size = new System.Drawing.Size(972, 516);
             this.Tab_result.TabIndex = 0;
             this.Tab_result.Text = "Danh Sách Kết Quả";
             this.Tab_result.UseVisualStyleBackColor = true;
@@ -776,17 +876,16 @@
             this.pnList_student_result.Controls.Add(this.rbtnDate);
             this.pnList_student_result.Controls.Add(this.label13);
             this.pnList_student_result.Controls.Add(this.dt_List_student_result);
-            this.pnList_student_result.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnList_student_result.Location = new System.Drawing.Point(3, 3);
-            this.pnList_student_result.MaximumSize = new System.Drawing.Size(630, 600);
+            this.pnList_student_result.MaximumSize = new System.Drawing.Size(1000, 1000);
             this.pnList_student_result.Name = "pnList_student_result";
-            this.pnList_student_result.Size = new System.Drawing.Size(629, 389);
+            this.pnList_student_result.Size = new System.Drawing.Size(969, 510);
             this.pnList_student_result.TabIndex = 13;
             // 
             // btnSelect
             // 
             this.btnSelect.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelect.Location = new System.Drawing.Point(472, 225);
+            this.btnSelect.Location = new System.Drawing.Point(798, 237);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(75, 36);
             this.btnSelect.TabIndex = 6;
@@ -796,7 +895,7 @@
             // nCorrect
             // 
             this.nCorrect.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nCorrect.Location = new System.Drawing.Point(492, 179);
+            this.nCorrect.Location = new System.Drawing.Point(818, 191);
             this.nCorrect.Name = "nCorrect";
             this.nCorrect.Size = new System.Drawing.Size(118, 27);
             this.nCorrect.TabIndex = 5;
@@ -805,7 +904,7 @@
             // 
             this.pbDate.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pbDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.pbDate.Location = new System.Drawing.Point(491, 104);
+            this.pbDate.Location = new System.Drawing.Point(817, 116);
             this.pbDate.Name = "pbDate";
             this.pbDate.Size = new System.Drawing.Size(121, 27);
             this.pbDate.TabIndex = 4;
@@ -814,7 +913,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(516, 40);
+            this.label12.Location = new System.Drawing.Point(842, 52);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(69, 23);
             this.label12.TabIndex = 3;
@@ -825,7 +924,7 @@
             this.rbtnNumber_correct.AutoSize = true;
             this.rbtnNumber_correct.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtnNumber_correct.ForeColor = System.Drawing.Color.Red;
-            this.rbtnNumber_correct.Location = new System.Drawing.Point(472, 155);
+            this.rbtnNumber_correct.Location = new System.Drawing.Point(798, 167);
             this.rbtnNumber_correct.Name = "rbtnNumber_correct";
             this.rbtnNumber_correct.Size = new System.Drawing.Size(160, 23);
             this.rbtnNumber_correct.TabIndex = 2;
@@ -838,7 +937,7 @@
             this.rbtnDate.AutoSize = true;
             this.rbtnDate.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtnDate.ForeColor = System.Drawing.Color.Red;
-            this.rbtnDate.Location = new System.Drawing.Point(472, 74);
+            this.rbtnDate.Location = new System.Drawing.Point(798, 86);
             this.rbtnDate.Name = "rbtnDate";
             this.rbtnDate.Size = new System.Drawing.Size(138, 23);
             this.rbtnDate.TabIndex = 2;
@@ -851,7 +950,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.Red;
-            this.label13.Location = new System.Drawing.Point(99, 6);
+            this.label13.Location = new System.Drawing.Point(209, 8);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(304, 25);
             this.label13.TabIndex = 1;
@@ -864,23 +963,23 @@
             this.dt_List_student_result.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dt_List_student_result.Location = new System.Drawing.Point(3, 40);
             this.dt_List_student_result.Name = "dt_List_student_result";
-            this.dt_List_student_result.Size = new System.Drawing.Size(464, 343);
+            this.dt_List_student_result.Size = new System.Drawing.Size(738, 464);
             this.dt_List_student_result.TabIndex = 0;
             // 
-            // ControlTeacher
+            // TabControlTeacher
             // 
-            this.ControlTeacher.Controls.Add(this.Tab_result);
-            this.ControlTeacher.Controls.Add(this.Tab_exam);
-            this.ControlTeacher.Controls.Add(this.Tab_Infortest);
-            this.ControlTeacher.Controls.Add(this.Tab_Trial_infotest);
-            this.ControlTeacher.Controls.Add(this.TabTrial_exam);
-            this.ControlTeacher.Controls.Add(this.TabList_question);
-            this.ControlTeacher.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ControlTeacher.Location = new System.Drawing.Point(0, 29);
-            this.ControlTeacher.Name = "ControlTeacher";
-            this.ControlTeacher.SelectedIndex = 0;
-            this.ControlTeacher.Size = new System.Drawing.Size(643, 421);
-            this.ControlTeacher.TabIndex = 3;
+            this.TabControlTeacher.Controls.Add(this.Tab_result);
+            this.TabControlTeacher.Controls.Add(this.Tab_exam);
+            this.TabControlTeacher.Controls.Add(this.Tab_Infortest);
+            this.TabControlTeacher.Controls.Add(this.Tab_Trial_infotest);
+            this.TabControlTeacher.Controls.Add(this.TabTrial_exam);
+            this.TabControlTeacher.Controls.Add(this.TabList_question);
+            this.TabControlTeacher.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TabControlTeacher.Location = new System.Drawing.Point(0, 29);
+            this.TabControlTeacher.Name = "TabControlTeacher";
+            this.TabControlTeacher.SelectedIndex = 0;
+            this.TabControlTeacher.Size = new System.Drawing.Size(980, 542);
+            this.TabControlTeacher.TabIndex = 3;
             // 
             // Tab_exam
             // 
@@ -888,7 +987,7 @@
             this.Tab_exam.Location = new System.Drawing.Point(4, 22);
             this.Tab_exam.Name = "Tab_exam";
             this.Tab_exam.Padding = new System.Windows.Forms.Padding(3);
-            this.Tab_exam.Size = new System.Drawing.Size(636, 606);
+            this.Tab_exam.Size = new System.Drawing.Size(972, 516);
             this.Tab_exam.TabIndex = 1;
             this.Tab_exam.Text = "Thông Tin Kỳ Thi";
             this.Tab_exam.UseVisualStyleBackColor = true;
@@ -901,7 +1000,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(630, 600);
+            this.panel1.Size = new System.Drawing.Size(966, 510);
             this.panel1.TabIndex = 10;
             // 
             // gb
@@ -1018,7 +1117,7 @@
             this.Tab_Infortest.Location = new System.Drawing.Point(4, 22);
             this.Tab_Infortest.Name = "Tab_Infortest";
             this.Tab_Infortest.Padding = new System.Windows.Forms.Padding(3);
-            this.Tab_Infortest.Size = new System.Drawing.Size(636, 606);
+            this.Tab_Infortest.Size = new System.Drawing.Size(972, 516);
             this.Tab_Infortest.TabIndex = 2;
             this.Tab_Infortest.Text = "Thông Tin Đề Thi";
             this.Tab_Infortest.UseVisualStyleBackColor = true;
@@ -1034,7 +1133,7 @@
             this.pnTest.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnTest.Location = new System.Drawing.Point(3, 3);
             this.pnTest.Name = "pnTest";
-            this.pnTest.Size = new System.Drawing.Size(630, 600);
+            this.pnTest.Size = new System.Drawing.Size(966, 510);
             this.pnTest.TabIndex = 7;
             // 
             // dtQuestion
@@ -1125,14 +1224,16 @@
             // btnExport_question
             // 
             this.btnExport_question.Name = "btnExport_question";
-            this.btnExport_question.Size = new System.Drawing.Size(155, 26);
+            this.btnExport_question.Size = new System.Drawing.Size(180, 26);
             this.btnExport_question.Text = "Export File";
+            this.btnExport_question.Click += new System.EventHandler(this.btnExport_question_Click);
             // 
             // btnImport_question
             // 
             this.btnImport_question.Name = "btnImport_question";
-            this.btnImport_question.Size = new System.Drawing.Size(155, 26);
+            this.btnImport_question.Size = new System.Drawing.Size(180, 26);
             this.btnImport_question.Text = "Import File";
+            this.btnImport_question.Click += new System.EventHandler(this.btnImport_question_Click);
             // 
             // fileToolStripMenuItem
             // 
@@ -1259,19 +1360,57 @@
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(643, 29);
+            this.menuStrip1.Size = new System.Drawing.Size(980, 29);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // pgBar
+            // 
+            this.pgBar.Location = new System.Drawing.Point(606, 405);
+            this.pgBar.Name = "pgBar";
+            this.pgBar.Size = new System.Drawing.Size(113, 23);
+            this.pgBar.TabIndex = 38;
+            // 
+            // lbStatus
+            // 
+            this.lbStatus.AutoSize = true;
+            this.lbStatus.Location = new System.Drawing.Point(800, 411);
+            this.lbStatus.Name = "lbStatus";
+            this.lbStatus.Size = new System.Drawing.Size(71, 13);
+            this.lbStatus.TabIndex = 39;
+            this.lbStatus.Text = "Progress...0%";
+            // 
+            // bgWorker
+            // 
+            this.bgWorker.WorkerReportsProgress = true;
+            this.bgWorker.WorkerSupportsCancellation = true;
+            this.bgWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgWorker_DoWork);
+            this.bgWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgWorker_ProgressChanged);
+            this.bgWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgWorker_RunWorkerCompleted);
+            // 
+            // btnAllListQuestion
+            // 
+            this.btnAllListQuestion.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAllListQuestion.BackgroundImage")));
+            this.btnAllListQuestion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAllListQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAllListQuestion.Location = new System.Drawing.Point(836, 446);
+            this.btnAllListQuestion.Name = "btnAllListQuestion";
+            this.btnAllListQuestion.Size = new System.Drawing.Size(59, 50);
+            this.btnAllListQuestion.TabIndex = 6;
+            this.btnAllListQuestion.Text = "ALLLISTQUESTION";
+            this.btnAllListQuestion.UseVisualStyleBackColor = true;
+            this.btnAllListQuestion.Click += new System.EventHandler(this.btnListQuestion_Click);
             // 
             // frmGiao_Vien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(643, 450);
-            this.Controls.Add(this.ControlTeacher);
+            this.ClientSize = new System.Drawing.Size(980, 571);
+            this.Controls.Add(this.TabControlTeacher);
             this.Controls.Add(this.menuStrip1);
             this.Name = "frmGiao_Vien";
             this.Text = "Giáo Viên";
+            this.Load += new System.EventHandler(this.frmGiao_Vien_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -1284,11 +1423,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.Tab_Trial_infotest.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.nD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nC)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nA)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtList_question)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_ListQuestion)).EndInit();
             this.pnList_question.ResumeLayout(false);
             this.pnList_question.PerformLayout();
             this.TabList_question.ResumeLayout(false);
@@ -1297,7 +1432,7 @@
             this.pnList_student_result.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nCorrect)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dt_List_student_result)).EndInit();
-            this.ControlTeacher.ResumeLayout(false);
+            this.TabControlTeacher.ResumeLayout(false);
             this.Tab_exam.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.gb.ResumeLayout(false);
@@ -1348,13 +1483,8 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnExit_list_question;
-        private System.Windows.Forms.Button btnFix_question;
         private System.Windows.Forms.Button btnDelete_question;
         private System.Windows.Forms.Button btnAdd_question;
-        private System.Windows.Forms.NumericUpDown nD;
-        private System.Windows.Forms.NumericUpDown nC;
-        private System.Windows.Forms.NumericUpDown nB;
-        private System.Windows.Forms.NumericUpDown nA;
         private System.Windows.Forms.TextBox txtD;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtC;
@@ -1363,11 +1493,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtA;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtQuestion_code;
+        private System.Windows.Forms.TextBox txtAnswerQuestion;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txtQuestion;
-        private System.Windows.Forms.DataGridView dtList_question;
+        private System.Windows.Forms.TextBox txtContentQuestion;
+        private System.Windows.Forms.DataGridView dtgv_ListQuestion;
         private System.Windows.Forms.Panel pnList_question;
         private System.Windows.Forms.TabPage TabList_question;
         private System.Windows.Forms.Button btnDelete_test;
@@ -1382,7 +1512,7 @@
         private System.Windows.Forms.RadioButton rbtnDate;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DataGridView dt_List_student_result;
-        private System.Windows.Forms.TabControl ControlTeacher;
+        private System.Windows.Forms.TabControl TabControlTeacher;
         private System.Windows.Forms.TabPage Tab_exam;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox gb;
@@ -1424,5 +1554,23 @@
         private System.Windows.Forms.ToolStripMenuItem btnfrm_student;
         private System.Windows.Forms.ToolStripMenuItem asdToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ComboBox cboxLevelQuestion;
+        private System.Windows.Forms.ComboBox cboxTypeQuestion;
+        private System.Windows.Forms.ComboBox cboxGrade;
+        private System.Windows.Forms.ComboBox cboxSubject;
+        private System.Windows.Forms.TextBox txtSuggestionQuestion;
+        private System.Windows.Forms.TextBox txtIdQuestion;
+        private System.Windows.Forms.Label lbSubject;
+        private System.Windows.Forms.Label lbSuggestion;
+        private System.Windows.Forms.Label náme;
+        private System.Windows.Forms.Label lbtype;
+        private System.Windows.Forms.Label lbLevel;
+        private System.Windows.Forms.Label lbGrade;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Button btnListQuestion;
+        private System.Windows.Forms.Label lbStatus;
+        private System.Windows.Forms.ProgressBar pgBar;
+        private System.ComponentModel.BackgroundWorker bgWorker;
+        private System.Windows.Forms.Button btnAllListQuestion;
     }
 }

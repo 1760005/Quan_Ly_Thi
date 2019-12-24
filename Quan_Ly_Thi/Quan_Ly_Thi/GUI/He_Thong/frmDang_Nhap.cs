@@ -12,6 +12,7 @@ using Quan_Ly_Thi.DTO;
 using Quan_Ly_Thi.BUS;
 using Quan_Ly_Thi.GUI.Hoc_Sinh;
 using Quan_Ly_Thi.GUI.Adminn;
+using Quan_Ly_Thi.GUI.Giao_Vien;
 
 namespace Quan_Ly_Thi.GUI.He_Thong
 {
@@ -47,6 +48,14 @@ namespace Quan_Ly_Thi.GUI.He_Thong
                     Tai_khoan tk = BUS_Tai_Khoan.layThongTinTaiKhoan(txtUserName.Text) as Tai_khoan;
                     frmAdmin.tk = tk;
                     frmAdmin admin = new frmAdmin();
+                    admin.ShowDialog();
+
+                }
+                else if (BUS_Tai_Khoan.Quyen(txtUserName.Text).Contains("GV"))
+                {
+                    Giao_Vienn tk = BUS_Tai_Khoan.layThongTinTaiKhoan(txtUserName.Text) as Giao_Vienn;
+                    frmGiao_Vien.giaoVien = tk;
+                    frmGiao_Vien admin = new frmGiao_Vien();
                     admin.ShowDialog();
 
                 }

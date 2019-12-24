@@ -33,12 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-=======
->>>>>>> 28202357834041ed1fc4a50d53380ea555ace0ae
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1400.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
     </Reference>
@@ -83,23 +80,25 @@
     <Compile Include="DAO\DAO_Giao_Vien.cs" />
     <Compile Include="DAO\DAO_Hoc_Sinh.cs" />
     <Compile Include="DAO\DAO_Tai_Khoan.cs" />
+    <Compile Include="DAO\QLTTN.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLTTN.dbml</DependentUpon>
+    </Compile>
     <Compile Include="DTO\Adminn.cs" />
     <Compile Include="DTO\CauTraLoi.cs" />
     <Compile Include="DTO\Cau_Hoi.cs" />
-<<<<<<< HEAD
     <Compile Include="DTO\Classes.cs" />
-    <Compile Include="DTO\DataParameter.cs" />
-=======
     <Compile Include="DTO\DanhSachKetQua.cs" />
     <Compile Include="DTO\DanhSachKyThi.cs" />
-    <Compile Include="DTO\ReportDanhSachThiSinh.cs" />
->>>>>>> 28202357834041ed1fc4a50d53380ea555ace0ae
+    <Compile Include="DTO\DataParameter.cs" />
     <Compile Include="DTO\De_thi.cs" />
     <Compile Include="DTO\Giao_Vienn.cs" />
     <Compile Include="DTO\Grades.cs" />
     <Compile Include="DTO\Hoc_Sinhh.cs" />
     <Compile Include="DTO\Ket_Qua_Thi.cs" />
     <Compile Include="DTO\Lich_Thi.cs" />
+    <Compile Include="DTO\ReportDanhSachThiSinh.cs" />
     <Compile Include="DTO\ReportTongKetKyThi.cs" />
     <Compile Include="DTO\Tai_khoan.cs" />
     <Compile Include="DTO\UserRevenue.cs" />
@@ -112,18 +111,18 @@
     <Compile Include="GUI\Adminn\frmUserReport.cs">
       <SubType>Form</SubType>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="GUI\Adminn\frmUserReport.Designer.cs">
       <DependentUpon>frmUserReport.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Adminn\Models\Decentralization.cs" />
     <Compile Include="GUI\Adminn\Presenters\MainPresent.cs" />
     <Compile Include="GUI\Adminn\Views\IUserReportView.cs" />
-=======
+    <Compile Include="GUI\Giao_Vien\frmGiao_Vien.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GUI\Giao_Vien\frmGiao_Vien.Designer.cs">
       <DependentUpon>frmGiao_Vien.cs</DependentUpon>
     </Compile>
->>>>>>> 28202357834041ed1fc4a50d53380ea555ace0ae
     <Compile Include="GUI\He_Thong\frmDang_Nhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,7 +191,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-<<<<<<< HEAD
     <Compile Include="QuanLyThiTracNghiemDBDataSet2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -207,29 +205,17 @@
     </Compile>
     <Compile Include="Validator\RegexValidator.cs">
       <SubType>Component</SubType>
-=======
-    <Compile Include="QLTTN.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QLTTN.dbml</DependentUpon>
->>>>>>> 28202357834041ed1fc4a50d53380ea555ace0ae
     </Compile>
-    <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="GUI\Adminn\frmAdmin.resx">
       <DependentUpon>frmAdmin.cs</DependentUpon>
     </EmbeddedResource>
-<<<<<<< HEAD
     <EmbeddedResource Include="GUI\Adminn\frmUserReport.resx">
       <DependentUpon>frmUserReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Adminn\Reports\ReportUserRevenue.rdlc" />
-=======
     <EmbeddedResource Include="GUI\Giao_Vien\frmGiao_Vien.resx">
       <DependentUpon>frmGiao_Vien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Giao_Vien\ReportDanhSachThiSinh.rdlc" />
-    <EmbeddedResource Include="GUI\Giao_Vien\ReportTongKetKyThi.rdlc" />
->>>>>>> 28202357834041ed1fc4a50d53380ea555ace0ae
     <EmbeddedResource Include="GUI\He_Thong\frmDang_Nhap.resx">
       <DependentUpon>frmDang_Nhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -274,7 +260,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <None Include="DAO\QLTTN.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>QLTTN.designer.cs</LastGenOutput>
@@ -293,61 +278,6 @@
     <None Include="Properties\DataSources\Quan_Ly_Thi.DAO.NGUOIDUNG.datasource" />
     <None Include="Properties\DataSources\Quan_Ly_Thi.DAO.QLTTNDataContext.datasource" />
     <None Include="Properties\DataSources\Quan_Ly_Thi.DTO.UserRevenue.datasource" />
-=======
-    <None Include="packages.config" />
-    <None Include="Properties\DataSources\CAPDOCAUHOI.datasource" />
-    <None Include="Properties\DataSources\CAUHOI.datasource" />
-    <None Include="Properties\DataSources\CHITIETDETHI.datasource" />
-    <None Include="Properties\DataSources\CHITIETKYTHI.datasource" />
-    <None Include="Properties\DataSources\DANHSACHTHISINH.datasource" />
-    <None Include="Properties\DataSources\DETHI.datasource" />
-    <None Include="Properties\DataSources\KETQUATHI.datasource" />
-    <None Include="Properties\DataSources\KHOI.datasource" />
-    <None Include="Properties\DataSources\KYTHI.datasource" />
-    <None Include="Properties\DataSources\LOAICAUHOI.datasource" />
-    <None Include="Properties\DataSources\LOAIKYTHI.datasource" />
-    <None Include="Properties\DataSources\LOPHOC.datasource" />
-    <None Include="Properties\DataSources\MONHOC.datasource" />
-    <None Include="Properties\DataSources\NGUOIDUNG.datasource" />
-    <None Include="Properties\DataSources\PHANQUYEN.datasource" />
-    <None Include="Properties\DataSources\Program.datasource" />
-    <None Include="Properties\DataSources\QLTTNDataContext.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.BUS.BUS_Admin.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.BUS.Bus_Cau_Hoi.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.BUS.BUS_De_Thi.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.BUS.BUS_Giao_Vien.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.BUS.BUS_Hoc_Sinh.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.BUS.BUS_Tai_Khoan.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.DAO.DAO_Admin.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.DAO.DAO_Cau_Hoi.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.DAO.DAO_De_Thi.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.DAO.DAO_Giao_Vien.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.DAO.DAO_Hoc_Sinh.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.DAO.DAO_Tai_Khoan.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.DTO.Adminn.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.DTO.Cau_Hoi.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.DTO.DanhSachKetQua.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.DTO.DanhSachKyThi.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.DTO.DanhSachThiSinh.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.DTO.De_thi.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.DTO.Giao_Vienn.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.DTO.Hoc_Sinhh.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.DTO.Lich_Thi.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.DTO.ReportDanhSachThiSinh.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.DTO.ReportTongKetKyThi.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.DTO.Tai_khoan.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.GUI.Adminn.frmAdmin.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.GUI.Giao_Vien.frmGiao_Vien.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.GUI.Giao_Vien.frmThong_Tin.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.GUI.He_Thong.frmDang_Nhap.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.GUI.He_Thong.frmDoi_Mat_Khau.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.GUI.Hoc_Sinh.frmHoc_Sinh.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.GUI.Hoc_Sinh.frmKetQua.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.GUI.Hoc_Sinh.frmThong_Tin.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.Properties.Resources.datasource" />
-    <None Include="Properties\DataSources\Quan_Ly_Thi.Properties.Settings.datasource" />
-    <None Include="Properties\DataSources\SqlServerTypes.Utilities.datasource" />
->>>>>>> 28202357834041ed1fc4a50d53380ea555ace0ae
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -357,7 +287,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-<<<<<<< HEAD
     <None Include="QuanLyThiTracNghiemDBDataSet2.xsc">
       <DependentUpon>QuanLyThiTracNghiemDBDataSet2.xsd</DependentUpon>
     </None>
@@ -368,15 +297,6 @@
     </None>
     <None Include="QuanLyThiTracNghiemDBDataSet2.xss">
       <DependentUpon>QuanLyThiTracNghiemDBDataSet2.xsd</DependentUpon>
-=======
-    <None Include="QLTTN.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>QLTTN.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="QLTTN.dbml.layout">
-      <DependentUpon>QLTTN.dbml</DependentUpon>
->>>>>>> 28202357834041ed1fc4a50d53380ea555ace0ae
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -400,12 +320,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-<<<<<<< HEAD
-    <Folder Include="GUI\Giao_Vien\" />
-=======
-    <WCFMetadata Include="Connected Services\" />
->>>>>>> 28202357834041ed1fc4a50d53380ea555ace0ae
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -18,7 +18,7 @@ namespace Quan_Ly_Thi.GUI.Giao_Vien
     public partial class frmGiao_Vien : Form
     {
         //Đối tượng giáo viên
-        public NGUOIDUNG giaoVien = new NGUOIDUNG();
+        public static Giao_Vienn giaoVien = new Giao_Vienn();
         public Hoc_Sinhh hocSinh = new Hoc_Sinhh();
 
         //Binding
@@ -184,7 +184,7 @@ namespace Quan_Ly_Thi.GUI.Giao_Vien
             {
                 hocSinh = BUS_Tai_Khoan.layThongTinTaiKhoan(dgvDanhSachHocSinh.SelectedRows[0].Cells[0].Value.ToString()) as Hoc_Sinhh;
                 frmHoc_Sinh frmHS = new frmHoc_Sinh();
-                frmHS.hs = hocSinh;
+                frmHoc_Sinh.hs = hocSinh;
                 frmHS.Show();
             }
         }
@@ -235,10 +235,10 @@ namespace Quan_Ly_Thi.GUI.Giao_Vien
         {
             if (kiemTraFormThongTinCaNhanHopLe())
             {
-                giaoVien.HoTen = txtHoTenTTCN.Text;
+                giaoVien.Ho_Ten = txtHoTenTTCN.Text;
                 giaoVien.CMND_TCC = txtCMNDTTCN.Text;
-                giaoVien.NgaySinh = dtpNgaySinhTTCN.Value;
-                giaoVien.SoDienThoai = txtSDTTTCN.Text;
+                giaoVien.Ngay_Sinh = dtpNgaySinhTTCN.Value;
+                giaoVien.SDT = txtSDTTTCN.Text;
                 giaoVien.Email = txtEmailTTCN.Text;
 
                 if (!BUS_Giao_Vien.capNhatNguoiDungVaoDB(giaoVien))
@@ -254,15 +254,15 @@ namespace Quan_Ly_Thi.GUI.Giao_Vien
 
         void dienThongTinGiaoVienVaoFormThongTinCaNhan()
         {
-            if (giaoVien.TaiKhoan != null)
+            if (giaoVien.Tai_Khoan != null)
             {
-                txtPhanQuyenTTCN.Text = BUS_Giao_Vien.layTenPhanQuyenTuongUng(giaoVien.MaPhanQuyen);
-                txtTaiKhoanTTCN.Text = giaoVien.TaiKhoan;
-                txtKhoiTTCN.Text = BUS_Giao_Vien.layTenKhoiTuongUng(giaoVien.MaKhoi);
-                txtHoTenTTCN.Text = giaoVien.HoTen;
+                //txtPhanQuyenTTCN.Text = BUS_Giao_Vien.layTenPhanQuyenTuongUng(giaoVien.Ma);
+                txtTaiKhoanTTCN.Text = giaoVien.Tai_Khoan;
+                txtKhoiTTCN.Text = giaoVien.Khoi;
+                txtHoTenTTCN.Text = giaoVien.Ho_Ten;
                 txtCMNDTTCN.Text = giaoVien.CMND_TCC;
-                dtpNgaySinhTTCN.Value = giaoVien.NgaySinh.Value;
-                txtSDTTTCN.Text = giaoVien.SoDienThoai;
+                dtpNgaySinhTTCN.Value = giaoVien.Ngay_Sinh;
+                txtSDTTTCN.Text = giaoVien.SDT;
                 txtEmailTTCN.Text = giaoVien.Email;
             }
         }
@@ -1227,6 +1227,7 @@ namespace Quan_Ly_Thi.GUI.Giao_Vien
                     dgvListResult.Rows.Clear();
             }
         }
+
 
         private void frmGiao_Vien_Load(object sender, EventArgs e)
         {

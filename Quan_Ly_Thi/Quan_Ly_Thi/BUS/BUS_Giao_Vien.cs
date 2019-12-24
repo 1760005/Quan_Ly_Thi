@@ -455,7 +455,7 @@ namespace Quan_Ly_Thi.BUS
             }
         }
 
-        static public bool capNhatNguoiDungVaoDB(NGUOIDUNG nd)
+        static public bool capNhatNguoiDungVaoDB(Giao_Vienn nd)
         {
             return DAO_Giao_Vien.capNhatNguoiDungVaoDB(nd);
         }

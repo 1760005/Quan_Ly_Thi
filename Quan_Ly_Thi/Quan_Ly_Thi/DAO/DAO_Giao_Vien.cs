@@ -413,19 +413,19 @@ namespace Quan_Ly_Thi.DAO
             }
         }
 
-        static public bool capNhatNguoiDungVaoDB(NGUOIDUNG nd)
+        static public bool capNhatNguoiDungVaoDB(Giao_Vienn nd)
         {
             using (QLTTNDataContext qlttn = new QLTTNDataContext())
             {
                 try
                 {
-                    var nguoiDung = qlttn.NGUOIDUNGs.Where(ndd => ndd.TaiKhoan.Equals(nd.TaiKhoan));
+                    var nguoiDung = qlttn.NGUOIDUNGs.Where(ndd => ndd.TaiKhoan.Equals(nd.Tai_Khoan));
                     foreach (var ndd in nguoiDung)
                     {
-                        ndd.HoTen = nd.HoTen;
+                        ndd.HoTen = nd.Ho_Ten;
                         ndd.CMND_TCC = nd.CMND_TCC;
-                        ndd.NgaySinh = nd.NgaySinh;
-                        ndd.SoDienThoai = nd.SoDienThoai;
+                        ndd.NgaySinh = nd.Ngay_Sinh;
+                        ndd.SoDienThoai = nd.SDT;
                         ndd.Email = nd.Email;
                     }
                     qlttn.SubmitChanges();
